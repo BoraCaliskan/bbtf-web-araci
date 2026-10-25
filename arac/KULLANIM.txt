@@ -1,0 +1,30 @@
+BBTF YAYIN AFİŞİ, kullanım
+
+AÇMA
+Dosyayı Chrome'da aç (çift tıkla). Kurulum yok. İnternet yalnızca "Crossref'ten doldur" için gerekir, gerisi çevrim dışı çalışır.
+
+İLK KULLANIM, kadro fotoğrafları (tek seferlik)
+1. "Fotoğrafları CDN'den çek" düğmesini dene. Sitenin görsel sunucusu tarayıcıya izin veriyorsa hepsi gelir.
+2. Gelmezse her kişi için fotoğrafı akademik kadro sayfasından indirip kişinin kartına sürükle bırak (ya da karta tıklayıp dosya seç).
+3. "JSON dışa aktar" ile yedek al. Tarayıcı verisi silinirse "JSON içe aktar" ile geri yüklenir.
+Yeni gelen hoca için alttaki "Yeni kişi" satırını kullan. Ünvan değişikliği için kişiyi silip yeniden ekle.
+
+YENİ YAYIN
+1. DOI'yi yapıştır, "Crossref'ten doldur". Başlık, dergi, yıl, bağlantı ve yazar listesi dolar.
+2. Yazarlar: kadroyla eşleşenler kendiliğinden işaretlenir. Afişe ve metne yalnızca işaretliler girer, en fazla üç kişi, makaledeki sırayla. Öğrenci yazar için açılır listeden "Öğrenci" seç ve adını yaz.
+3. Özet: tek paragraf, Türkçe ve İngilizce. Boş kalırsa haberde özet paneli olmaz.
+4. Önizlemede Türkçe ve English sekmelerine bak. "Güvenli alanları göster" ana sayfa manşetindeki kapsül, hover okları ve haber kartı bandını çizer, metin bu alanların dışında kalmalı. Durum satırı "Sığdı" demeli.
+5. "ZIP indir".
+
+ZIP İÇERİĞİ VE CMS
+- manset-yayin-...-tr-1920x606 (bunu kullan).jpg ve EN karşılığı: haber görseli ve manşet görseli aynı dosya.
+- 1170x369 dosyaları yedek.
+- haber-yayin-...-tr.html ve -en.html: Froala'da kod görünümüne yapıştır. Görsel yok, gövdeye afiş konmaz.
+- metinler.txt: haber başlığı, manşet alt metni, spot ve alt text.
+CMS'de slider title alanlarını boş bırak, dolu olursa afiş kararır ve üstüne düğme biner.
+
+KALIP KURALLARI (kodda sabit)
+Renkler sitenin gradyan yeşili ve altın. Yazı tipleri Barlow ve Barlow Condensed, gömülü. Üç alan: Yazar(lar), Dergi, Yayın Başlığı. Metin bloğu ana sayfa kapsülünün üstünde biter ve haber kartı bandının içinde kalır. Fotoğraflar hover okundan uzakta. Başlık en fazla üç satır, uzunsa yazı küçülür. Tireli kelimeler bölünmez. Metinlerde noktalı virgül ve uzun tire yok.
+
+GELİŞTİRİCİ
+gelistirici/src.html kaynak, gelistirici/build.py tek dosyayı üretir. Yeni kalıp eklemek için drawPoster ve genText'in yanına yenisi yazılır.

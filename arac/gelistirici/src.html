@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>BBTF Yayın Afişi</title>
+<style>
+@font-face { font-family: "Barlow"; font-weight: 400; src: url("{{FONT_B400}}") format("truetype"); }
+@font-face { font-family: "Barlow"; font-weight: 500; src: url("{{FONT_B500}}") format("truetype"); }
+@font-face { font-family: "Barlow"; font-weight: 600; src: url("{{FONT_B600}}") format("truetype"); }
+@font-face { font-family: "Barlow"; font-weight: 700; src: url("{{FONT_B700}}") format("truetype"); }
+@font-face { font-family: "Barlow Condensed"; font-weight: 700; src: url("{{FONT_BC700}}") format("truetype"); }
+
+:root { --g1:#439c86; --g2:#2e7d67; --g3:#075f46; --gold:#e2b51d; --panel:#f1f7f4; --border:#d6e6df; --text:#283d38; --muted:#586b65; }
+* { box-sizing:border-box; }
+body { margin:0; font-family: "Segoe UI", Inter, Arial, sans-serif; font-size:14px; color:var(--text); background:#eef2f0; }
+header { background:linear-gradient(90deg,#2c7a64,#439c86); color:#fff; padding:12px 20px; display:flex; align-items:center; justify-content:space-between; }
+header h1 { margin:0; font-size:18px; font-weight:700; }
+header .sub { font-size:12px; opacity:.9; }
+.wrap { display:grid; grid-template-columns: 460px 1fr; gap:16px; padding:16px; align-items:start; }
+@media (max-width:1100px){ .wrap { grid-template-columns:1fr; } }
+.card { background:#fff; border:1px solid var(--border); border-radius:10px; padding:14px 16px; margin-bottom:14px; }
+.card h2 { margin:0 0 10px 0; font-size:14px; color:var(--g2); text-transform:uppercase; letter-spacing:.4px; }
+label { display:block; font-size:12px; font-weight:600; color:var(--muted); margin:8px 0 4px; }
+input[type=text], textarea, select { width:100%; padding:8px 10px; border:1px solid var(--border); border-radius:6px; font:inherit; color:var(--text); background:#fff; }
+textarea { min-height:70px; resize:vertical; }
+.row { display:flex; gap:8px; align-items:flex-end; flex-wrap:wrap; }
+.row > * { flex:1; }
+.row > .fit { flex:0 0 auto; }
+button { font:inherit; font-weight:600; border:1px solid var(--g2); background:var(--g2); color:#fff; padding:8px 14px; border-radius:6px; cursor:pointer; }
+button.secondary { background:var(--panel); color:#1f5c4b; border-color:#bfdacf; }
+button.small { padding:4px 9px; font-size:12px; }
+button:disabled { opacity:.5; cursor:default; }
+.hint { font-size:12px; color:var(--muted); margin-top:4px; }
+.status { font-size:12px; margin-top:6px; min-height:16px; }
+.status.ok { color:#1f6b52; } .status.err { color:#b23b3b; }
+.authors { display:flex; flex-direction:column; gap:6px; }
+.author { display:grid; grid-template-columns: 22px 1fr 1fr 28px; gap:6px; align-items:center; background:var(--panel); border-radius:6px; padding:6px 8px; }
+.author input[type=text] { padding:5px 8px; font-size:13px; }
+.author select { padding:5px 6px; font-size:13px; }
+.author .x { background:none; border:none; color:#b23b3b; font-size:16px; padding:0; cursor:pointer; }
+.kadro { display:grid; grid-template-columns: repeat(auto-fill, minmax(130px, 1fr)); gap:8px; max-height:300px; overflow:auto; }
+.person { border:1px solid var(--border); border-radius:8px; padding:6px; text-align:center; font-size:11px; position:relative; }
+.person .ph { width:56px; height:56px; border-radius:50%; margin:0 auto 4px; background:#e4ede8 center/cover no-repeat; border:2px solid #cfe2d9; display:flex; align-items:center; justify-content:center; color:#8aa39a; }
+.person.drag { outline:2px dashed var(--g1); }
+.person .nm { font-weight:700; line-height:1.2; }
+.person .tt { color:var(--muted); }
+.person .del { position:absolute; top:2px; right:4px; background:none; border:none; color:#b23b3b; cursor:pointer; padding:0; font-size:12px; }
+.tabs { display:flex; gap:6px; margin-bottom:8px; }
+.tabs button { background:#fff; color:var(--g2); border-color:var(--border); }
+.tabs button.on { background:var(--g2); color:#fff; border-color:var(--g2); }
+canvas#preview { width:100%; height:auto; border-radius:10px; display:block; box-shadow:0 8px 24px rgba(0,0,0,.12); }
+.outs textarea { font-family: Consolas, "Courier New", monospace; font-size:12px; min-height:140px; }
+.chk { display:flex; align-items:center; gap:6px; font-size:12px; color:var(--muted); margin-top:8px; }
+.sep { height:1px; background:var(--border); margin:10px 0; }
+.warn { background:#fbf8ee; border-left:4px solid var(--gold); padding:8px 12px; border-radius:0 6px 6px 0; font-size:12px; margin:8px 0; }
+.pill { display:inline-block; font-size:11px; background:#e8f2ed; color:#1f6b52; border-radius:999px; padding:2px 8px; margin-left:4px; }
+</style>
+</head>
+<body>
+<header>
+  <div><h1>BBTF Yayın Afişi</h1><div class="sub">Yeni Yayın kalıbı: afiş (TR, EN), haber metni (TR, EN), CMS metinleri. Tek dosya, kurulum yok.</div></div>
+  <div class="sub" id="fontStatus">Yazı tipleri yükleniyor…</div>
+</header>
+
+<div class="wrap">
+<div class="left">
+
+  <div class="card">
+    <h2>1. Yayın</h2>
+    <label>DOI veya DOI bağlantısı</label>
+    <div class="row"><input type="text" id="doi" placeholder="10.1016/j.engappai.2026.116383"><button class="fit" id="btnCrossref">Crossref'ten doldur</button></div>
+    <div class="status" id="crossrefStatus"></div>
+    <label>Yayın başlığı</label>
+    <textarea id="title" rows="2"></textarea>
+    <label>Dergi</label>
+    <input type="text" id="journal">
+    <div class="row">
+      <div><label>Yıl</label><input type="text" id="year"></div>
+      <div><label>Yayın bağlantısı (düğme buraya gider)</label><input type="text" id="link" placeholder="https://doi.org/…"></div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>2. Yazarlar</h2>
+    <div class="hint">Makaledeki sırayla. Afişe ve metne yalnızca işaretli (fakülteden) yazarlar girer, en fazla üç kişi. Kadro listesinden eşleştir, öğrenci için "Öğrenci" seç.</div>
+    <div class="authors" id="authors"></div>
+    <div class="row" style="margin-top:8px"><button class="secondary small fit" id="btnAddAuthor">+ Yazar ekle</button></div>
+    <div class="status" id="authorStatus"></div>
+  </div>
+
+  <div class="card">
+    <h2>3. Özet (Çalışma hakkında)</h2>
+    <div class="hint">Tek paragraf. Boş bırakılırsa haberde özet paneli üretilmez. Crossref özet getirirse İngilizce kutuya ön doldurur, kısaltıp Türkçesini yazın.</div>
+    <label>Türkçe</label><textarea id="sumTR"></textarea>
+    <label>English</label><textarea id="sumEN"></textarea>
+  </div>
+
+  <div class="card">
+    <h2>4. Kadro kütüphanesi</h2>
+    <div class="hint">Tarayıcıda saklanır. Fotoğraf için kişinin kartına bir görsel bırakın (sürükle bırak) ya da "CDN'den çek" ile sitedeki fotoğrafları deneyin. Yedek için JSON dışa aktarın.</div>
+    <div class="row" style="margin:8px 0">
+      <button class="secondary small fit" id="btnFetchPhotos">Fotoğrafları CDN'den çek</button>
+      <button class="secondary small fit" id="btnExport">JSON dışa aktar</button>
+      <button class="secondary small fit" id="btnImport">JSON içe aktar</button>
+      <button class="secondary small fit" id="btnReset">Listeyi sıfırla</button>
+      <input type="file" id="importFile" accept="application/json" style="display:none">
+    </div>
+    <div class="status" id="kadroStatus"></div>
+    <div class="kadro" id="kadro"></div>
+    <div class="sep"></div>
+    <div class="row">
+      <div><label>Yeni kişi adı</label><input type="text" id="npName" placeholder="Ad Soyad"></div>
+      <div><label>TR ünvan</label><select id="npTitleTR"><option>Prof. Dr.</option><option>Doç. Dr.</option><option>Dr. Öğr. Üyesi</option><option>Arş. Gör.</option><option>Öğr. Gör.</option></select></div>
+      <div><label>Bölüm</label><select id="npDept"></select></div>
+      <button class="secondary small fit" id="btnAddPerson">Ekle</button>
+    </div>
+  </div>
+
+</div>
+
+<div class="right">
+  <div class="card">
+    <h2>Afiş önizleme</h2>
+    <div class="tabs"><button class="on" data-lang="tr">Türkçe</button><button data-lang="en">English</button></div>
+    <canvas id="preview" width="1920" height="606"></canvas>
+    <div class="chk"><input type="checkbox" id="safe"><label for="safe" style="margin:0">Güvenli alanları göster (ana sayfa kapsülü, hover okları, haber kartı bandı)</label></div>
+    <div class="status" id="fitStatus"></div>
+  </div>
+
+  <div class="card outs">
+    <h2>Çıktılar</h2>
+    <div class="row"><button id="btnZip">ZIP indir (afişler, HTML'ler, metinler)</button><button class="secondary fit" id="btnRegen">Metinleri yeniden üret</button></div>
+    <div class="hint">Aşağıdaki kutular düzenlenebilir, ZIP bu kutuların son hâlini alır. Metinleri yeniden üret düğmesi formdan tekrar yazar ve elle yaptığınız değişiklikleri siler.</div>
+    <label>Haber gövdesi TR (Froala kod görünümüne yapıştırılır)</label><textarea id="htmlTR"></textarea>
+    <label>Haber gövdesi EN</label><textarea id="htmlEN"></textarea>
+    <label>CMS metinleri (başlık, manşet alt metni, spot, alt text)</label><textarea id="texts"></textarea>
+  </div>
+</div>
+</div>
+
+<script>
+/* ========== 0. Sabitler ========== */
+const ASSETS = { logoTR: "{{LOGO_TR}}", logoEN: "{{LOGO_EN}}" };
+const DEPTS = {
+  "cmpe": { tr: "Bilgisayar Mühendisliği", en: "Computer Engineering" },
+  "aide": { tr: "Yapay Zeka ve Veri Mühendisliği", en: "Artificial Intelligence and Data Engineering" },
+  "cyber": { tr: "Siber Güvenlik Mühendisliği", en: "Cybersecurity Engineering" },
+  "ehm": { tr: "Elektronik ve Haberleşme Mühendisliği", en: "Electronics and Telecommunications Engineering" },
+  "swe": { tr: "Yazılım Mühendisliği", en: "Software Engineering" },
+};
+const TITLE_EN = { "Prof. Dr.": "Prof. Dr.", "Doç. Dr.": "Assoc. Prof. Dr.", "Dr. Öğr. Üyesi": "Assist. Prof. Dr.", "Arş. Gör.": "Res. Assist.", "Öğr. Gör.": "Lecturer" };
+const KIND = { // kalıp cümlelerde kullanılan tür
+  "Prof. Dr.": "faculty", "Doç. Dr.": "faculty", "Dr. Öğr. Üyesi": "faculty", "Arş. Gör.": "ra", "Öğr. Gör.": "lecturer" };
+const CDN = "https://cdn.istanbul.edu.tr/image/A0FB851BD9/";
+// akademik kadro sayfasından, 13.10.2026
+const KADRO_SEED = [
+  { id:"ezgi-zorarpaci", name:"Ezgi Zorarpacı", titleTR:"Doç. Dr.", dept:"cmpe", photoUrl:CDN+"B5F3B2E6B6BC474898C2B4E5EE97A514" },
+  { id:"abdullah-onden", name:"Abdullah Önden", titleTR:"Doç. Dr.", dept:"cmpe", photoUrl:CDN+"3FD1BA5B7C23468D82E93687F6D85CEF" },
+  { id:"abbas-memis", name:"Abbas Memiş", titleTR:"Dr. Öğr. Üyesi", dept:"cmpe", photoUrl:CDN+"9290486289164785AD099F23EDB3D8C9" },
+  { id:"huseyin-can-apaydin", name:"Hüseyin Can Apaydın", titleTR:"Arş. Gör.", dept:"cmpe", photoUrl:CDN+"64D3AB3A06DA415082D12CE075C79724" },
+  { id:"mert-suluk", name:"Mert Sülük", titleTR:"Arş. Gör.", dept:"cmpe", photoUrl:CDN+"FA716BC3D5C347A380D1D397E625D6A0" },
+  { id:"muharrem-atakan-senturk", name:"Muharrem Atakan Şentürk", titleTR:"Arş. Gör.", dept:"cmpe", photoUrl:CDN+"BC187839EA2D45EC85E5A576236B0056" },
+  { id:"esma-gultuvin-gur-omay", name:"Esma Gültüvin Gür Omay", titleTR:"Doç. Dr.", dept:"cyber", photoUrl:CDN+"0C87518692D34264BAC545FE98E7FD43" },
+  { id:"emre-durusoy", name:"Emre Durusoy", titleTR:"Arş. Gör.", dept:"cyber", photoUrl:CDN+"627695A65BB04825AFC39F3743884AE4" },
+  { id:"ismail-onden", name:"İsmail Önden", titleTR:"Prof. Dr.", dept:"aide", photoUrl:CDN+"BEB5A6A0C6B2472E992AF5C56B01D645" },
+  { id:"fatma-onay-kocoglu", name:"Fatma Önay Koçoğlu", titleTR:"Doç. Dr.", dept:"aide", photoUrl:CDN+"FA4E88D490874B10A5ACBF27D8D3A300" },
+  { id:"inci-zaim-gokbay", name:"İnci Zaim Gökbay", titleTR:"Doç. Dr.", dept:"aide", photoUrl:CDN+"9164D44ABD9C4DF4B4EF03EA1DCDFFF1" },
+  { id:"pinar-boluk", name:"Pınar Bölük", titleTR:"Doç. Dr.", dept:"aide", photoUrl:CDN+"291EBF1A11AD4D1D82175CE5AF945CF0" },
+  { id:"hatice-nizam-ozogur", name:"Hatice Nizam Özoğur", titleTR:"Dr. Öğr. Üyesi", dept:"aide", photoUrl:CDN+"772AB1E54CF34587A72CCA1BC01E8E35" },
+  { id:"sezin-guleryuz-ergul", name:"Sezin Güleryüz Ergül", titleTR:"Dr. Öğr. Üyesi", dept:"aide", photoUrl:CDN+"A61577F0D27148B49F84BEED8193D92F" },
+  { id:"sultan-zeybek", name:"Sultan Zeybek", titleTR:"Dr. Öğr. Üyesi", dept:"aide", photoUrl:CDN+"0D8836205D6643D48010A71DB3A96B52" },
+  { id:"bora-caliskan", name:"Bora Çalışkan", titleTR:"Arş. Gör.", dept:"aide", photoUrl:CDN+"6321215CBB074699B6B3490C518798B3" },
+];
+
+/* ========== 1. Kütüphane (IndexedDB) ========== */
+const DB = (() => {
+  let db;
+  const open = () => new Promise((res, rej) => {
+    const r = indexedDB.open("bbtf-yayin-afisi", 1);
+    r.onupgradeneeded = () => r.result.createObjectStore("kadro", { keyPath: "id" });
+    r.onsuccess = () => { db = r.result; res(db); }; r.onerror = () => rej(r.error);
+  });
+  const tx = (mode) => db.transaction("kadro", mode).objectStore("kadro");
+  const all = () => new Promise((res, rej) => { const q = tx("readonly").getAll(); q.onsuccess = () => res(q.result); q.onerror = () => rej(q.error); });
+  const put = (p) => new Promise((res, rej) => { const q = tx("readwrite").put(p); q.onsuccess = () => res(); q.onerror = () => rej(q.error); });
+  const del = (id) => new Promise((res, rej) => { const q = tx("readwrite").delete(id); q.onsuccess = () => res(); q.onerror = () => rej(q.error); });
+  const clear = () => new Promise((res, rej) => { const q = tx("readwrite").clear(); q.onsuccess = () => res(); q.onerror = () => rej(q.error); });
+  return { open, all, put, del, clear };
+})();
+let KADRO = [];
+async function loadKadro(seedIfEmpty = true) {
+  await DB.open(); KADRO = await DB.all();
+  if (!KADRO.length && seedIfEmpty) { for (const p of KADRO_SEED) await DB.put({ ...p, photo: null }); KADRO = await DB.all(); }
+  KADRO.sort((a, b) => a.name.localeCompare(b.name, "tr"));
+  renderKadro(); renderAuthors();
+}
+const byId = (id) => KADRO.find(p => p.id === id);
+
+/* ========== 2. Türkçe yardımcılar ========== */
+const VOW = "aeıioöuüAEIİOÖUÜ";
+function lastVowel(s) { for (let i = s.length - 1; i >= 0; i--) { if (VOW.includes(s[i])) return s[i].toLowerCase(); } return "e"; }
+function harmony4(v) { v = v === "i̇" ? "i" : v; if ("aı".includes(v)) return "ı"; if ("ei".includes(v)) return "i"; if ("ou".includes(v)) return "u"; return "ü"; }
+const endsVowel = (s) => VOW.includes(s[s.length - 1]);
+const gen = (s) => s + "'" + (endsVowel(s) ? "n" : "") + harmony4(lastVowel(s)) + "n";      // Ergül'ün, Koçoğlu'nun
+const acc = (s) => s + "'" + (endsVowel(s) ? "y" : "") + harmony4(lastVowel(s));            // Ergül'ü, Koçoğlu'yu
+function tcase(s) { // GÜLERYÜZ → Güleryüz, Türkçe büyük/küçük harf
+  return s.toLocaleLowerCase("tr").split(/\s+/).map(w => w.charAt(0).toLocaleUpperCase("tr") + w.slice(1)).join(" ");
+}
+const norm = (s) => s.toLocaleLowerCase("tr").replace(/ı/g, "i").replace(/[şŞ]/g, "s").replace(/[ğĞ]/g, "g").replace(/[çÇ]/g, "c").replace(/[öÖ]/g, "o").replace(/[üÜ]/g, "u").replace(/i̇/g, "i").replace(/[^a-z0-9 ]/g, "").trim();
+const esc = (s) => s.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+
+/* ========== 3. Durum ========== */
+const S = { authors: [], lang: "tr", abstract: "" };
+const $ = (id) => document.getElementById(id);
+const val = (id) => $(id).value.trim();
+
+/* ========== 4. Yazarlar ========== */
+function renderAuthors() {
+  const box = $("authors"); box.innerHTML = "";
+  const opts = ['<option value="">Kadro dışı</option>', '<option value="__student">Öğrenci (fakülte)</option>', ...KADRO.map(p => `<option value="${p.id}">${p.titleTR} ${p.name}</option>`)].join("");
+  S.authors.forEach((a, i) => {
+    const div = document.createElement("div"); div.className = "author";
+    div.innerHTML = `<input type="checkbox" ${a.selected ? "checked" : ""} title="Afişe ve metne girsin">
+      <input type="text" value="${esc(a.name)}" placeholder="Ad Soyad">
+      <select>${opts}</select>
+      <button class="x" title="Sil">×</button>`;
+    const [chk, inp, sel, x] = div.children; sel.value = a.kadroId || "";
+    chk.onchange = () => { a.selected = chk.checked; refresh(); };
+    inp.oninput = () => { a.name = inp.value; refresh(); };
+    sel.onchange = () => { a.kadroId = sel.value; if (a.kadroId && a.kadroId !== "__student") { a.name = byId(a.kadroId).name; inp.value = a.name; a.selected = true; chk.checked = true; } if (a.kadroId === "__student") { a.selected = true; chk.checked = true; } refresh(); };
+    x.onclick = () => { S.authors.splice(i, 1); renderAuthors(); refresh(); };
+    box.appendChild(div);
+  });
+}
+function matchKadro(name) {
+  const n = norm(name).split(" ").filter(Boolean); if (!n.length) return null;
+  return KADRO.find(p => { const k = norm(p.name).split(" "); return n.every(t => k.includes(t)); }) || null;
+}
+function addAuthor(name = "", auto = true) {
+  const m = auto && name ? matchKadro(name) : null;
+  S.authors.push({ name: m ? m.name : name, kadroId: m ? m.id : "", selected: !!m, photo: null });
+}
+function selectedAuthors() { // afişe girecekler, makale sırasıyla, en fazla 3
+  return S.authors.filter(a => a.selected && (a.kadroId || a.name.trim())).slice(0, 3);
+}
+function personOf(a) {
+  if (a.kadroId && a.kadroId !== "__student") { const p = byId(a.kadroId); return { name: p.name, titleTR: p.titleTR, titleEN: TITLE_EN[p.titleTR] || p.titleTR, dept: p.dept, kind: KIND[p.titleTR] || "faculty", photo: p.photo }; }
+  if (a.kadroId === "__student") return { name: a.name.trim(), titleTR: "", titleEN: "", dept: null, kind: "student", photo: a.photo };
+  return { name: a.name.trim(), titleTR: "", titleEN: "", dept: null, kind: "external", photo: null };
+}
+const dispTR = (p) => (p.titleTR ? p.titleTR + " " : "") + p.name;
+const dispEN = (p) => (p.titleEN ? p.titleEN + " " : "") + p.name;
+
+/* ========== 5. Crossref ========== */
+async function crossref() {
+  let doi = val("doi").replace(/^https?:\/\/(dx\.)?doi\.org\//i, "").trim();
+  if (!doi) return setStatus("crossrefStatus", "DOI girin.", "err");
+  setStatus("crossrefStatus", "Crossref sorgulanıyor…");
+  try {
+    const r = await fetch("https://api.crossref.org/works/" + encodeURIComponent(doi));
+    if (!r.ok) throw new Error("HTTP " + r.status);
+    const m = (await r.json()).message;
+    $("title").value = (m.title && m.title[0]) || "";
+    $("journal").value = (m["container-title"] && m["container-title"][0]) || "";
+    const y = (m.issued && m.issued["date-parts"] && m.issued["date-parts"][0] && m.issued["date-parts"][0][0]) || (m.created && m.created["date-parts"][0][0]) || "";
+    $("year").value = y; $("link").value = "https://doi.org/" + doi; $("doi").value = doi;
+    S.authors = []; (m.author || []).forEach(a => addAuthor([a.given, a.family].filter(Boolean).join(" ")));
+    if (m.abstract) { S.abstract = m.abstract.replace(/<[^>]+>/g, " ").replace(/\s+/g, " ").trim(); if (!val("sumEN")) $("sumEN").value = S.abstract; }
+    renderAuthors(); refresh();
+    const sel = selectedAuthors().length;
+    setStatus("crossrefStatus", `Dolduruldu. ${(m.author || []).length} yazar, ${sel} tanesi kadroyla eşleşti.${m.abstract ? " Özet İngilizce kutuya kondu, kısaltıp Türkçesini yazın." : ""}`, "ok");
+  } catch (e) { setStatus("crossrefStatus", "Alınamadı (" + e.message + "). İnternet yoksa alanları elle doldurun.", "err"); }
+}
+function setStatus(id, msg, cls = "") { const el = $(id); el.textContent = msg; el.className = "status " + cls; }
+
+/* ========== 6. Kadro arayüzü ========== */
+function renderKadro() {
+  const box = $("kadro"); box.innerHTML = "";
+  $("npDept").innerHTML = Object.entries(DEPTS).map(([k, v]) => `<option value="${k}">${v.tr}</option>`).join("");
+  for (const p of KADRO) {
+    const d = document.createElement("div"); d.className = "person";
+    d.innerHTML = `<button class="del" title="Listeden sil">×</button><div class="ph" ${p.photo ? `style="background-image:url(${p.photo})"` : ""}>${p.photo ? "" : "foto"}</div><div class="nm">${esc(p.name)}</div><div class="tt">${esc(p.titleTR)}</div>`;
+    d.querySelector(".del").onclick = async () => { if (confirm(p.name + " listeden silinsin mi?")) { await DB.del(p.id); await loadKadro(false); } };
+    d.ondragover = (e) => { e.preventDefault(); d.classList.add("drag"); };
+    d.ondragleave = () => d.classList.remove("drag");
+    d.ondrop = async (e) => { e.preventDefault(); d.classList.remove("drag"); const f = e.dataTransfer.files[0]; if (f && f.type.startsWith("image/")) { p.photo = await fileToDataURL(f, 600); await DB.put(p); renderKadro(); refresh(); } };
+    d.onclick = (e) => { if (e.target.classList.contains("del")) return; const inp = document.createElement("input"); inp.type = "file"; inp.accept = "image/*"; inp.onchange = async () => { const f = inp.files[0]; if (f) { p.photo = await fileToDataURL(f, 600); await DB.put(p); renderKadro(); refresh(); } }; inp.click(); };
+    box.appendChild(d);
+  }
+}
+function fileToDataURL(file, maxSide) { // fotoğrafı kare kırpıp 600 piksele küçültür, kütüphane şişmez
+  return new Promise((res) => { const img = new Image(); img.onload = () => { const s = Math.min(img.width, img.height); const c = document.createElement("canvas"); c.width = c.height = maxSide; const ctx = c.getContext("2d"); ctx.drawImage(img, (img.width - s) / 2, Math.max(0, (img.height - s) / 2 * 0.4), s, s, 0, 0, maxSide, maxSide); res(c.toDataURL("image/jpeg", 0.9)); URL.revokeObjectURL(img.src); }; img.src = URL.createObjectURL(file); });
+}
+async function fetchPhotos() {
+  let ok = 0, fail = [];
+  for (const p of KADRO) {
+    if (p.photo || !p.photoUrl) continue;
+    try { const r = await fetch(p.photoUrl, { mode: "cors" }); if (!r.ok) throw 0; const b = await r.blob(); p.photo = await fileToDataURL(b, 600); await DB.put(p); ok++; }
+    catch (e) { fail.push(p.name); }
+  }
+  renderKadro(); refresh();
+  setStatus("kadroStatus", ok ? `${ok} fotoğraf alındı.` : "CDN tarayıcıdan erişime kapalı, fotoğrafları kartlara sürükleyip bırakın." + (fail.length ? " Eksik: " + fail.join(", ") : ""), ok ? "ok" : "err");
+}
+async function addPerson() {
+  const name = tcase(val("npName")); if (!name) return;
+  const id = norm(name).replace(/\s+/g, "-") + "-" + Date.now().toString(36);
+  await DB.put({ id, name, titleTR: $("npTitleTR").value, dept: $("npDept").value, photoUrl: "", photo: null });
+  $("npName").value = ""; await loadKadro(false);
+}
+function exportJSON() { download(new Blob([JSON.stringify(KADRO, null, 1)], { type: "application/json" }), "bbtf-kadro.json"); }
+async function importJSON(file) { const arr = JSON.parse(await file.text()); for (const p of arr) await DB.put(p); await loadKadro(false); setStatus("kadroStatus", arr.length + " kişi içe aktarıldı.", "ok"); }
+
+/* ========== 7. Afiş çizimi ========== */
+const C = { g1: "#043b2c", g2: "#075f46", g3: "#0f7f5f", gold: "#e2b51d", paper: "#f5f2ea", soft: "#bfe0d1" };
+const IMG = {};
+function loadImg(src) { return new Promise((res, rej) => { if (!src) return res(null); if (IMG[src]) return res(IMG[src]); const i = new Image(); i.onload = () => { IMG[src] = i; res(i); }; i.onerror = () => res(null); i.src = src; }); }
+function wrap(ctx, text, maxW) { // yalnızca boşluktan böler, tireli kelimeler bölünmez
+  const words = text.split(/\s+/).filter(Boolean), lines = []; let cur = "";
+  for (const w of words) { const t = cur ? cur + " " + w : w; if (ctx.measureText(t).width <= maxW || !cur) cur = t; else { lines.push(cur); cur = w; } }
+  if (cur) lines.push(cur); return lines;
+}
+function layout(ctx, lang, people) {
+  const W = 1010; const title = val("title"), journal = val("journal");
+  const names = people.map(p => lang === "tr" ? dispTR(p) : dispEN(p));
+  let authorSize = names.length > 1 ? 40 : 46, journalSize = 38, titleSize = 48;
+  let plan;
+  for (let tries = 0; tries < 12; tries++) {
+    ctx.font = `600 ${authorSize}px Barlow`; const aLines = names.flatMap(n => wrap(ctx, n, W));
+    ctx.font = `500 ${journalSize}px Barlow`; const jLines = wrap(ctx, journal, W);
+    ctx.font = `700 ${titleSize}px "Barlow Condensed"`; const tLines = wrap(ctx, title, W);
+    const h = (24 + 5 + aLines.length * authorSize * 1.15) + 20 + (24 + 5 + jLines.length * journalSize * 1.15) + 20 + (24 + 5 + tLines.length * titleSize * 1.12);
+    plan = { aLines, jLines, tLines, authorSize, journalSize, titleSize, h };
+    if (h <= 411 && tLines.length <= 3) break;
+    if (tLines.length > 3 && titleSize > 40) { titleSize -= 2; continue; }
+    if (h > 411) { if (titleSize > 38) titleSize -= 2; else if (journalSize > 32) journalSize -= 2; else if (authorSize > 34) authorSize -= 2; else break; }
+    else break;
+  }
+  return plan;
+}
+async function drawPoster(ctx, lang, opts = {}) {
+  const W = 1920, H = 606; ctx.save(); ctx.clearRect(0, 0, W, H);
+  // zemin
+  let g = ctx.createLinearGradient(0, 0, W, H * 0.18); g.addColorStop(0, C.g1); g.addColorStop(0.55, C.g2); g.addColorStop(1, "#0a6b50"); ctx.fillStyle = g; ctx.fillRect(0, 0, W, H);
+  const rg = (cx, cy, rx, ry, c0, c1) => { ctx.save(); ctx.translate(cx, cy); ctx.scale(rx / ry, 1); const r = ctx.createRadialGradient(0, 0, 0, 0, 0, ry); r.addColorStop(0, c0); r.addColorStop(0.7, c1); r.addColorStop(1, c1); ctx.fillStyle = r; ctx.fillRect(-rx * 2, -ry * 2, rx * 4, ry * 4); ctx.restore(); };
+  rg(1560, 300, 760, 520, "rgba(15,127,95,.75)", "rgba(15,127,95,0)");
+  rg(180, 560, 900, 600, "rgba(4,59,44,.9)", "rgba(4,59,44,0)");
+  ctx.beginPath(); ctx.arc(1680, 160, 473, 0, Math.PI * 2); ctx.lineWidth = 54; ctx.strokeStyle = "rgba(226,181,29,.16)"; ctx.stroke();
+  ctx.beginPath(); ctx.arc(130, 716, 310, 0, Math.PI * 2); ctx.fillStyle = "rgba(226,181,29,.10)"; ctx.fill();
+  // sol sütun: etiket ve logo, dikey merkez 268
+  const tag = lang === "tr" ? "YENİ YAYIN" : "NEW PUBLICATION";
+  const logo = await loadImg(lang === "tr" ? ASSETS.logoTR : ASSETS.logoEN);
+  const colCX = 240, groupTop = 268 - 142; // 30 + 26 + 228
+  ctx.font = "700 30px Barlow"; ctx.letterSpacing = "3px"; ctx.fillStyle = C.gold; ctx.textAlign = "center"; ctx.textBaseline = "alphabetic";
+  ctx.fillText(tag, colCX + 1.5, groupTop + 26); ctx.letterSpacing = "0px";
+  const lcy = groupTop + 30 + 26 + 114;
+  ctx.save(); ctx.shadowColor = "rgba(0,0,0,.28)"; ctx.shadowBlur = 34; ctx.shadowOffsetY = 12; ctx.beginPath(); ctx.arc(colCX, lcy, 114, 0, Math.PI * 2); ctx.fillStyle = "#fff"; ctx.fill(); ctx.restore();
+  if (logo) { ctx.save(); ctx.beginPath(); ctx.arc(colCX, lcy, 110, 0, Math.PI * 2); ctx.clip(); ctx.drawImage(logo, colCX - 110, lcy - 110, 220, 220); ctx.restore(); }
+  // alanlar
+  const people = opts.people || selectedAuthors().map(personOf);
+  const L = layout(ctx, lang, people);
+  const labels = lang === "tr" ? [people.length > 1 ? "YAZARLAR" : "YAZAR", "DERGİ", "YAYIN BAŞLIĞI"] : [people.length > 1 ? "AUTHORS" : "AUTHOR", "JOURNAL", "PUBLICATION TITLE"];
+  let y = Math.min((536 - L.h) / 2, 461 - L.h); if (y < 50) y = 50; const x = 470; // ortala, gerekirse yukarı kaydır, blok 461'in üstünde bitsin
+  const bottom = y + L.h;
+  ctx.textAlign = "left";
+  const label = (t) => { ctx.font = "700 24px Barlow"; ctx.letterSpacing = "2.2px"; ctx.fillStyle = C.gold; ctx.fillText(t, x, y + 24 * 0.78); ctx.letterSpacing = "0px"; y += 24 + 5; };
+  const lines = (arr, font, size, lh, color) => { ctx.font = font; ctx.fillStyle = color; for (const ln of arr) { ctx.fillText(ln, x, y + size * lh * 0.5 + size * 0.36); y += size * lh; } };
+  label(labels[0]); lines(L.aLines, `600 ${L.authorSize}px Barlow`, L.authorSize, 1.15, C.paper); y += 20;
+  label(labels[1]); lines(L.jLines, `500 ${L.journalSize}px Barlow`, L.journalSize, 1.15, C.soft); y += 20;
+  label(labels[2]); lines(L.tLines, `700 ${L.titleSize}px "Barlow Condensed"`, L.titleSize, 1.12, C.paper);
+  // fotoğraflar, sağdan 120 içeride, merkez x 1675, dikey merkez 268
+  const ph = people.filter(p => p.photo).slice(0, 3); const sizes = { 1: 250, 2: 200, 3: 150 }, gaps = { 1: 0, 2: 20, 3: 16 };
+  if (ph.length) {
+    const d = sizes[ph.length], gap = gaps[ph.length], total = ph.length * d + (ph.length - 1) * gap; let py = 268 - total / 2 + d / 2;
+    for (const p of ph) {
+      const img = await loadImg(p.photo);
+      ctx.save(); ctx.shadowColor = "rgba(0,0,0,.35)"; ctx.shadowBlur = 44; ctx.shadowOffsetY = 16; ctx.beginPath(); ctx.arc(1675, py, d / 2, 0, Math.PI * 2); ctx.fillStyle = "#0a6b50"; ctx.fill(); ctx.restore();
+      if (img) { ctx.save(); ctx.beginPath(); ctx.arc(1675, py, d / 2 - 6, 0, Math.PI * 2); ctx.clip(); const s = Math.min(img.width, img.height); ctx.drawImage(img, (img.width - s) / 2, 0, s, s, 1675 - d / 2 + 6, py - d / 2 + 6, d - 12, d - 12); ctx.restore(); }
+      ctx.beginPath(); ctx.arc(1675, py, d / 2 - 3, 0, Math.PI * 2); ctx.lineWidth = 6; ctx.strokeStyle = C.gold; ctx.stroke();
+      py += d + gap;
+    }
+  }
+  // gönderen
+  ctx.font = "500 20px Barlow"; ctx.fillStyle = C.soft; ctx.textAlign = "right"; ctx.fillText(lang === "tr" ? "İstanbul Üniversitesi Bilgisayar ve Bilişim Teknolojileri Fakültesi" : "Istanbul University Faculty of Computer and Information Technologies", 1820, 582);
+  if (opts.safe) { // ölçülen güvenli alanlar
+    ctx.lineWidth = 4; ctx.strokeStyle = "rgba(255,80,80,.9)"; ctx.strokeRect(737, 484, 444, 90);
+    for (const cx of [79, 1843]) { ctx.beginPath(); ctx.arc(cx, 303, 29, 0, Math.PI * 2); ctx.stroke(); }
+    ctx.setLineDash([9, 9]); ctx.strokeStyle = "rgba(255,210,60,.95)"; ctx.lineWidth = 3; for (const xx of [422, 1498]) { ctx.beginPath(); ctx.moveTo(xx, 0); ctx.lineTo(xx, 606); ctx.stroke(); } ctx.setLineDash([]);
+  }
+  ctx.restore();
+  return { fit: bottom <= 462 && L.tLines.length <= 3, L };
+}
+
+/* ========== 8. Haber HTML'i ve metinler ========== */
+const BTN = '--bs-btn-color:#ffffff; --bs-btn-bg:#3a8f78; --bs-btn-border-color:#3a8f78; --bs-btn-hover-color:#ffffff; --bs-btn-hover-bg:#2e7d67; --bs-btn-hover-border-color:#2e7d67; --bs-btn-active-color:#ffffff; --bs-btn-active-bg:#256a57; --bs-btn-active-border-color:#256a57; --bs-btn-focus-shadow-rgb:67,156,134; --bs-btn-padding-y:.75rem; --bs-btn-padding-x:1.4rem; --bs-btn-font-size:1rem; --bs-btn-font-weight:700; --bs-btn-border-radius:.5rem; display:inline-flex; align-items:center; gap:.5rem; max-width:100%; text-align:left; background-image:linear-gradient(135deg, rgba(255,255,255,.12) 0%, rgba(0,0,0,.14) 100%); box-shadow:0 6px 18px rgba(46,125,103,.22); transition:background-color .18s ease, box-shadow .18s ease;';
+const LEAD = 'font-size:1.1em; line-height:1.7; margin:0 0 18px 0; padding:2px 0 2px 18px; border-left:4px solid #439c86;';
+const LABEL = 'font-size:0.78em; font-weight:700; letter-spacing:.3px; text-transform:uppercase; color:#2e7d67; margin:0 0 6px 0;';
+const joinTR = (arr) => arr.length < 2 ? arr.join("") : arr.slice(0, -1).join(", ") + " ve " + arr[arr.length - 1];
+const joinEN = (arr) => arr.length < 2 ? arr.join("") : arr.slice(0, -1).join(", ") + " and " + arr[arr.length - 1];
+function kindsTR(ps) { // Öğretim üyemiz / Araştırma görevlimiz / Öğrencimiz, karışıksa Fakültemizden
+  const kinds = [...new Set(ps.map(p => p.kind))];
+  if (kinds.length > 1) return { pre: "Fakültemizden", plural: ps.length > 1, generic: true };
+  const k = kinds[0], n = ps.length;
+  const m = { faculty: ["öğretim üyesi", "öğretim üyeleri", "Öğretim üyemiz", "Öğretim üyelerimiz"], ra: ["araştırma görevlisi", "araştırma görevlileri", "Araştırma görevlimiz", "Araştırma görevlilerimiz"], lecturer: ["öğretim görevlisi", "öğretim görevlileri", "Öğretim görevlimiz", "Öğretim görevlilerimiz"], student: ["öğrencisi", "öğrencileri", "Öğrencimiz", "Öğrencilerimiz"] }[k] || ["mensubu", "mensupları", "Mensubumuz", "Mensuplarımız"];
+  return { role: n > 1 ? m[1] : m[0], pre: n > 1 ? m[3] : m[2], plural: n > 1, generic: false };
+}
+function genText() {
+  const ps = selectedAuthors().map(personOf); if (!ps.length) return;
+  const title = val("title"), journal = val("journal"), link = val("link") || ("https://doi.org/" + val("doi")), year = val("year");
+  const allOurs = S.authors.length === ps.length; // dışarıdan yazar yoksa "makalesi"
+  const depts = [...new Set(ps.map(p => p.dept).filter(Boolean))];
+  const nTR = ps.map(dispTR), nEN = ps.map(dispEN);
+  // TR giriş
+  const k = kindsTR(ps);
+  let who;
+  if (k.generic) who = `Fakültemizden ${joinTR(nTR.map(n => `<strong>${esc(n)}</strong>`))}`;
+  else if (depts.length === 1 && ps[0].kind !== "student") who = `Fakültemiz ${DEPTS[depts[0]].tr} Bölümü ${k.role} ${joinTR(nTR.map(n => `<strong>${esc(n)}</strong>`))}`;
+  else who = `Fakültemiz ${k.role} ${joinTR(nTR.map(n => `<strong>${esc(n)}</strong>`))}`;
+  const genSuf = gen(nTR[nTR.length - 1]).slice(nTR[nTR.length - 1].length); // yalnızca ek, 'ün
+  const leadTR = allOurs
+    ? `${who}${genSuf} <em>"${esc(title)}"</em> başlıklı makalesi, uluslararası hakemli <em>${esc(journal)}</em> dergisinde yayımlanmıştır.`
+    : `${who}${genSuf} yazarları arasında yer aldığı <em>"${esc(title)}"</em> başlıklı makale, uluslararası hakemli <em>${esc(journal)}</em> dergisinde yayımlanmıştır.`;
+  const accSuf = acc(nTR[nTR.length - 1]).slice(nTR[nTR.length - 1].length);
+  const congTR = `${k.pre} ${joinTR(nTR.map(esc))}${accSuf} uluslararası literatüre ${k.plural ? "sundukları" : "sunduğu"} bu değerli katkı dolayısıyla tebrik eder, başarılarının devamını dileriz.`;
+  // EN
+  const roleEN = (p) => ({ faculty: "a faculty member", ra: "a research assistant", lecturer: "a lecturer", student: "a student" }[p.kind] || "a member");
+  let whoEN;
+  if (ps.length === 1) whoEN = `<strong>${esc(nEN[0])}</strong>, ${roleEN(ps[0])}${ps[0].dept ? " of the Department of " + DEPTS[ps[0].dept].en : " of our Faculty"},`;
+  else whoEN = `${joinEN(nEN.map(n => `<strong>${esc(n)}</strong>`))}, members of our Faculty,`;
+  const leadEN = allOurs
+    ? `The article entitled <em>"${esc(title)}"</em> by ${whoEN} has been published in the international peer-reviewed journal <em>${esc(journal)}</em>.`
+    : `The article entitled <em>"${esc(title)}"</em>, co-authored by ${whoEN} has been published in the international peer-reviewed journal <em>${esc(journal)}</em>.`;
+  const congEN = `We congratulate ${joinEN(nEN.map(esc))} on this valuable contribution to the international literature and wish every success in future studies.`;
+  const sumTR = val("sumTR"), sumEN = val("sumEN");
+  const panel = (lab, txt) => txt ? `<div style="background:#f1f7f4; border-radius:10px; padding:16px 20px; margin:0 0 18px 0;">\n<div style="${LABEL}">${lab}</div>\n<p style="line-height:1.7; margin:0;">${esc(txt)}</p>\n</div>\n` : "";
+  const body = (lead, pan, cong, btn, btnTitle) => `<p style="${LEAD}">${lead}</p>\n${pan}<p style="line-height:1.7; margin:0 0 22px 0;">${cong}</p>\n<p style="margin:0;"><a class="btn" href="${esc(link)}" target="_blank" rel="noopener" title="${btnTitle}" style="${BTN}">${btn} <span aria-hidden="true" style="font-size:1.15em; line-height:1;">&#8594;</span></a></p>\n`;
+  $("htmlTR").value = body(leadTR, panel("Çalışma hakkında", sumTR), congTR, "Yayına ulaşmak için tıklayınız", "Yayın sayfası, yeni sekmede açılır");
+  $("htmlEN").value = body(leadEN, panel("About the study", sumEN), congEN, "Click here to access the publication", "Publication page, opens in a new tab");
+  const namesTR = joinTR(nTR), namesEN = joinEN(nEN);
+  $("texts").value = [
+    "HABER BAŞLIĞI", "TR: Yeni Yayın: " + namesTR, "EN: New Publication: " + namesEN, "",
+    "MANŞET BAŞLIĞI (CMS'de title alanları boş bırakılır, bu yalnızca kayıt için)", "TR: Yeni Yayın: " + namesTR, "EN: New Publication: " + namesEN, "",
+    "MANŞET ALT METNİ", `TR: ${journal} dergisinde yeni makale`, `EN: New article in ${journal}`, "",
+    "HABER ÖZETİ (SPOT)", `TR: ${namesTR}${genSuf} makalesi ${journal} dergisinde yayımlandı.`, `EN: The article by ${namesEN} has been published in ${journal}.`, "",
+    "GÖRSEL ALT METNİ", `TR: Yeni Yayın, ${namesTR}, ${journal}`, `EN: New Publication, ${namesEN}, ${journal}`, "",
+    "KÜNYE", `${title} | ${journal}${year ? " | " + year : ""} | ${link}`, "",
+    "MANŞET GÖRSELİ: 1920x606 (bunu kullan). 1170x369 yedek. CMS'de slider title alanlarını boş bırakın."
+  ].join("\n");
+}
+
+/* ========== 9. ZIP (store, sıkıştırmasız) ========== */
+const CRC_T = (() => { const t = new Uint32Array(256); for (let i = 0; i < 256; i++) { let c = i; for (let k = 0; k < 8; k++) c = c & 1 ? 0xEDB88320 ^ (c >>> 1) : c >>> 1; t[i] = c >>> 0; } return t; })();
+function crc32(u8) { let c = 0xFFFFFFFF; for (let i = 0; i < u8.length; i++) c = CRC_T[(c ^ u8[i]) & 0xFF] ^ (c >>> 8); return (c ^ 0xFFFFFFFF) >>> 0; }
+function makeZip(files) { // files: [{name, data: Uint8Array}]
+  const enc = new TextEncoder(), parts = [], central = []; let off = 0;
+  const le = (n, b) => { const a = new Uint8Array(b); for (let i = 0; i < b; i++) a[i] = (n >>> (8 * i)) & 0xFF; return a; };
+  const now = new Date(); const dt = ((now.getHours() << 11) | (now.getMinutes() << 5) | (now.getSeconds() >> 1)) & 0xFFFF, dd = (((now.getFullYear() - 1980) << 9) | ((now.getMonth() + 1) << 5) | now.getDate()) & 0xFFFF;
+  for (const f of files) {
+    const name = enc.encode(f.name), crc = crc32(f.data);
+    const head = [le(0x04034b50, 4), le(20, 2), le(0x0800, 2), le(0, 2), le(dt, 2), le(dd, 2), le(crc, 4), le(f.data.length, 4), le(f.data.length, 4), le(name.length, 2), le(0, 2), name];
+    const cen = [le(0x02014b50, 4), le(20, 2), le(20, 2), le(0x0800, 2), le(0, 2), le(dt, 2), le(dd, 2), le(crc, 4), le(f.data.length, 4), le(f.data.length, 4), le(name.length, 2), le(0, 2), le(0, 2), le(0, 2), le(0, 2), le(0, 4), le(off, 4), name];
+    parts.push(...head, f.data); off += head.reduce((s, a) => s + a.length, 0) + f.data.length; central.push(...cen);
+  }
+  const cenLen = central.reduce((s, a) => s + a.length, 0);
+  const end = [le(0x06054b50, 4), le(0, 2), le(0, 2), le(files.length, 2), le(files.length, 2), le(cenLen, 4), le(off, 4), le(0, 2)];
+  return new Blob([...parts, ...central, ...end], { type: "application/zip" });
+}
+function download(blob, name) { const a = document.createElement("a"); a.href = URL.createObjectURL(blob); a.download = name; document.body.appendChild(a); a.click(); setTimeout(() => { URL.revokeObjectURL(a.href); a.remove(); }, 1000); }
+const toU8 = async (blob) => new Uint8Array(await blob.arrayBuffer());
+function canvasBlob(c, q) { return new Promise(res => c.toBlob(res, "image/jpeg", q)); }
+async function buildZip() {
+  if (!selectedAuthors().length) return alert("En az bir fakülte yazarı işaretleyin.");
+  const slug = norm(selectedAuthors().map(a => personOf(a).name.split(" ").pop()).join("-")).replace(/\s+/g, "-") || "yayin";
+  const files = [];
+  for (const lang of ["tr", "en"]) {
+    const big = document.createElement("canvas"); big.width = 1920; big.height = 606; await drawPoster(big.getContext("2d"), lang);
+    files.push({ name: `manset-yayin-${slug}-${lang}-1920x606 (bunu kullan).jpg`, data: await toU8(await canvasBlob(big, 0.92)) });
+    const sm = document.createElement("canvas"); sm.width = 1170; sm.height = 369; const sc = sm.getContext("2d"); sc.imageSmoothingQuality = "high"; sc.drawImage(big, 0, 0, 1170, 369);
+    files.push({ name: `manset-yayin-${slug}-${lang}-1170x369.jpg`, data: await toU8(await canvasBlob(sm, 0.92)) });
+  }
+  const enc = new TextEncoder();
+  files.push({ name: `haber-yayin-${slug}-tr.html`, data: enc.encode($("htmlTR").value) });
+  files.push({ name: `haber-yayin-${slug}-en.html`, data: enc.encode($("htmlEN").value) });
+  files.push({ name: "metinler.txt", data: enc.encode($("texts").value) });
+  download(makeZip(files), `yeni-yayin-${slug}.zip`);
+}
+
+/* ========== 10. Bağlantılar ========== */
+let refreshT;
+function refresh() { clearTimeout(refreshT); refreshT = setTimeout(async () => {
+  const ctx = $("preview").getContext("2d");
+  const r = await drawPoster(ctx, S.lang, { safe: $("safe").checked });
+  const n = selectedAuthors().length;
+  setStatus("fitStatus", n ? (r.fit ? `Sığdı: başlık ${r.L.tLines.length} satır, ${r.L.titleSize} px.` : `Uyarı: başlık çok uzun, ${r.L.tLines.length} satır. Başlığı kısaltmayı düşünün.`) : "Yazar işaretlenmedi, afiş boş.", r.fit ? "ok" : "err");
+  genText();
+}, 120); }
+document.querySelectorAll(".tabs button").forEach(b => b.onclick = () => { document.querySelectorAll(".tabs button").forEach(x => x.classList.remove("on")); b.classList.add("on"); S.lang = b.dataset.lang; refresh(); });
+["title", "journal", "year", "link", "sumTR", "sumEN"].forEach(id => $(id).addEventListener("input", refresh));
+$("safe").onchange = refresh;
+$("btnCrossref").onclick = crossref;
+$("doi").addEventListener("keydown", e => { if (e.key === "Enter") crossref(); });
+$("btnAddAuthor").onclick = () => { addAuthor("", false); renderAuthors(); };
+$("btnFetchPhotos").onclick = fetchPhotos;
+$("btnExport").onclick = exportJSON;
+$("btnImport").onclick = () => $("importFile").click();
+$("importFile").onchange = () => { if ($("importFile").files[0]) importJSON($("importFile").files[0]); };
+$("btnReset").onclick = async () => { if (confirm("Liste silinip sitedeki kadroyla yeniden doldurulacak. Fotoğraflar da silinir. Devam?")) { await DB.clear(); await loadKadro(true); } };
+$("btnAddPerson").onclick = addPerson;
+$("btnZip").onclick = buildZip;
+$("btnRegen").onclick = genText;
+(async () => {
+  await Promise.all(["400 20px Barlow", "500 20px Barlow", "600 20px Barlow", "700 20px Barlow", '700 20px "Barlow Condensed"'].map(f => document.fonts.load(f)));
+  $("fontStatus").textContent = "Hazır";
+  await loadKadro(); refresh();
+})();
+</script>
+</body>
+</html>
