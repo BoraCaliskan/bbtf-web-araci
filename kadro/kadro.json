@@ -1,0 +1,1038 @@
+[
+ {
+  "id": "hakan-tabur",
+  "alias": "htabur",
+  "name": "Hakan Tabur",
+  "titleTR": "",
+  "titleEN": "",
+  "dept": {
+   "tr": "Bilgisayar ve Bilişim Teknolojileri Fakültesi",
+   "en": ""
+  },
+  "deptKey": "",
+  "role": "yonetim",
+  "roleLabelTR": "Fakülte Sekreteri",
+  "roleLabelEN": "Faculty Secretary",
+  "roles": [
+   {
+    "lang": "tr",
+    "group": "fakulte",
+    "groupName": "Fakülte Sekreteri",
+    "label": "Fakülte Sekreteri"
+   },
+   {
+    "lang": "en",
+    "group": "fakulte",
+    "groupName": "Fakülte Sekreteri",
+    "label": "Faculty Secretary"
+   }
+  ],
+  "photoId": "E9727D1FC733489596CECFA866B257DE",
+  "photoUrl": "https://cdn.istanbul.edu.tr/image/A0FB851BD9/E9727D1FC733489596CECFA866B257DE",
+  "profileUrl": {
+   "tr": "https://profil.istanbul.edu.tr/tr/p/htabur",
+   "en": "https://profil.istanbul.edu.tr/en/p/htabur"
+  },
+  "pages": [
+   "en/yonetim",
+   "tr/yonetim"
+  ]
+ },
+ {
+  "id": "kutluk-kagan-sumer",
+  "alias": "kutluk",
+  "name": "Kutluk Kağan Sümer",
+  "titleTR": "Prof. Dr.",
+  "titleEN": "Prof. Dr.",
+  "dept": {
+   "tr": "Ekonometri Bölümü",
+   "en": "Department of Econometrics"
+  },
+  "deptKey": "",
+  "role": "yonetim",
+  "roleLabelTR": "Dekan",
+  "roleLabelEN": "Dean",
+  "roles": [
+   {
+    "lang": "tr",
+    "group": "fakulte",
+    "groupName": "Dekanlık",
+    "label": "Dekan"
+   },
+   {
+    "lang": "tr",
+    "group": "fakulte",
+    "groupName": "Yönetim Kurulu",
+    "label": "Fakülte Yönetim Kurulu Üyesi"
+   },
+   {
+    "lang": "tr",
+    "group": "fakulte",
+    "groupName": "Fakülte Kurulu",
+    "label": "Fakülte Kurulu Üyesi"
+   },
+   {
+    "lang": "en",
+    "group": "fakulte",
+    "groupName": "Dean's Office",
+    "label": "Dean"
+   },
+   {
+    "lang": "en",
+    "group": "fakulte",
+    "groupName": "Board of Directors",
+    "label": "Member of Faculty Board of Directors"
+   },
+   {
+    "lang": "en",
+    "group": "fakulte",
+    "groupName": "Faculty Board",
+    "label": "Member of Faculty Board"
+   }
+  ],
+  "photoId": "2BB70B7B226546D9837141B67A87656A",
+  "photoUrl": "https://cdn.istanbul.edu.tr/image/A0FB851BD9/2BB70B7B226546D9837141B67A87656A",
+  "profileUrl": {
+   "tr": "https://profil.istanbul.edu.tr/tr/p/kutluk",
+   "en": "https://profil.istanbul.edu.tr/en/p/kutluk"
+  },
+  "pages": [
+   "en/yonetim",
+   "tr/yonetim"
+  ]
+ },
+ {
+  "id": "zehreddin-aslan",
+  "alias": "zaslan",
+  "name": "Zehreddin Aslan",
+  "titleTR": "Prof. Dr.",
+  "titleEN": "Prof. Dr.",
+  "dept": {
+   "tr": "Kamu Hukuku Bölümü",
+   "en": "Department of Public Law"
+  },
+  "deptKey": "",
+  "role": "yonetim",
+  "roleLabelTR": "Senatör",
+  "roleLabelEN": "Senator",
+  "roles": [
+   {
+    "lang": "tr",
+    "group": "fakulte",
+    "groupName": "Fakülte Senatörü",
+    "label": "Senatör"
+   },
+   {
+    "lang": "en",
+    "group": "fakulte",
+    "groupName": "Faculty Senator",
+    "label": "Senator"
+   }
+  ],
+  "photoId": "A9DA73C1D51740D3AE1A75A59F1D02BC",
+  "photoUrl": "https://cdn.istanbul.edu.tr/image/A0FB851BD9/A9DA73C1D51740D3AE1A75A59F1D02BC",
+  "profileUrl": {
+   "tr": "https://profil.istanbul.edu.tr/tr/p/zaslan",
+   "en": "https://profil.istanbul.edu.tr/en/p/zaslan"
+  },
+  "pages": [
+   "en/yonetim",
+   "tr/yonetim"
+  ]
+ },
+ {
+  "id": "mehmet-adak",
+  "alias": "mehmet.adak",
+  "name": "Mehmet Adak",
+  "titleTR": "Prof. Dr.",
+  "titleEN": "Prof. Dr.",
+  "dept": {
+   "tr": "Ulaştırma ve Lojistik Bölümü",
+   "en": "Department of Transportation   Logistics"
+  },
+  "deptKey": "",
+  "role": "yonetim",
+  "roleLabelTR": "Fakülte Yönetim Kurulu Üyesi",
+  "roleLabelEN": "Member of Faculty Board of Directors",
+  "roles": [
+   {
+    "lang": "tr",
+    "group": "fakulte",
+    "groupName": "Yönetim Kurulu",
+    "label": "Fakülte Yönetim Kurulu Üyesi"
+   },
+   {
+    "lang": "tr",
+    "group": "fakulte",
+    "groupName": "Fakülte Kurulu",
+    "label": "Fakülte Kurulu Üyesi"
+   },
+   {
+    "lang": "en",
+    "group": "fakulte",
+    "groupName": "Board of Directors",
+    "label": "Member of Faculty Board of Directors"
+   },
+   {
+    "lang": "en",
+    "group": "fakulte",
+    "groupName": "Faculty Board",
+    "label": "Member of Faculty Board"
+   }
+  ],
+  "photoId": "379D1381526E457EA481C693B235F505",
+  "photoUrl": "https://cdn.istanbul.edu.tr/image/A0FB851BD9/379D1381526E457EA481C693B235F505",
+  "profileUrl": {
+   "tr": "https://profil.istanbul.edu.tr/tr/p/mehmet.adak",
+   "en": "https://profil.istanbul.edu.tr/en/p/mehmet.adak"
+  },
+  "pages": [
+   "en/yonetim",
+   "tr/yonetim"
+  ]
+ },
+ {
+  "id": "levent-sahin",
+  "alias": "levent.sahin",
+  "name": "Levent Şahin",
+  "titleTR": "Prof. Dr.",
+  "titleEN": "Prof. Dr.",
+  "dept": {
+   "tr": "Çalışma Ekonomisi ve Endüstri İlişkileri Bölümü",
+   "en": "Department of Labor Economics   Industrial Relations"
+  },
+  "deptKey": "",
+  "role": "yonetim",
+  "roleLabelTR": "Fakülte Yönetim Kurulu Üyesi",
+  "roleLabelEN": "Member of Faculty Board of Directors",
+  "roles": [
+   {
+    "lang": "tr",
+    "group": "fakulte",
+    "groupName": "Yönetim Kurulu",
+    "label": "Fakülte Yönetim Kurulu Üyesi"
+   },
+   {
+    "lang": "tr",
+    "group": "fakulte",
+    "groupName": "Fakülte Kurulu",
+    "label": "Fakülte Kurulu Üyesi"
+   },
+   {
+    "lang": "en",
+    "group": "fakulte",
+    "groupName": "Board of Directors",
+    "label": "Member of Faculty Board of Directors"
+   },
+   {
+    "lang": "en",
+    "group": "fakulte",
+    "groupName": "Faculty Board",
+    "label": "Member of Faculty Board"
+   }
+  ],
+  "photoId": "2CAF4E2BE2BB4E4599DF49465306E660",
+  "photoUrl": "https://cdn.istanbul.edu.tr/image/A0FB851BD9/2CAF4E2BE2BB4E4599DF49465306E660",
+  "profileUrl": {
+   "tr": "https://profil.istanbul.edu.tr/tr/p/levent.sahin",
+   "en": "https://profil.istanbul.edu.tr/en/p/levent.sahin"
+  },
+  "pages": [
+   "en/yonetim",
+   "tr/yonetim"
+  ]
+ },
+ {
+  "id": "abbas-memis",
+  "alias": "abbas.memis",
+  "name": "Abbas Memiş",
+  "titleTR": "Dr. Öğr. Üyesi",
+  "titleEN": "Assist. Prof. Dr.",
+  "dept": {
+   "tr": "Bilgisayar Mühendisliği Bölümü",
+   "en": "Department of Computer Engineering"
+  },
+  "deptKey": "cmpe",
+  "role": "akademik",
+  "roleLabelTR": "",
+  "roleLabelEN": "",
+  "roles": [],
+  "photoId": "9290486289164785AD099F23EDB3D8C9",
+  "photoUrl": "https://cdn.istanbul.edu.tr/image/A0FB851BD9/9290486289164785AD099F23EDB3D8C9",
+  "profileUrl": {
+   "tr": "https://profil.istanbul.edu.tr/tr/p/abbas.memis",
+   "en": "https://profil.istanbul.edu.tr/en/p/abbas.memis"
+  },
+  "pages": [
+   "en/akademikkadro",
+   "tr/akademikkadro"
+  ]
+ },
+ {
+  "id": "abdullah-onden",
+  "alias": "abdullah.onden",
+  "name": "Abdullah Önden",
+  "titleTR": "Doç. Dr.",
+  "titleEN": "Assoc. Prof. Dr.",
+  "dept": {
+   "tr": "Bilgisayar Mühendisliği Bölümü",
+   "en": "Department of Computer Engineering"
+  },
+  "deptKey": "cmpe",
+  "role": "akademik",
+  "roleLabelTR": "",
+  "roleLabelEN": "",
+  "roles": [],
+  "photoId": "3FD1BA5B7C23468D82E93687F6D85CEF",
+  "photoUrl": "https://cdn.istanbul.edu.tr/image/A0FB851BD9/3FD1BA5B7C23468D82E93687F6D85CEF",
+  "profileUrl": {
+   "tr": "https://profil.istanbul.edu.tr/tr/p/abdullah.onden",
+   "en": "https://profil.istanbul.edu.tr/en/p/abdullah.onden"
+  },
+  "pages": [
+   "en/akademikkadro",
+   "tr/akademikkadro"
+  ]
+ },
+ {
+  "id": "ezgi-zorarpaci",
+  "alias": "ezgi.zorarpaci",
+  "name": "Ezgi Zorarpacı",
+  "titleTR": "Doç. Dr.",
+  "titleEN": "Assoc. Prof. Dr.",
+  "dept": {
+   "tr": "Bilgisayar Mühendisliği Bölümü",
+   "en": "Department of Computer Engineering"
+  },
+  "deptKey": "cmpe",
+  "role": "akademik",
+  "roleLabelTR": "Bölüm Başkanı",
+  "roleLabelEN": "Head of Department              ",
+  "roles": [
+   {
+    "lang": "tr",
+    "group": "bolum",
+    "groupName": "Bilgisayar Mühendisliği Bölümü",
+    "label": "Bölüm Başkanı"
+   },
+   {
+    "lang": "tr",
+    "group": "fakulte",
+    "groupName": "Yönetim Kurulu",
+    "label": "Fakülte Yönetim Kurulu Üyesi"
+   },
+   {
+    "lang": "tr",
+    "group": "fakulte",
+    "groupName": "Fakülte Kurulu",
+    "label": "Fakülte Kurulu Üyesi"
+   },
+   {
+    "lang": "en",
+    "group": "bolum",
+    "groupName": "Department of Computer Engineering",
+    "label": "Head of Department              "
+   },
+   {
+    "lang": "en",
+    "group": "fakulte",
+    "groupName": "Board of Directors",
+    "label": "Member of Faculty Board of Directors"
+   },
+   {
+    "lang": "en",
+    "group": "fakulte",
+    "groupName": "Faculty Board",
+    "label": "Member of Faculty Board"
+   }
+  ],
+  "photoId": "B5F3B2E6B6BC474898C2B4E5EE97A514",
+  "photoUrl": "https://cdn.istanbul.edu.tr/image/A0FB851BD9/B5F3B2E6B6BC474898C2B4E5EE97A514",
+  "profileUrl": {
+   "tr": "https://profil.istanbul.edu.tr/tr/p/ezgi.zorarpaci",
+   "en": "https://profil.istanbul.edu.tr/en/p/ezgi.zorarpaci"
+  },
+  "pages": [
+   "en/akademikkadro",
+   "en/yonetim",
+   "tr/akademikkadro",
+   "tr/yonetim"
+  ]
+ },
+ {
+  "id": "huseyin-can-apaydin",
+  "alias": "huseyincan.apaydin",
+  "name": "Hüseyin Can Apaydın",
+  "titleTR": "Arş. Gör.",
+  "titleEN": "Res. Assist.",
+  "dept": {
+   "tr": "Bilgisayar Mühendisliği Bölümü",
+   "en": "Department of Computer Engineering"
+  },
+  "deptKey": "cmpe",
+  "role": "akademik",
+  "roleLabelTR": "",
+  "roleLabelEN": "",
+  "roles": [],
+  "photoId": "64D3AB3A06DA415082D12CE075C79724",
+  "photoUrl": "https://cdn.istanbul.edu.tr/image/A0FB851BD9/64D3AB3A06DA415082D12CE075C79724",
+  "profileUrl": {
+   "tr": "https://profil.istanbul.edu.tr/tr/p/huseyincan.apaydin",
+   "en": "https://profil.istanbul.edu.tr/en/p/huseyincan.apaydin"
+  },
+  "pages": [
+   "en/akademikkadro",
+   "tr/akademikkadro"
+  ]
+ },
+ {
+  "id": "mert-suluk",
+  "alias": "mertsuluk",
+  "name": "Mert Sülük",
+  "titleTR": "Arş. Gör.",
+  "titleEN": "Res. Assist.",
+  "dept": {
+   "tr": "Bilgisayar Mühendisliği Bölümü",
+   "en": "Department of Computer Engineering"
+  },
+  "deptKey": "cmpe",
+  "role": "akademik",
+  "roleLabelTR": "",
+  "roleLabelEN": "",
+  "roles": [],
+  "photoId": "FA716BC3D5C347A380D1D397E625D6A0",
+  "photoUrl": "https://cdn.istanbul.edu.tr/image/A0FB851BD9/FA716BC3D5C347A380D1D397E625D6A0",
+  "profileUrl": {
+   "tr": "https://profil.istanbul.edu.tr/tr/p/mertsuluk",
+   "en": "https://profil.istanbul.edu.tr/en/p/mertsuluk"
+  },
+  "pages": [
+   "en/akademikkadro",
+   "tr/akademikkadro"
+  ]
+ },
+ {
+  "id": "muharrem-atakan-senturk",
+  "alias": "ma.senturk",
+  "name": "Muharrem Atakan Şentürk",
+  "titleTR": "Arş. Gör.",
+  "titleEN": "Res. Assist.",
+  "dept": {
+   "tr": "Bilgisayar Mühendisliği Bölümü",
+   "en": "Department of Computer Engineering"
+  },
+  "deptKey": "cmpe",
+  "role": "akademik",
+  "roleLabelTR": "",
+  "roleLabelEN": "",
+  "roles": [],
+  "photoId": "BC187839EA2D45EC85E5A576236B0056",
+  "photoUrl": "https://cdn.istanbul.edu.tr/image/A0FB851BD9/BC187839EA2D45EC85E5A576236B0056",
+  "profileUrl": {
+   "tr": "https://profil.istanbul.edu.tr/tr/p/ma.senturk",
+   "en": "https://profil.istanbul.edu.tr/en/p/ma.senturk"
+  },
+  "pages": [
+   "en/akademikkadro",
+   "tr/akademikkadro"
+  ]
+ },
+ {
+  "id": "emre-durusoy",
+  "alias": "emre.durusoy",
+  "name": "Emre Durusoy",
+  "titleTR": "Arş. Gör.",
+  "titleEN": "Res. Assist.",
+  "dept": {
+   "tr": "Siber Güvenlik Mühendisliği Bölümü",
+   "en": "Department of Cyber Security Engineering"
+  },
+  "deptKey": "cyber",
+  "role": "akademik",
+  "roleLabelTR": "",
+  "roleLabelEN": "",
+  "roles": [],
+  "photoId": "627695A65BB04825AFC39F3743884AE4",
+  "photoUrl": "https://cdn.istanbul.edu.tr/image/A0FB851BD9/627695A65BB04825AFC39F3743884AE4",
+  "profileUrl": {
+   "tr": "https://profil.istanbul.edu.tr/tr/p/emre.durusoy",
+   "en": "https://profil.istanbul.edu.tr/en/p/emre.durusoy"
+  },
+  "pages": [
+   "en/akademikkadro",
+   "tr/akademikkadro"
+  ]
+ },
+ {
+  "id": "esma-gultuvin-gur-omay",
+  "alias": "gultuvin",
+  "name": "Esma Gültüvin Gür Omay",
+  "titleTR": "Doç. Dr.",
+  "titleEN": "Assoc. Prof. Dr.",
+  "dept": {
+   "tr": "Siber Güvenlik Mühendisliği Bölümü",
+   "en": "Department of Cyber Security Engineering"
+  },
+  "deptKey": "cyber",
+  "role": "akademik",
+  "roleLabelTR": "",
+  "roleLabelEN": "",
+  "roles": [],
+  "photoId": "0C87518692D34264BAC545FE98E7FD43",
+  "photoUrl": "https://cdn.istanbul.edu.tr/image/A0FB851BD9/0C87518692D34264BAC545FE98E7FD43",
+  "profileUrl": {
+   "tr": "https://profil.istanbul.edu.tr/tr/p/gultuvin",
+   "en": "https://profil.istanbul.edu.tr/en/p/gultuvin"
+  },
+  "pages": [
+   "en/akademikkadro",
+   "tr/akademikkadro"
+  ]
+ },
+ {
+  "id": "bora-caliskan",
+  "alias": "bora.caliskan",
+  "name": "Bora Çalışkan",
+  "titleTR": "Arş. Gör.",
+  "titleEN": "Res. Assist.",
+  "dept": {
+   "tr": "Yapay Zeka ve Veri Mühendisliği Bölümü",
+   "en": "Department of Artificial Intelligence and Data Engineering"
+  },
+  "deptKey": "aide",
+  "role": "akademik",
+  "roleLabelTR": "",
+  "roleLabelEN": "",
+  "roles": [],
+  "photoId": "6321215CBB074699B6B3490C518798B3",
+  "photoUrl": "https://cdn.istanbul.edu.tr/image/A0FB851BD9/6321215CBB074699B6B3490C518798B3",
+  "profileUrl": {
+   "tr": "https://profil.istanbul.edu.tr/tr/p/bora.caliskan",
+   "en": "https://profil.istanbul.edu.tr/en/p/bora.caliskan"
+  },
+  "pages": [
+   "en/akademikkadro",
+   "tr/akademikkadro"
+  ]
+ },
+ {
+  "id": "fatma-onay-kocoglu",
+  "alias": "fonayk",
+  "name": "Fatma Önay Koçoğlu",
+  "titleTR": "Doç. Dr.",
+  "titleEN": "Assoc. Prof. Dr.",
+  "dept": {
+   "tr": "Yapay Zeka ve Veri Mühendisliği Bölümü",
+   "en": "Department of Artificial Intelligence and Data Engineering"
+  },
+  "deptKey": "aide",
+  "role": "akademik",
+  "roleLabelTR": "Bölüm Başkanı Yrd.",
+  "roleLabelEN": "Vice Head of Department",
+  "roles": [
+   {
+    "lang": "tr",
+    "group": "bolum",
+    "groupName": "Yapay Zeka ve Veri Mühendisliği Bölümü",
+    "label": "Bölüm Başkanı Yrd."
+   },
+   {
+    "lang": "en",
+    "group": "bolum",
+    "groupName": "Department of Artificial Intelligence and Data Engineering",
+    "label": "Vice Head of Department"
+   }
+  ],
+  "photoId": "FA4E88D490874B10A5ACBF27D8D3A300",
+  "photoUrl": "https://cdn.istanbul.edu.tr/image/A0FB851BD9/FA4E88D490874B10A5ACBF27D8D3A300",
+  "profileUrl": {
+   "tr": "https://profil.istanbul.edu.tr/tr/p/fonayk",
+   "en": "https://profil.istanbul.edu.tr/en/p/fonayk"
+  },
+  "pages": [
+   "en/akademikkadro",
+   "tr/akademikkadro"
+  ]
+ },
+ {
+  "id": "hatice-nizam-ozogur",
+  "alias": "hatice.nizamozogur",
+  "name": "Hatice Nizam Özoğur",
+  "titleTR": "Dr. Öğr. Üyesi",
+  "titleEN": "Assist. Prof. Dr.",
+  "dept": {
+   "tr": "Yapay Zeka ve Veri Mühendisliği Bölümü",
+   "en": "Department of Artificial Intelligence and Data Engineering"
+  },
+  "deptKey": "aide",
+  "role": "akademik",
+  "roleLabelTR": "",
+  "roleLabelEN": "",
+  "roles": [],
+  "photoId": "772AB1E54CF34587A72CCA1BC01E8E35",
+  "photoUrl": "https://cdn.istanbul.edu.tr/image/A0FB851BD9/772AB1E54CF34587A72CCA1BC01E8E35",
+  "profileUrl": {
+   "tr": "https://profil.istanbul.edu.tr/tr/p/hatice.nizamozogur",
+   "en": "https://profil.istanbul.edu.tr/en/p/hatice.nizamozogur"
+  },
+  "pages": [
+   "en/akademikkadro",
+   "tr/akademikkadro"
+  ]
+ },
+ {
+  "id": "pinar-boluk",
+  "alias": "pinar.boluk",
+  "name": "Pınar Bölük",
+  "titleTR": "Doç. Dr.",
+  "titleEN": "Assoc. Prof. Dr.",
+  "dept": {
+   "tr": "Yapay Zeka ve Veri Mühendisliği Bölümü",
+   "en": "Department of Artificial Intelligence and Data Engineering"
+  },
+  "deptKey": "aide",
+  "role": "akademik",
+  "roleLabelTR": "Dekan Yrd.",
+  "roleLabelEN": "Vice Dean",
+  "roles": [
+   {
+    "lang": "tr",
+    "group": "fakulte",
+    "groupName": "Dekanlık",
+    "label": "Dekan Yrd."
+   },
+   {
+    "lang": "tr",
+    "group": "fakulte",
+    "groupName": "Yönetim Kurulu",
+    "label": "Fakülte Yönetim Kurulu Üyesi"
+   },
+   {
+    "lang": "tr",
+    "group": "fakulte",
+    "groupName": "Fakülte Kurulu",
+    "label": "Fakülte Kurulu Üyesi"
+   },
+   {
+    "lang": "en",
+    "group": "fakulte",
+    "groupName": "Dean's Office",
+    "label": "Vice Dean"
+   },
+   {
+    "lang": "en",
+    "group": "fakulte",
+    "groupName": "Board of Directors",
+    "label": "Member of Faculty Board of Directors"
+   },
+   {
+    "lang": "en",
+    "group": "fakulte",
+    "groupName": "Faculty Board",
+    "label": "Member of Faculty Board"
+   }
+  ],
+  "photoId": "291EBF1A11AD4D1D82175CE5AF945CF0",
+  "photoUrl": "https://cdn.istanbul.edu.tr/image/A0FB851BD9/291EBF1A11AD4D1D82175CE5AF945CF0",
+  "profileUrl": {
+   "tr": "https://profil.istanbul.edu.tr/tr/p/pinar.boluk",
+   "en": "https://profil.istanbul.edu.tr/en/p/pinar.boluk"
+  },
+  "pages": [
+   "en/akademikkadro",
+   "en/yonetim",
+   "tr/akademikkadro",
+   "tr/yonetim"
+  ]
+ },
+ {
+  "id": "sezin-guleryuz-ergul",
+  "alias": "sezing",
+  "name": "Sezin Güleryüz Ergül",
+  "titleTR": "Dr. Öğr. Üyesi",
+  "titleEN": "Assist. Prof. Dr.",
+  "dept": {
+   "tr": "Yapay Zeka ve Veri Mühendisliği Bölümü",
+   "en": "Department of Artificial Intelligence and Data Engineering"
+  },
+  "deptKey": "aide",
+  "role": "akademik",
+  "roleLabelTR": "",
+  "roleLabelEN": "",
+  "roles": [],
+  "photoId": "A61577F0D27148B49F84BEED8193D92F",
+  "photoUrl": "https://cdn.istanbul.edu.tr/image/A0FB851BD9/A61577F0D27148B49F84BEED8193D92F",
+  "profileUrl": {
+   "tr": "https://profil.istanbul.edu.tr/tr/p/sezing",
+   "en": "https://profil.istanbul.edu.tr/en/p/sezing"
+  },
+  "pages": [
+   "en/akademikkadro",
+   "tr/akademikkadro"
+  ]
+ },
+ {
+  "id": "sultan-zeybek",
+  "alias": "sultan.zeybek",
+  "name": "Sultan Zeybek",
+  "titleTR": "Dr. Öğr. Üyesi",
+  "titleEN": "Assist. Prof. Dr.",
+  "dept": {
+   "tr": "Yapay Zeka ve Veri Mühendisliği Bölümü",
+   "en": "Department of Artificial Intelligence and Data Engineering"
+  },
+  "deptKey": "aide",
+  "role": "akademik",
+  "roleLabelTR": "Fakülte Yönetim Kurulu Üyesi",
+  "roleLabelEN": "Member of Faculty Board of Directors",
+  "roles": [
+   {
+    "lang": "tr",
+    "group": "fakulte",
+    "groupName": "Yönetim Kurulu",
+    "label": "Fakülte Yönetim Kurulu Üyesi"
+   },
+   {
+    "lang": "tr",
+    "group": "fakulte",
+    "groupName": "Fakülte Kurulu",
+    "label": "Fakülte Kurulu Üyesi"
+   },
+   {
+    "lang": "en",
+    "group": "fakulte",
+    "groupName": "Board of Directors",
+    "label": "Member of Faculty Board of Directors"
+   },
+   {
+    "lang": "en",
+    "group": "fakulte",
+    "groupName": "Faculty Board",
+    "label": "Member of Faculty Board"
+   }
+  ],
+  "photoId": "0D8836205D6643D48010A71DB3A96B52",
+  "photoUrl": "https://cdn.istanbul.edu.tr/image/A0FB851BD9/0D8836205D6643D48010A71DB3A96B52",
+  "profileUrl": {
+   "tr": "https://profil.istanbul.edu.tr/tr/p/sultan.zeybek",
+   "en": "https://profil.istanbul.edu.tr/en/p/sultan.zeybek"
+  },
+  "pages": [
+   "en/akademikkadro",
+   "en/yonetim",
+   "tr/akademikkadro",
+   "tr/yonetim"
+  ]
+ },
+ {
+  "id": "inci-zaim-gokbay",
+  "alias": "inci.gokbay",
+  "name": "İnci Zaim Gökbay",
+  "titleTR": "Doç. Dr.",
+  "titleEN": "Assoc. Prof. Dr.",
+  "dept": {
+   "tr": "Yapay Zeka ve Veri Mühendisliği Bölümü",
+   "en": "Department of Artificial Intelligence and Data Engineering"
+  },
+  "deptKey": "aide",
+  "role": "akademik",
+  "roleLabelTR": "",
+  "roleLabelEN": "",
+  "roles": [],
+  "photoId": "9164D44ABD9C4DF4B4EF03EA1DCDFFF1",
+  "photoUrl": "https://cdn.istanbul.edu.tr/image/A0FB851BD9/9164D44ABD9C4DF4B4EF03EA1DCDFFF1",
+  "profileUrl": {
+   "tr": "https://profil.istanbul.edu.tr/tr/p/inci.gokbay",
+   "en": "https://profil.istanbul.edu.tr/en/p/inci.gokbay"
+  },
+  "pages": [
+   "en/akademikkadro",
+   "tr/akademikkadro"
+  ]
+ },
+ {
+  "id": "ismail-onden",
+  "alias": "ismail.onden",
+  "name": "İsmail Önden",
+  "titleTR": "Prof. Dr.",
+  "titleEN": "Prof. Dr.",
+  "dept": {
+   "tr": "Yapay Zeka ve Veri Mühendisliği Bölümü",
+   "en": "Department of Artificial Intelligence and Data Engineering"
+  },
+  "deptKey": "aide",
+  "role": "akademik",
+  "roleLabelTR": "Dekan Yrd.",
+  "roleLabelEN": "Vice Dean",
+  "roles": [
+   {
+    "lang": "tr",
+    "group": "bolum",
+    "groupName": "Yapay Zeka ve Veri Mühendisliği Bölümü",
+    "label": "Bölüm Başkanı"
+   },
+   {
+    "lang": "tr",
+    "group": "fakulte",
+    "groupName": "Dekanlık",
+    "label": "Dekan Yrd."
+   },
+   {
+    "lang": "tr",
+    "group": "fakulte",
+    "groupName": "Yönetim Kurulu",
+    "label": "Fakülte Yönetim Kurulu Üyesi"
+   },
+   {
+    "lang": "tr",
+    "group": "fakulte",
+    "groupName": "Fakülte Kurulu",
+    "label": "Fakülte Kurulu Üyesi"
+   },
+   {
+    "lang": "en",
+    "group": "bolum",
+    "groupName": "Department of Artificial Intelligence and Data Engineering",
+    "label": "Head of Department              "
+   },
+   {
+    "lang": "en",
+    "group": "fakulte",
+    "groupName": "Dean's Office",
+    "label": "Vice Dean"
+   },
+   {
+    "lang": "en",
+    "group": "fakulte",
+    "groupName": "Board of Directors",
+    "label": "Member of Faculty Board of Directors"
+   },
+   {
+    "lang": "en",
+    "group": "fakulte",
+    "groupName": "Faculty Board",
+    "label": "Member of Faculty Board"
+   }
+  ],
+  "photoId": "BEB5A6A0C6B2472E992AF5C56B01D645",
+  "photoUrl": "https://cdn.istanbul.edu.tr/image/A0FB851BD9/BEB5A6A0C6B2472E992AF5C56B01D645",
+  "profileUrl": {
+   "tr": "https://profil.istanbul.edu.tr/tr/p/ismail.onden",
+   "en": "https://profil.istanbul.edu.tr/en/p/ismail.onden"
+  },
+  "pages": [
+   "en/akademikkadro",
+   "en/yonetim",
+   "tr/akademikkadro",
+   "tr/yonetim"
+  ]
+ },
+ {
+  "id": "ayse-ustun",
+  "alias": "ayse.ustun",
+  "name": "Ayşe Üstün",
+  "titleTR": "",
+  "titleEN": "",
+  "dept": {
+   "tr": "Fakülte Sekreterliği",
+   "en": "Administrative Staff"
+  },
+  "deptKey": "",
+  "role": "idari",
+  "roleLabelTR": "Bilgisayar İşletmeni",
+  "roleLabelEN": "Computer Operator",
+  "roles": [],
+  "photoId": "",
+  "photoUrl": "",
+  "profileUrl": {
+   "tr": "https://profil.istanbul.edu.tr/tr/p/ayse.ustun",
+   "en": "https://profil.istanbul.edu.tr/en/p/ayse.ustun"
+  },
+  "pages": [
+   "en/idarikadro",
+   "tr/idarikadro"
+  ]
+ },
+ {
+  "id": "gulizar-pat",
+  "alias": "gulizar.pat",
+  "name": "Gülizar Pat",
+  "titleTR": "",
+  "titleEN": "",
+  "dept": {
+   "tr": "Fakülte Sekreterliği",
+   "en": "Administrative Staff"
+  },
+  "deptKey": "",
+  "role": "idari",
+  "roleLabelTR": "Mühendis",
+  "roleLabelEN": "Engineer",
+  "roles": [],
+  "photoId": "",
+  "photoUrl": "",
+  "profileUrl": {
+   "tr": "https://profil.istanbul.edu.tr/tr/p/gulizar.pat",
+   "en": "https://profil.istanbul.edu.tr/en/p/gulizar.pat"
+  },
+  "pages": [
+   "en/idarikadro",
+   "tr/idarikadro"
+  ]
+ },
+ {
+  "id": "mustafa-kurt",
+  "alias": "mustafa.kurt",
+  "name": "Mustafa Kurt",
+  "titleTR": "",
+  "titleEN": "",
+  "dept": {
+   "tr": "Fakülte Sekreterliği",
+   "en": "Labour"
+  },
+  "deptKey": "",
+  "role": "idari",
+  "roleLabelTR": "Temizlik Personeli",
+  "roleLabelEN": "Cleaning Personnel Member",
+  "roles": [],
+  "photoId": "9814F1C9F72B42909E3809248FC5183F",
+  "photoUrl": "https://cdn.istanbul.edu.tr/image/A0FB851BD9/9814F1C9F72B42909E3809248FC5183F",
+  "profileUrl": {
+   "tr": "https://profil.istanbul.edu.tr/tr/p/mustafa.kurt",
+   "en": "https://profil.istanbul.edu.tr/en/p/mustafa.kurt"
+  },
+  "pages": [
+   "en/idarikadro",
+   "tr/idarikadro"
+  ]
+ },
+ {
+  "id": "nurgul-civanoglu",
+  "alias": "nurgul.civanoglu",
+  "name": "Nurgül Civanoğlu",
+  "titleTR": "",
+  "titleEN": "",
+  "dept": {
+   "tr": "Fakülte Sekreterliği",
+   "en": "Administrative Staff"
+  },
+  "deptKey": "",
+  "role": "idari",
+  "roleLabelTR": "Hizmetli",
+  "roleLabelEN": "Cleaning Personnel Member",
+  "roles": [],
+  "photoId": "",
+  "photoUrl": "",
+  "profileUrl": {
+   "tr": "https://profil.istanbul.edu.tr/tr/p/nurgul.civanoglu",
+   "en": "https://profil.istanbul.edu.tr/en/p/nurgul.civanoglu"
+  },
+  "pages": [
+   "en/idarikadro",
+   "tr/idarikadro"
+  ]
+ },
+ {
+  "id": "yusuf-anil-erdogan",
+  "alias": "yusuf.erdogan",
+  "name": "Yusuf Anıl Erdoğan",
+  "titleTR": "",
+  "titleEN": "",
+  "dept": {
+   "tr": "Fakülte Sekreterliği",
+   "en": "Administrative Staff"
+  },
+  "deptKey": "",
+  "role": "idari",
+  "roleLabelTR": "Memur",
+  "roleLabelEN": "Officer",
+  "roles": [],
+  "photoId": "5575459F12954144B5CB35294353CB5F",
+  "photoUrl": "https://cdn.istanbul.edu.tr/image/A0FB851BD9/5575459F12954144B5CB35294353CB5F",
+  "profileUrl": {
+   "tr": "https://profil.istanbul.edu.tr/tr/p/yusuf.erdogan",
+   "en": "https://profil.istanbul.edu.tr/en/p/yusuf.erdogan"
+  },
+  "pages": [
+   "en/idarikadro",
+   "tr/idarikadro"
+  ]
+ },
+ {
+  "id": "ibrahim-aksu",
+  "alias": "ibrahimaksu",
+  "name": "İbrahim Aksu",
+  "titleTR": "",
+  "titleEN": "",
+  "dept": {
+   "tr": "Fakülte Sekreterliği",
+   "en": "Administrative Staff"
+  },
+  "deptKey": "",
+  "role": "idari",
+  "roleLabelTR": "Programcı",
+  "roleLabelEN": "Programmer",
+  "roles": [],
+  "photoId": "",
+  "photoUrl": "",
+  "profileUrl": {
+   "tr": "https://profil.istanbul.edu.tr/tr/p/ibrahimaksu",
+   "en": "https://profil.istanbul.edu.tr/en/p/ibrahimaksu"
+  },
+  "pages": [
+   "en/idarikadro",
+   "tr/idarikadro"
+  ]
+ },
+ {
+  "id": "hamdi-senguzel",
+  "alias": "hamdi.senguzel",
+  "name": "Hamdi Şengüzel",
+  "titleTR": "",
+  "titleEN": "",
+  "dept": {
+   "tr": "İdari",
+   "en": "Administrative Staff"
+  },
+  "deptKey": "",
+  "role": "idari",
+  "roleLabelTR": "Hizmetli",
+  "roleLabelEN": "Cleaning Personnel Member",
+  "roles": [],
+  "photoId": "BDFF5A98CB714F17BCDEBC28257A6C30",
+  "photoUrl": "https://cdn.istanbul.edu.tr/image/A0FB851BD9/BDFF5A98CB714F17BCDEBC28257A6C30",
+  "profileUrl": {
+   "tr": "https://profil.istanbul.edu.tr/tr/p/hamdi.senguzel",
+   "en": "https://profil.istanbul.edu.tr/en/p/hamdi.senguzel"
+  },
+  "pages": [
+   "en/idarikadro",
+   "tr/idarikadro"
+  ]
+ },
+ {
+  "id": "selver-pekdemir",
+  "alias": "selver.pekdemir",
+  "name": "Selver Pekdemir",
+  "titleTR": "",
+  "titleEN": "",
+  "dept": {
+   "tr": "İdari",
+   "en": "Administrative Staff"
+  },
+  "deptKey": "",
+  "role": "idari",
+  "roleLabelTR": "Memur",
+  "roleLabelEN": "Officer",
+  "roles": [],
+  "photoId": "",
+  "photoUrl": "",
+  "profileUrl": {
+   "tr": "https://profil.istanbul.edu.tr/tr/p/selver.pekdemir",
+   "en": "https://profil.istanbul.edu.tr/en/p/selver.pekdemir"
+  },
+  "pages": [
+   "en/idarikadro",
+   "tr/idarikadro"
+  ]
+ }
+]
