@@ -40,6 +40,21 @@ def parse_metinler(txt):
     for raw in txt.splitlines():
         line = raw.strip()
         if not line: continue
+        # Aracın ürettiği biçim: "[TR] HABER BAŞLIĞI: ...", "[TR] SPOT: ...", "[TR] MANŞET GÖRSELİ ALT METNİ: ...",
+        # "[TR] GALERİ ALT METİNLERİ: dosya.jpg: metin | dosya2.jpg: metin"
+        m = re.match(r'^\[(TR|EN)\]\s*([^:]+):\s*(.*)$', line, re.I)
+        if m:
+            lg, key, val = m.group(1).lower(), m.group(2).strip().lower(), m.group(3).strip()
+            key = key.replace('ı', 'i').replace('ş', 's').replace('ğ', 'g')  # Python lower() Türkçe I/İ ayrımını bilmez
+            lang = lg
+            if 'basli' in key or 'title' in key: out[lg]['title'] = val
+            elif key.startswith('spot'): out[lg]['spot'] = val
+            elif 'galeri' in key or 'gallery' in key:
+                for part in val.split(' | '):
+                    mm = re.match(r'^\s*([^:]+\.(?:jpe?g|png))\s*:\s*(.+)$', part.strip(), re.I)
+                    if mm: out[lg]['alts'][mm.group(1).strip().lower()] = mm.group(2).strip()
+            elif 'manşet' in key or 'manset' in key or 'afiş' in key or 'poster' in key or 'alt' in key: out[lg]['posterAlt'] = val
+            continue
         low = line.lower()
         m = re.match(r'^(tr|en)\b[^:]*?(başlık|baslik|title)\s*[:：]\s*(.+)$', low)
         if m:

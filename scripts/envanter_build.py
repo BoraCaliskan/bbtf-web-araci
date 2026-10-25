@@ -56,12 +56,36 @@ def get_json(url):
     return json.loads(get(url))
 
 
+KEEP_MAIL = re.compile(r'@(?:[a-z0-9-]+\.)*istanbul\.edu\.tr$', re.I)   # kurumsal personel/birim adresleri kalır, öğrenci (ogr.iu.edu.tr) ve dış adresler silinir
+RANGY = re.compile(r'<span[^>]*rangySelectionBoundary[^>]*>.*?</span>|<span[^>]*rangySelectionBoundary[^>]*/?>', re.S)
+
+
+def _mail(m):
+    return m.group(0) if KEEP_MAIL.search(m.group(0)) and 'ogr.' not in m.group(0).lower() else '[kaldırıldı]'
+
+
 def clean(html):
+    """Gövdeyi temizler: editör artığı rangy span'ları atar, metin düğümlerinde e-posta, telefon, öğrenci numarası,
+    toplantı kimliği ve şifre örüntülerini "[kaldırıldı]" yapar. Etiket içlerinde yalnızca mailto: ve tel: adresleri temizlenir."""
     if not html: return html, 0
+    html = RANGY.sub('', html)
     n = 0
-    for rx, rep in PII:
-        html, k = rx.subn(rep, html); n += k
-    return html, n
+    parts = re.split(r'(<[^>]+>)', html)
+    for i, seg in enumerate(parts):
+        if seg.startswith('<'):
+            seg2, k = re.subn(r'(mailto:)([^"\'\s>]+)', lambda m: m.group(1) + _mail(re.match(r'.*', m.group(2))), seg)
+            seg2, k2 = re.subn(r'(tel:)[^"\'\s>]+', r'\1[kaldırıldı]', seg2)
+            parts[i] = seg2; n += (k if seg2 != seg else 0) + k2
+            continue
+        for rx, rep in PII:
+            if rx is PII[0][0]:
+                seg, k = rx.subn(_mail, seg)
+                k = sum(1 for _ in rx.finditer(parts[i])) if seg != parts[i] else 0
+            else:
+                seg, k = rx.subn(rep, seg)
+            n += k
+        parts[i] = seg
+    return ''.join(parts), n
 
 
 def pages(fn, extra, lang):
