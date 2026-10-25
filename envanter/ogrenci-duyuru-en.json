@@ -264,8 +264,8 @@
   "galleryImageUrls": [
    "https://cdn.istanbul.edu.tr/FileHandler.ashx?f=YDxJiydQb061pvIVE9bGtw"
   ],
-  "bodyHtml": "<p>2025 - 2026 academic year spring semester final exam dates are in the link below.</p><p>Please follow the <strong>schedule&nbsp;</strong>and <strong>this announcement</strong> in case of possible changes to the date and time.</p><p><a href=\"https://cdn.istanbul.edu.tr/FileHandler2.ashx?f=2025-26_spring_term_final_exams_639162888348102458.xlsx\" rel=\"noopener noreferrer\" target=\"_blank\"><span class=\"rangySelectionBoundary\" id=\"selectionBoundary_[kaldırıldı]_893952483860849\" style=\"line-height: 0; display: none;\">﻿</span>Final Exams Dates <span class=\"rangySelectionBoundary\" id=\"selectionBoundary_[kaldırıldı]_14002202074629788\" style=\"line-height: 0; display: none;\">﻿</span>(Regular &amp; Irregular)<span class=\"rangySelectionBoundary\" id=\"selectionBoundary_[kaldırıldı]_5184454840179387\" style=\"line-height: 0; display: none;\">﻿</span><span class=\"rangySelectionBoundary\" id=\"selectionBoundary_[kaldırıldı]_09649371009136454\" style=\"line-height: 0; display: none;\">﻿</span></a></p>",
-  "bodyText": "2025 - 2026 academic year spring semester final exam dates are in the link below. Please follow the schedule&nbsp; and this announcement in case of possible changes to the date and time. ﻿ Final Exams Dates ﻿ (Regular &amp; Irregular) ﻿ ﻿",
+  "bodyHtml": "<p>2025 - 2026 academic year spring semester final exam dates are in the link below.</p><p>Please follow the <strong>schedule&nbsp;</strong>and <strong>this announcement</strong> in case of possible changes to the date and time.</p><p><a href=\"https://cdn.istanbul.edu.tr/FileHandler2.ashx?f=2025-26_spring_term_final_exams_639162888348102458.xlsx\" rel=\"noopener noreferrer\" target=\"_blank\">Final Exams Dates (Regular &amp; Irregular)</a></p>",
+  "bodyText": "2025 - 2026 academic year spring semester final exam dates are in the link below. Please follow the schedule&nbsp; and this announcement in case of possible changes to the date and time. Final Exams Dates (Regular &amp; Irregular)",
   "links": [
    "https://cdn.istanbul.edu.tr/FileHandler2.ashx?f=2025-26_spring_term_final_exams_639162888348102458.xlsx"
   ],
@@ -275,7 +275,7 @@
   "author": "",
   "tags": "",
   "route": "2025-2026-academic-year-spring-semester-final-exams-begin-4B007300720054005400770064004400510074007A0039007900700046006200610041004F003200370077003200",
-  "piiRemoved": 4,
+  "piiRemoved": 0,
   "source": "public-api"
  },
  {
@@ -522,8 +522,8 @@
   "galleryImageUrls": [
    "https://cdn.istanbul.edu.tr/FileHandler.ashx?f=BqwgTIw2102ye-VHqxVwKA"
   ],
-  "bodyHtml": "<p>2025 - 2026 academic year fall semester midterm exam dates are in the link below:</p><p><a href=\"https://cdn.istanbul.edu.tr/FileHandler2.ashx?f=2024_spring_midterm_schedule_638775875050744032.pdf\" target=\"_blank\"></a><a href=\"https://cdn.istanbul.edu.tr/FileHandler2.ashx?f=2025-2026-guz_examschedule_draft1__638985735563066290.xlsx\" rel=\"noopener noreferrer\" target=\"_blank\"><strong><span style=\"font-size: 24px;\">2025-2026-Fall_examschedule.xlsx<span class=\"rangySelectionBoundary\" id=\"selectionBoundary_[kaldırıldı]_25340677932075306\" style=\"line-height: 0; display: none;\">﻿</span></span></strong></a></p>",
-  "bodyText": "2025 - 2026 academic year fall semester midterm exam dates are in the link below: 2025-2026-Fall_examschedule.xlsx ﻿",
+  "bodyHtml": "<p>2025 - 2026 academic year fall semester midterm exam dates are in the link below:</p><p><a href=\"https://cdn.istanbul.edu.tr/FileHandler2.ashx?f=2024_spring_midterm_schedule_638775875050744032.pdf\" target=\"_blank\"></a><a href=\"https://cdn.istanbul.edu.tr/FileHandler2.ashx?f=2025-2026-guz_examschedule_draft1__638985735563066290.xlsx\" rel=\"noopener noreferrer\" target=\"_blank\"><strong><span style=\"font-size: 24px;\">2025-2026-Fall_examschedule.xlsx</span></strong></a></p>",
+  "bodyText": "2025 - 2026 academic year fall semester midterm exam dates are in the link below: 2025-2026-Fall_examschedule.xlsx",
   "links": [
    "https://cdn.istanbul.edu.tr/FileHandler2.ashx?f=2024_spring_midterm_schedule_638775875050744032.pdf",
    "https://cdn.istanbul.edu.tr/FileHandler2.ashx?f=2025-2026-guz_examschedule_draft1__638985735563066290.xlsx"
@@ -534,7 +534,7 @@
   "author": "",
   "tags": "",
   "route": "2025-2026-academic-year-fall-semester-midterm-exams-begin-730065007A004100710066006C0055006F0074005F0039007900700046006200610041004F003200370077003200",
-  "piiRemoved": 1,
+  "piiRemoved": 0,
   "source": "public-api"
  },
  {
@@ -547,10 +547,10 @@
   "status": "published",
   "coverImageUrl": "",
   "galleryImageUrls": [],
-  "bodyHtml": "<p>Students who have formed Football, Basketball, or Volleyball teams for the <strong>Sports Festival competitions</strong> organized by the Istanbul University Sports Union (teams only, not individual participants) are required to contact <strong>Research Assistant Muharrem Atakan Şent&uuml;rk</strong> or send an e-mail by <strong>Monday, October 13, 2025</strong>.</p><p><a href=\"mailto:[kaldırıldı]\">📧 [kaldırıldı]</a> </p>",
-  "bodyText": "Students who have formed Football, Basketball, or Volleyball teams for the Sports Festival competitions organized by the Istanbul University Sports Union (teams only, not individual participants) are required to contact Research Assistant Muharrem Atakan Şent&uuml;rk or send an e-mail by Monday, October 13, 2025 . 📧 [kaldırıldı]",
+  "bodyHtml": "<p>Students who have formed Football, Basketball, or Volleyball teams for the <strong>Sports Festival competitions</strong> organized by the Istanbul University Sports Union (teams only, not individual participants) are required to contact <strong>Research Assistant Muharrem Atakan Şent&uuml;rk</strong> or send an e-mail by <strong>Monday, October 13, 2025</strong>.</p><p><a href=\"mailto:ma.senturk@istanbul.edu.tr\">📧 ma.senturk@istanbul.edu.tr</a> </p>",
+  "bodyText": "Students who have formed Football, Basketball, or Volleyball teams for the Sports Festival competitions organized by the Istanbul University Sports Union (teams only, not individual participants) are required to contact Research Assistant Muharrem Atakan Şent&uuml;rk or send an e-mail by Monday, October 13, 2025 . 📧 ma.senturk@istanbul.edu.tr",
   "links": [
-   "mailto:[kaldırıldı]"
+   "mailto:ma.senturk@istanbul.edu.tr"
   ],
   "sliderLinkTarget": "",
   "order": null,
@@ -558,7 +558,7 @@
   "author": "",
   "tags": "",
   "route": "sports-festival-team-registration-790047005F006F0076005F0033004E0045006B005F0039007900700046006200610041004F003200370077003200",
-  "piiRemoved": 2,
+  "piiRemoved": 0,
   "source": "public-api"
  },
  {
@@ -687,8 +687,8 @@
   "status": "published",
   "coverImageUrl": "",
   "galleryImageUrls": [],
-  "bodyHtml": "<p>Dear Students,</p><p>The 2024-2025 Academic Year Spring Semester Resit Exam Schedule has been announced. You can access the schedule via the link below:</p><p><a href=\"https://cdn.istanbul.edu.tr/FileHandler2.ashx?f=2025_spring_makeup_exam_schedule_638870829102651253.pdf\" rel=\"noopener noreferrer\" target=\"_blank\">bbtf-2024-2025-spring-resit.pdf<span class=\"rangySelectionBoundary\" id=\"selectionBoundary_[kaldırıldı]_22176138772980336\" style=\"line-height: 0; display: none;\">﻿</span></a></p><p>Please check your exam dates and times and prepare accordingly. We wish all our students success.</p>",
-  "bodyText": "Dear Students, The 2024-2025 Academic Year Spring Semester Resit Exam Schedule has been announced. You can access the schedule via the link below: bbtf-2024-2025-spring-resit.pdf ﻿ Please check your exam dates and times and prepare accordingly. We wish all our students success.",
+  "bodyHtml": "<p>Dear Students,</p><p>The 2024-2025 Academic Year Spring Semester Resit Exam Schedule has been announced. You can access the schedule via the link below:</p><p><a href=\"https://cdn.istanbul.edu.tr/FileHandler2.ashx?f=2025_spring_makeup_exam_schedule_638870829102651253.pdf\" rel=\"noopener noreferrer\" target=\"_blank\">bbtf-2024-2025-spring-resit.pdf</a></p><p>Please check your exam dates and times and prepare accordingly. We wish all our students success.</p>",
+  "bodyText": "Dear Students, The 2024-2025 Academic Year Spring Semester Resit Exam Schedule has been announced. You can access the schedule via the link below: bbtf-2024-2025-spring-resit.pdf Please check your exam dates and times and prepare accordingly. We wish all our students success.",
   "links": [
    "https://cdn.istanbul.edu.tr/FileHandler2.ashx?f=2025_spring_makeup_exam_schedule_638870829102651253.pdf"
   ],
@@ -698,7 +698,7 @@
   "author": "",
   "tags": "",
   "route": "2024-25-academic-year-spring-semester-resit-exam-schedule-480046005A00320075006C003700740054006D00760039007900700046006200610041004F003200370077003200",
-  "piiRemoved": 1,
+  "piiRemoved": 0,
   "source": "public-api"
  },
  {
@@ -733,8 +733,8 @@
   "status": "published",
   "coverImageUrl": "",
   "galleryImageUrls": [],
-  "bodyHtml": "<p style='box-sizing: border-box; margin: 0px 0px 10px; outline: none !important; font-family: \"Open Sans\", sans-serif; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; white-space: normal; text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial; font-size: 14px; text-align: justify;'><span style=\"box-sizing: border-box; outline: none !important; font-weight: 400;\">2024 - 2025 academic year spring semester&nbsp;</span><b style=\"box-sizing: border-box; font-weight: 700; outline: none !important;\">final</b> exam dates are in the link below.</p><p style='box-sizing: border-box; margin: 0px 0px 10px; outline: none !important; font-family: \"Open Sans\", sans-serif; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; white-space: normal; text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial; font-size: 14px; text-align: justify;'><span class=\"rangySelectionBoundary\" id=\"selectionBoundary_[kaldırıldı]_16231881877146803\" style=\"line-height: 0; display: none;\">﻿</span></p><p style='box-sizing: border-box; margin: 0px 0px 10px; outline: none !important; font-family: \"Open Sans\", sans-serif; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; white-space: normal; text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial; font-size: 14px; text-align: justify;'><span class=\"rangySelectionBoundary\" id=\"selectionBoundary_[kaldırıldı]_014826638314026974\" style=\"line-height: 0; display: none;\">﻿</span></p><p style='box-sizing: border-box; margin: 0px 0px 10px; outline: none !important; font-family: \"Open Sans\", sans-serif; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; white-space: normal; text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial; font-size: 14px; text-align: justify;'><a href=\"https://cdn.istanbul.edu.tr/FileHandler2.ashx?f=2025_spring_final_schedule-(1).pdf\" rel=\"noopener noreferrer\" target=\"_blank\">Final Exams Dates (<b style=\"box-sizing: border-box; font-weight: 700; outline: none !important;\"><i style=\"box-sizing: border-box; outline: none !important;\"><u style=\"box-sizing: border-box; outline: none !important;\">Regular <span class=\"rangySelectionBoundary\" id=\"selectionBoundary_[kaldırıldı]_5851900080831756\" style=\"line-height: 0; display: none;\">﻿</span>&amp; Irregular</u></i></b>)</a><span class=\"rangySelectionBoundary\" id=\"selectionBoundary_[kaldırıldı]_7034810197218356\" style=\"line-height: 0; display: none;\">﻿</span></p>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             ",
-  "bodyText": "2024 - 2025 academic year spring semester&nbsp; final exam dates are in the link below. ﻿ ﻿ Final Exams Dates ( Regular ﻿ &amp; Irregular ) ﻿",
+  "bodyHtml": "<p style='box-sizing: border-box; margin: 0px 0px 10px; outline: none !important; font-family: \"Open Sans\", sans-serif; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; white-space: normal; text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial; font-size: 14px; text-align: justify;'><span style=\"box-sizing: border-box; outline: none !important; font-weight: 400;\">2024 - 2025 academic year spring semester&nbsp;</span><b style=\"box-sizing: border-box; font-weight: 700; outline: none !important;\">final</b> exam dates are in the link below.</p><p style='box-sizing: border-box; margin: 0px 0px 10px; outline: none !important; font-family: \"Open Sans\", sans-serif; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; white-space: normal; text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial; font-size: 14px; text-align: justify;'></p><p style='box-sizing: border-box; margin: 0px 0px 10px; outline: none !important; font-family: \"Open Sans\", sans-serif; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; white-space: normal; text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial; font-size: 14px; text-align: justify;'></p><p style='box-sizing: border-box; margin: 0px 0px 10px; outline: none !important; font-family: \"Open Sans\", sans-serif; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; white-space: normal; text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial; font-size: 14px; text-align: justify;'><a href=\"https://cdn.istanbul.edu.tr/FileHandler2.ashx?f=2025_spring_final_schedule-(1).pdf\" rel=\"noopener noreferrer\" target=\"_blank\">Final Exams Dates (<b style=\"box-sizing: border-box; font-weight: 700; outline: none !important;\"><i style=\"box-sizing: border-box; outline: none !important;\"><u style=\"box-sizing: border-box; outline: none !important;\">Regular &amp; Irregular</u></i></b>)</a></p>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             ",
+  "bodyText": "2024 - 2025 academic year spring semester&nbsp; final exam dates are in the link below. Final Exams Dates ( Regular &amp; Irregular )",
   "links": [
    "https://cdn.istanbul.edu.tr/FileHandler2.ashx?f=2025_spring_final_schedule-(1).pdf"
   ],
@@ -744,8 +744,28 @@
   "author": "",
   "tags": "",
   "route": "2024-2025-academic-year-spring-semester-final-exams-begin-430079005200670059006A0048003400710074007A0039007900700046006200610041004F003200370077003200",
-  "piiRemoved": 4,
+  "piiRemoved": 0,
   "source": "public-api"
+ },
+ {
+  "lang": "en",
+  "type": "ogrenci-duyuru",
+  "cmsId": "59004C007600…",
+  "title": "Internship Information Meeting Announcement",
+  "url": "",
+  "date": "2025-05-24",
+  "status": "unpublished",
+  "coverImageUrl": "",
+  "galleryImageUrls": [],
+  "bodyHtml": null,
+  "bodyText": "",
+  "links": [],
+  "sliderLinkTarget": "",
+  "order": null,
+  "category": "3",
+  "bodyHtmlLenChecksum": "1027:19750",
+  "piiRemoved": 0,
+  "source": "cms-list+form (gövde panelden aktarılmadı)"
  },
  {
   "lang": "en",
@@ -864,6 +884,26 @@
  {
   "lang": "en",
   "type": "ogrenci-duyuru",
+  "cmsId": "670069007500…",
+  "title": "Our Erasmus+ Agreements",
+  "url": "",
+  "date": "2025-01-31",
+  "status": "unpublished",
+  "coverImageUrl": "",
+  "galleryImageUrls": [],
+  "bodyHtml": null,
+  "bodyText": "",
+  "links": [],
+  "sliderLinkTarget": "",
+  "order": null,
+  "category": "3",
+  "bodyHtmlLenChecksum": "723:62799",
+  "piiRemoved": 0,
+  "source": "cms-list+form (gövde panelden aktarılmadı)"
+ },
+ {
+  "lang": "en",
+  "type": "ogrenci-duyuru",
   "cmsId": "6F00330032005A006B0061002D005A004A005500540039007900700046006200610041004F003200370077003200",
   "title": "Join Our Competition Teams!",
   "url": "https://bilgisayar.istanbul.edu.tr/en/ogrenci-duyuru/join-our-competition-teams-6F00330032005A006B0061002D005A004A005500540039007900700046006200610041004F003200370077003200",
@@ -873,8 +913,8 @@
   "galleryImageUrls": [
    "https://cdn.istanbul.edu.tr/FileHandler.ashx?f=2NjB21lm6kmmelt1ltXC9Q"
   ],
-  "bodyHtml": "<p>We are forming teams to participate in various competitions, including Teknofest! If you would like to be part of this exciting journey, please contact us using the information below:</p><p><a href=\"https://profil.istanbul.edu.tr/en/p/fonayk\" rel=\"noopener noreferrer\" target=\"_blank\">Assoc. Prof. Dr. FATMA &Ouml;NAY KO&Ccedil;OĞLU<br></a>[kaldırıldı]<br><a href=\"https://profil.istanbul.edu.tr/en/p/muhammet.dinc\" rel=\"noopener noreferrer\" target=\"_blank\">Res. Assist. MUHAMMET FATİH DİN&Ccedil;<br></a>[kaldırıldı]</p><p>Our teams are ready to create innovative projects, showcase their creativity, and proudly represent our university! Don&rsquo;t miss this opportunity&mdash;reach out to us today!</p>",
-  "bodyText": "We are forming teams to participate in various competitions, including Teknofest! If you would like to be part of this exciting journey, please contact us using the information below: Assoc. Prof. Dr. FATMA &Ouml;NAY KO&Ccedil;OĞLU [kaldırıldı] Res. Assist. MUHAMMET FATİH DİN&Ccedil; [kaldırıldı] Our teams are ready to create innovative projects, showcase their creativity, and proudly represent our university! Don&rsquo;t miss this opportunity&mdash;reach out to us today!",
+  "bodyHtml": "<p>We are forming teams to participate in various competitions, including Teknofest! If you would like to be part of this exciting journey, please contact us using the information below:</p><p><a href=\"https://profil.istanbul.edu.tr/en/p/fonayk\" rel=\"noopener noreferrer\" target=\"_blank\">Assoc. Prof. Dr. FATMA &Ouml;NAY KO&Ccedil;OĞLU<br></a>fonayk@istanbul.edu.tr<br><a href=\"https://profil.istanbul.edu.tr/en/p/muhammet.dinc\" rel=\"noopener noreferrer\" target=\"_blank\">Res. Assist. MUHAMMET FATİH DİN&Ccedil;<br></a>muhammet.dinc@istanbul.edu.tr</p><p>Our teams are ready to create innovative projects, showcase their creativity, and proudly represent our university! Don&rsquo;t miss this opportunity&mdash;reach out to us today!</p>",
+  "bodyText": "We are forming teams to participate in various competitions, including Teknofest! If you would like to be part of this exciting journey, please contact us using the information below: Assoc. Prof. Dr. FATMA &Ouml;NAY KO&Ccedil;OĞLU fonayk@istanbul.edu.tr Res. Assist. MUHAMMET FATİH DİN&Ccedil; muhammet.dinc@istanbul.edu.tr Our teams are ready to create innovative projects, showcase their creativity, and proudly represent our university! Don&rsquo;t miss this opportunity&mdash;reach out to us today!",
   "links": [
    "https://profil.istanbul.edu.tr/en/p/fonayk",
    "https://profil.istanbul.edu.tr/en/p/muhammet.dinc"
@@ -885,7 +925,7 @@
   "author": "",
   "tags": "",
   "route": "join-our-competition-teams-6F00330032005A006B0061002D005A004A005500540039007900700046006200610041004F003200370077003200",
-  "piiRemoved": 2,
+  "piiRemoved": 0,
   "source": "public-api"
  },
  {
@@ -997,8 +1037,8 @@
   "galleryImageUrls": [
    "https://cdn.istanbul.edu.tr/FileHandler.ashx?f=d-1YBnyK1EOJV3WezakPWg"
   ],
-  "bodyHtml": "<p><span class=\"rangySelectionBoundary\" id=\"selectionBoundary_[kaldırıldı]_591504129366889\" style=\"line-height: 0; display: none;\">﻿</span><img class=\"img-responsive display-initial fr-fic fr-dii\" src=\"https://cdn.istanbul.edu.tr/FileHandler.ashx?f=d-1YBnyK1EOJV3WezakPWg\" style=\"width: 253px;\"></p><p><br></p><p>The Faculty of Computer and Information Technologies at Istanbul University is pleased to contribute to the <strong>2025 Energy Efficiency Week</strong> events. These activities, aimed at raising awareness about energy efficiency and environmental consciousness, are organized annually by the Ministry of Energy and Natural Resources during the second week of January.</p><p><br></p>",
-  "bodyText": "﻿ The Faculty of Computer and Information Technologies at Istanbul University is pleased to contribute to the 2025 Energy Efficiency Week events. These activities, aimed at raising awareness about energy efficiency and environmental consciousness, are organized annually by the Ministry of Energy and Natural Resources during the second week of January.",
+  "bodyHtml": "<p><img class=\"img-responsive display-initial fr-fic fr-dii\" src=\"https://cdn.istanbul.edu.tr/FileHandler.ashx?f=d-1YBnyK1EOJV3WezakPWg\" style=\"width: 253px;\"></p><p><br></p><p>The Faculty of Computer and Information Technologies at Istanbul University is pleased to contribute to the <strong>2025 Energy Efficiency Week</strong> events. These activities, aimed at raising awareness about energy efficiency and environmental consciousness, are organized annually by the Ministry of Energy and Natural Resources during the second week of January.</p><p><br></p>",
+  "bodyText": "The Faculty of Computer and Information Technologies at Istanbul University is pleased to contribute to the 2025 Energy Efficiency Week events. These activities, aimed at raising awareness about energy efficiency and environmental consciousness, are organized annually by the Ministry of Energy and Natural Resources during the second week of January.",
   "links": [],
   "sliderLinkTarget": "",
   "order": null,
@@ -1006,7 +1046,7 @@
   "author": "",
   "tags": "",
   "route": "2025-energy-efficiency-week-events-january-6-10-2025-740070006E005A00620059007A00520044003700480039007900700046006200610041004F003200370077003200",
-  "piiRemoved": 1,
+  "piiRemoved": 0,
   "source": "public-api"
  },
  {
@@ -1043,8 +1083,8 @@
   "status": "published",
   "coverImageUrl": "",
   "galleryImageUrls": [],
-  "bodyHtml": "<p style=\"box-sizing: border-box; margin: 0px 0px 10px; outline: none !important; font-family: &quot;Open Sans&quot;, sans-serif; font-size: 12px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; white-space: normal; text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial;\">2024 - 2025 academic year fall semester midterm exam dates are in the link below:​<br></p><p><br></p><p><a class=\"\" target=\"_blank\" href=\"https://cdn.istanbul.edu.tr/FileHandler2.ashx?f=2024_fall_midterm_schedule_638671168310195860.xlsx\">2024_fall_midterm_schedule_638671168310195860.xlsx</a><span id=\"selectionBoundary_[kaldırıldı]_3847056472650501\" class=\"rangySelectionBoundary\" style=\"line-height: 0; display: none;\">﻿</span>​</p>",
-  "bodyText": "2024 - 2025 academic year fall semester midterm exam dates are in the link below:​ 2024_fall_midterm_schedule_638671168310195860.xlsx ﻿ ​",
+  "bodyHtml": "<p style=\"box-sizing: border-box; margin: 0px 0px 10px; outline: none !important; font-family: &quot;Open Sans&quot;, sans-serif; font-size: 12px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; white-space: normal; text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial;\">2024 - 2025 academic year fall semester midterm exam dates are in the link below:​<br></p><p><br></p><p><a class=\"\" target=\"_blank\" href=\"https://cdn.istanbul.edu.tr/FileHandler2.ashx?f=2024_fall_midterm_schedule_638671168310195860.xlsx\">2024_fall_midterm_schedule_638671168310195860.xlsx</a>​</p>",
+  "bodyText": "2024 - 2025 academic year fall semester midterm exam dates are in the link below:​ 2024_fall_midterm_schedule_638671168310195860.xlsx ​",
   "links": [
    "https://cdn.istanbul.edu.tr/FileHandler2.ashx?f=2024_fall_midterm_schedule_638671168310195860.xlsx"
   ],
@@ -1054,7 +1094,7 @@
   "author": "",
   "tags": "",
   "route": "2024-2025-academic-year-fall-semester-midterm-exams-begin-7400550045007A007100730079006D0058004E00370039007900700046006200610041004F003200370077003200",
-  "piiRemoved": 1,
+  "piiRemoved": 0,
   "source": "public-api"
  },
  {

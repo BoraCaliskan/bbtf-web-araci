@@ -78,7 +78,8 @@ Ayrı bir sekmede (javascript_tool) haber adresini aç ve kontrol et:
 - `.news-title` metni başlıkla aynı mı (site başlığı yeniden büyütür, kelime kelime karşılaştır)
 - afiş `img[src*="<img id>"]` var mı, galeri görselleri (`src` içinde her galeri kimliği) var mı
 - gövdedeki `a.btn` düğmeleri (varsa) ve yazı rengi (`getComputedStyle(a).color` beyaz olmamalı)
-- ana sayfada `a.hero-slide` listesinde manşet var mı ve `href` haber adresine gidiyor mu
+- ana sayfada manşet var mı ve haber adresine gidiyor mu. Fakülte sitesinde (yeni şablon) `a.hero-slide` listesi, test sitesinde (eski şablon, bbtfevents) `div.slider1 img.sliderImage` ve `div.slider-link-container a`.
+- Şablondan bağımsız kontrol: `api/webclient/f_getSlider?siteKey=<site>&Page=1&PageSize=10` yanıtında manşetin `Img` ve `Link` değerleri (siteKey: fakülte TR `86B65F1611324658A5E6CDFB94B1F955`, EN `B9495DCDB814449190BAAB2B7B8AC5C0`, test `C4E5471A0E2B4040BFCC8C388F01FBC9`).
 Sonuçları kısa tabloyla raporla. Ekran görüntülerini `evidence/` altına kaydet.
 
 ### 6. Koşu kaydı

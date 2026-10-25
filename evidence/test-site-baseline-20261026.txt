@@ -1,0 +1,8 @@
+# bbtfevents (TÜBİTAK 2237-A) CMS liste okuması, başlangıç, 26 Ekim 2026 (yayın denemesinden önce)
+# modül|EID ilk 12 hex|tarih|durum|başlık
+event|78005F005F00|02/02/2026|Y|Akıllı Gelecek: Yapay Zekâ ve Sürdürülebilirlik Eğitimi
+slider|740057006200|27/06/2025|Y|Akıllı Gelecek: Yapay Zekâ ve Sürdürülebilirlik Eğitimi
+notice1|52004B005000|28/01/2026|Y|“Akıllı Gelecek: Yapay Zekâ ve Sürdürülebilirlik Eğitimi” Başlıyor! (TÜBİTAK 2237-A)
+notice1|710057005300|17/01/2026|Y|Katılımcı Listesi Yayınlandı
+notice1|530073003200|05/01/2026|Y|Akıllı Gelecek: Yapay Zekâ ve Sürdürülebilirlik Eğitimi Başvuru Süresi Uzatıldı
+# news: 0 kayıt, notice kat2 ve kat3: 0 kayıt

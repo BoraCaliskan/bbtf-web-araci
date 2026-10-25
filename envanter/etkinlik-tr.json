@@ -975,8 +975,8 @@
   "status": "published",
   "coverImageUrl": "https://cdn.istanbul.edu.tr/FileHandler.ashx?f=hQnciw5Rp0KiDhDjVCqfig",
   "galleryImageUrls": [],
-  "bodyHtml": "<p>Fak&uuml;ltemiz Dekanı Prof. Dr. Şadi Evren Şeker, &quot;Sağlıkta Yapay Zeka&quot; konulu bir konferans verecektir. Konferansa t&uuml;m akademik ve idari personelimiz davetlidir.</p><p>Tarih: 3 Ocak 2025, Cuma<br>Saat: 11.00 &ndash; 12.15<br>Yer: İ&Uuml; Onkoloji Enstit&uuml;s&uuml; Nijad Bilge Konferans Salonu</p><p><span class=\"rangySelectionBoundary\" id=\"selectionBoundary_[kaldırıldı]_6101268117942593\" style=\"line-height: 0; display: none;\">﻿</span><img class=\"img-responsive display-initial fr-fic fr-dii\" src=\"https://cdn.istanbul.edu.tr/FileHandler.ashx?f=O_w7cvRtjkiCHAmmhaPS6w\"></p>",
-  "bodyText": "Fak&uuml;ltemiz Dekanı Prof. Dr. Şadi Evren Şeker, &quot;Sağlıkta Yapay Zeka&quot; konulu bir konferans verecektir. Konferansa t&uuml;m akademik ve idari personelimiz davetlidir. Tarih: 3 Ocak 2025, Cuma Saat: 11.00 &ndash; 12.15 Yer: İ&Uuml; Onkoloji Enstit&uuml;s&uuml; Nijad Bilge Konferans Salonu ﻿",
+  "bodyHtml": "<p>Fak&uuml;ltemiz Dekanı Prof. Dr. Şadi Evren Şeker, &quot;Sağlıkta Yapay Zeka&quot; konulu bir konferans verecektir. Konferansa t&uuml;m akademik ve idari personelimiz davetlidir.</p><p>Tarih: 3 Ocak 2025, Cuma<br>Saat: 11.00 &ndash; 12.15<br>Yer: İ&Uuml; Onkoloji Enstit&uuml;s&uuml; Nijad Bilge Konferans Salonu</p><p><img class=\"img-responsive display-initial fr-fic fr-dii\" src=\"https://cdn.istanbul.edu.tr/FileHandler.ashx?f=O_w7cvRtjkiCHAmmhaPS6w\"></p>",
+  "bodyText": "Fak&uuml;ltemiz Dekanı Prof. Dr. Şadi Evren Şeker, &quot;Sağlıkta Yapay Zeka&quot; konulu bir konferans verecektir. Konferansa t&uuml;m akademik ve idari personelimiz davetlidir. Tarih: 3 Ocak 2025, Cuma Saat: 11.00 &ndash; 12.15 Yer: İ&Uuml; Onkoloji Enstit&uuml;s&uuml; Nijad Bilge Konferans Salonu",
   "links": [],
   "sliderLinkTarget": "",
   "order": null,
@@ -984,7 +984,7 @@
   "author": "",
   "tags": "",
   "route": "konferans-saglikta-yapay-zeka-6C0076004F0032003700340044006F005A006900440039007900700046006200610041004F003200370077003200",
-  "piiRemoved": 1,
+  "piiRemoved": 0,
   "source": "public-api"
  },
  {

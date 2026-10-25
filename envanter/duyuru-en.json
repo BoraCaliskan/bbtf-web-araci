@@ -107,10 +107,10 @@
   "status": "published",
   "coverImageUrl": "",
   "galleryImageUrls": [],
-  "bodyHtml": "<p>The Faculty of Computer and Information Technologies invites open collaboration proposals across all disciplines and levels. We welcome requests for introductory meetings aimed at evaluating your projects in the field of informatics. Please direct your inquiries to the faculty email address: <a href=\"mailto:[kaldırıldı]\">[kaldırıldı]</a>.</p><p>&nbsp;</p>",
-  "bodyText": "The Faculty of Computer and Information Technologies invites open collaboration proposals across all disciplines and levels. We welcome requests for introductory meetings aimed at evaluating your projects in the field of informatics. Please direct your inquiries to the faculty email address: [kaldırıldı] . &nbsp;",
+  "bodyHtml": "<p>The Faculty of Computer and Information Technologies invites open collaboration proposals across all disciplines and levels. We welcome requests for introductory meetings aimed at evaluating your projects in the field of informatics. Please direct your inquiries to the faculty email address: <a href=\"mailto:bilgisayar@istanbul.edu.tr\">bilgisayar@istanbul.edu.tr</a>.</p><p>&nbsp;</p>",
+  "bodyText": "The Faculty of Computer and Information Technologies invites open collaboration proposals across all disciplines and levels. We welcome requests for introductory meetings aimed at evaluating your projects in the field of informatics. Please direct your inquiries to the faculty email address: bilgisayar@istanbul.edu.tr . &nbsp;",
   "links": [
-   "mailto:[kaldırıldı]"
+   "mailto:bilgisayar@istanbul.edu.tr"
   ],
   "sliderLinkTarget": "",
   "order": null,
@@ -118,8 +118,28 @@
   "author": "",
   "tags": "",
   "route": "call-for-corporate-collaboration-580052007500690075005F003300490035007100580039007900700046006200610041004F003200370077003200",
-  "piiRemoved": 2,
+  "piiRemoved": 0,
   "source": "public-api"
+ },
+ {
+  "lang": "en",
+  "type": "duyuru",
+  "cmsId": "6D0045005400…",
+  "title": "10th International Conference on Computer Science and Engineering (UBMK 2025) - Istanbul",
+  "url": "",
+  "date": "2025-02-13",
+  "status": "unpublished",
+  "coverImageUrl": "",
+  "galleryImageUrls": [],
+  "bodyHtml": null,
+  "bodyText": "",
+  "links": [],
+  "sliderLinkTarget": "",
+  "order": null,
+  "category": "1",
+  "bodyHtmlLenChecksum": "1159:39807",
+  "piiRemoved": 0,
+  "source": "cms-list+form (gövde panelden aktarılmadı)"
  },
  {
   "lang": "en",
@@ -346,6 +366,28 @@
  {
   "lang": "en",
   "type": "duyuru",
+  "cmsId": "670072007200…",
+  "title": "Student Representative Election",
+  "url": "",
+  "date": "2023-11-13",
+  "status": "unpublished",
+  "coverImageUrl": "",
+  "galleryImageUrls": [
+   "https://cdn.istanbul.edu.tr/FileHandler.ashx?f=9Y1GgglMikmsS47j8XCANQ"
+  ],
+  "bodyHtml": null,
+  "bodyText": "",
+  "links": [],
+  "sliderLinkTarget": "",
+  "order": null,
+  "category": "1",
+  "bodyHtmlLenChecksum": "4458:6874",
+  "piiRemoved": 0,
+  "source": "cms-list+form (gövde panelden aktarılmadı)"
+ },
+ {
+  "lang": "en",
+  "type": "duyuru",
   "cmsId": "62005600660070007500450079006E005A004800760039007900700046006200610041004F003200370077003200",
   "title": "Entertech Academy 'Bootcamp Program' Begins!",
   "url": "https://bilgisayar.istanbul.edu.tr/en/duyuru/entertech-academy-bootcamp-program-begins-62005600660070007500450079006E005A004800760039007900700046006200610041004F003200370077003200",
@@ -404,10 +446,10 @@
   "status": "published",
   "coverImageUrl": "",
   "galleryImageUrls": [],
-  "bodyHtml": "<p>For the Department of Computer Engineering, we invite academics interested in joint project development, collaboration, and academic activities. Priority will be given to those whose bachelor&rsquo;s or doctoral degree is in Computer Engineering and who are proficient in teaching in English. Interested academics may contact us via the faculty e-mail (<a href=\"mailto:[kaldırıldı]\">[kaldırıldı]</a>).</p><p>Our R&amp;D coordinator is Dr. Lecturer Member Abbas Memiş. Please direct your collaboration proposals, project ideas, and academic activity inquiries to him directly.</p>",
-  "bodyText": "For the Department of Computer Engineering, we invite academics interested in joint project development, collaboration, and academic activities. Priority will be given to those whose bachelor&rsquo;s or doctoral degree is in Computer Engineering and who are proficient in teaching in English. Interested academics may contact us via the faculty e-mail ( [kaldırıldı] ). Our R&amp;D coordinator is Dr. Lecturer Member Abbas Memiş. Please direct your collaboration proposals, project ideas, and academic activity inquiries to him directly.",
+  "bodyHtml": "<p>For the Department of Computer Engineering, we invite academics interested in joint project development, collaboration, and academic activities. Priority will be given to those whose bachelor&rsquo;s or doctoral degree is in Computer Engineering and who are proficient in teaching in English. Interested academics may contact us via the faculty e-mail (<a href=\"mailto:bilgisayar@istanbul.edu.tr\">bilgisayar@istanbul.edu.tr</a>).</p><p>Our R&amp;D coordinator is Dr. Lecturer Member Abbas Memiş. Please direct your collaboration proposals, project ideas, and academic activity inquiries to him directly.</p>",
+  "bodyText": "For the Department of Computer Engineering, we invite academics interested in joint project development, collaboration, and academic activities. Priority will be given to those whose bachelor&rsquo;s or doctoral degree is in Computer Engineering and who are proficient in teaching in English. Interested academics may contact us via the faculty e-mail ( bilgisayar@istanbul.edu.tr ). Our R&amp;D coordinator is Dr. Lecturer Member Abbas Memiş. Please direct your collaboration proposals, project ideas, and academic activity inquiries to him directly.",
   "links": [
-   "mailto:[kaldırıldı]"
+   "mailto:bilgisayar@istanbul.edu.tr"
   ],
   "sliderLinkTarget": "",
   "order": null,
@@ -415,7 +457,7 @@
   "author": "",
   "tags": "",
   "route": "open-academic-collaboration-call-51004E0039006600500061007500420047005900440039007900700046006200610041004F003200370077003200",
-  "piiRemoved": 2,
+  "piiRemoved": 0,
   "source": "public-api"
  }
 ]

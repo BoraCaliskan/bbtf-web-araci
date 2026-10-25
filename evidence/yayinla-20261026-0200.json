@@ -1,0 +1,26 @@
+{
+ "runId": "20261026-0200",
+ "site": "Bilgisayar ve Bilişim Fakültesi - TÜBİTAK 2237-A Bilimsel Eğitim Etkinliği.tr (test sitesi, bbtfevents.istanbul.edu.tr)",
+ "package": "aa-akademi-kocoglu-paketi (23 Ekim 2026 paketi, TR bölümü)",
+ "date": "22/10/2026",
+ "uploads": {
+  "poster": "nf8TfZUx-Eqh6N1TJgcAqg",
+  "gallery": ["Xc9d6pwadk-Satz3Oz8Jhg", "LOhkutB-0UmOSIE-PMx-6Q", "fWcXxO82FEGt0wixzy-AHw"],
+  "note": "Dört görsel de Kırpma modunda, alt metinleriyle yüklendi. finishUpload her birinde ilk denemede döndü."
+ },
+ "created": [
+  {"m": "news", "eid12": "720050007600", "title": "Doç. Dr. Fatma Önay Koçoğlu, AA Akademi'nin Veri Gazeteciliği için Yapay Zekâ Eğitim Modülünde Ders Verdi", "published": true,
+   "publicUrl": "https://bbtfevents.istanbul.edu.tr/tr/haber/doc-dr-fatma-onay-kocoglu-aa-akademinin-veri-gazeteciligi-icin-yapay-zeka-egitim-<EID>"},
+  {"m": "slider", "eid12": "780037006A00", "title": "aynı", "published": true, "link": "haber adresi"}
+ ],
+ "verification": {
+  "newsPage": {"title": true, "gallery": [true, true, true], "buttons": ["Instagram", "X", "NSosyal"], "congratulation": true,
+   "poster": "sayfada img src ile bulunamadı, eski şablon kapak görselini farklı basıyor (aşağıdaki kontrol)", "date": "eski şablon tarihi metinde göstermiyor"},
+  "homepage": {"slider1FirstImage": "TEST-POSTER", "sliderLinkContainer": "/tr/mansetler/ (eski şablon manşet bağlantısını Tüm Manşetler sayfasına verir)"},
+  "api": {"f_getSlider": "2 kayıt, ilki test manşeti: Img = poster, Link = haber adresi, Date 2026-10-22", "f_getNews": "1 kayıt, test haberi"}
+ },
+ "issuesFixed": [
+  "Boş listede A.list NOT_READY atıyordu (test sitesinde haber yok). Kütüphaneye boş tablo için [] dönen sarmalayıcı eklendi."
+ ],
+ "undo": null
+}

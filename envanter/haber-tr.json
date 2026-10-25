@@ -844,8 +844,8 @@
   "galleryImageUrls": [
    "https://cdn.istanbul.edu.tr/FileHandler.ashx?f=TIyaeLfgeEq7tf5oAp4YiA"
   ],
-  "bodyHtml": "<p><span class=\"rangySelectionBoundary\" id=\"selectionBoundary_[kaldırıldı]_7484712225620671\" style=\"line-height: 0; display: none;\">﻿</span><span class=\"rangySelectionBoundary\" id=\"selectionBoundary_",
-  "bodyText": "﻿ <span class=\"rangySelectionBoundary\" id=\"selectionBoundary_",
+  "bodyHtml": "<p><span class=\"rangySelectionBoundary\" id=\"selectionBoundary_",
+  "bodyText": "<span class=\"rangySelectionBoundary\" id=\"selectionBoundary_",
   "links": [],
   "sliderLinkTarget": "",
   "order": null,
@@ -853,7 +853,7 @@
   "author": "",
   "tags": "",
   "route": "fakulte-tanitim-brosurumuz-7300460037003600540057004D00750052003700370039007900700046006200610041004F003200370077003200",
-  "piiRemoved": 1,
+  "piiRemoved": 0,
   "source": "public-api"
  },
  {

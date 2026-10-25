@@ -1,0 +1,28 @@
+# CMS EN okuması, 26 Ekim 2026 (panelden sayfa içi yardımcılarla, yalnızca okuma).
+# Liste sayımları: news 74 (74 yayında), event 61 (61), slider 148 (127), notice kat1 19 (17), notice kat3 taramayla 51 ayrı kayıt (halka açık 59, liste eksik), kat2 boş.
+# Sütunlar: modül|EID ilk 12 hex (6-6)|tarih|durum (Y/N)|başlık|img|link|galeri|htmlUzunluk:toplam|kategori
+slider|45007A-006400|15/10/2026|N|Part-Time Student (KZÖ) Interviews Postponed|wLGQWIODPE-2G59LaHpLhw|https://bilgisayar.istanbul.edu.tr/en/duyuru/part-time-student-kzo-interviews-postponed-…|wLGQWIODPE-2G59LaHpLhw,UFAaJQ3xNEaTQtVB3vts9w|0:0|
+slider|610072-003500|24/09/2026|N|2026-2027 Academic Year Orientation Days|FJDHzJgw_UCTXj3ac8PfNQ|https://bilgisayar.istanbul.edu.tr/en/etkinlik/2026-2027-academic-year-orientation-days-…|FJDHzJgw_UCTXj3ac8PfNQ|0:0|
+slider|330035-004800|24/10/2025|N|29 October Republic Day|07GC-bsNXkaKsj_rpDO30g||07GC-bsNXkaKsj_rpDO30g|588:54655|
+slider|760043-005900|04/06/2025|N|📢 Happy Eid Al-Adha! 🎉|8xd-Aa5XPE-XYUArUi2X4g||8xd-Aa5XPE-XYUArUi2X4g|392:24549|
+slider|4E0036-005900|21/05/2025|N|EXPERT DAYS – Special Event Series on BI and Reporting Tools Talking About the Intersection of BI + AI: Decision Architecture and Algorithms!|NZBEVLa750y0lfP3UO-Yqg||NZBEVLa750y0lfP3UO-Yqg|1404:65261|
+slider|630078-005400|16/05/2025|N|Happy Commemoration of Atatürk, Youth and Sports Day – May 19|0RBREy1XMEOt_H9NkeVbJA||0RBREy1XMEOt_H9NkeVbJA|493:45276|
+slider|330077-004E00|01/05/2025|N|Happy International Workers' Day – May 1|AVfoDIT9RkagwAJIkFtd7Q||AVfoDIT9RkagwAJIkFtd7Q|480:44410|
+slider|2D0058-005300|23/04/2025|N|Happy National Sovereignty and Children’s Day – April 23|Z22zHwXIREiarFWpoDjy1A||Z22zHwXIREiarFWpoDjy1A|565:51699|
+slider|460059-006100|28/03/2025|N|📢 Happy Ramadan Feast! 🎉|ASnxIySgOEWbiQaEvnFMtA||ASnxIySgOEWbiQaEvnFMtA|405:25731|
+slider|2D0061-005F00|07/03/2025|N|Happy International Women's Day!|flt0wleqxESs1etZuRSL6w|||268:24866|
+slider|52004D-004800|07/12/2024|N|Information Talks II 3 [postponed]|-5uT78EVw0y2wZ6o09ZBHA|||1204:43815|
+slider|350059-006B00|24/11/2024|N|Happy Teachers' Day – November 24!|D4ccL7p9oUetpoTZ6eG4uA|||301:28438|
+slider|320032-006A00|08/11/2024|N|November 10th Commemoration of Atatürk and Atatürk Week|Ja1xri9LGEOlzoWTjP4Njg|||735:3202|
+slider|450049-003300|23/10/2024|N|29 October Republic Day|I2LEhkObQkeZxEDAuoAZow|||588:54655|
+slider|66004A-003300|28/08/2024|N|Happy August 30th Victory Day|YzDrm-CusUCd_9CaaxGXYg|||603:55349|
+slider|390072-006800|29/05/2024|N|Happy Counquest of Istanbul!|ofP7DJ-cukOO1n4USyPbQA|||0:0|
+slider|650056-003800|23/04/2024|N|April 23|vEh1TS0ku0KYcoOjKCBwYw|||0:0|
+slider|430034-004A00|10/04/2024|N|Happy Holidays|XWNm7fJ8n0WJTrflNBTb6g|||0:0|
+slider|340044-006400|18/03/2024|N|18 Mart Çanakkale Zaferi Kutlu Olsun|JNnZc4EoHUuyJvuq138cqw|||2738:56688|
+slider|6B0075-007600|13/11/2023|N|Student Representative Election|9Y1GgglMikmsS47j8XCANQ|||13751:8870|
+slider|680034-004800|29/10/2023|N|29 October Celebration of the 100th Anniversary of our Republic|5cruSTKaxk2QQJN8th-RFw|||631:58614|
+notice1|6D0045-005400|13/02/2025|N|10th International Conference on Computer Science and Engineering (UBMK 2025) - Istanbul||||1159:39807|1
+notice1|670072-007200|13/11/2023|N|Student Representative Election|||9Y1GgglMikmsS47j8XCANQ|4458:6874|1
+notice3|59004C-007600|24/05/2025|N|Internship Information Meeting Announcement||||1027:19750|3
+notice3|670069-007500|31/01/2025|N|Our Erasmus+ Agreements||||723:62799|3

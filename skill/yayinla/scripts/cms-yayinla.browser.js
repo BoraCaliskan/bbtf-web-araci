@@ -9,6 +9,11 @@
   }
   const A = window.__A;
   const Y = window.__Y = window.__Y || {};
+  // Boş liste (ör. test sitesinde hiç haber yok): A.list satır bekleyip NOT_READY atar; tablo yüklenmiş ve boşsa [] dön.
+  if (!A.__listOrig) {
+    A.__listOrig = A.list;
+    A.list = async (...a) => { try { return await A.__listOrig(...a); } catch (e) { const t = document.querySelectorAll('.content-wrapper table')[1]; if (/NOT_READY/.test(e.message) && t && !t.querySelector('tbody tr') && new RegExp('#/app/' + a[0] + '/').test(location.hash)) return []; throw e; } };
+  }
   const SITES = { // site seçicisindeki metnin sonu -> halka açık taban adres
     'Bilgisayar ve Bilişim Teknolojileri Fakültesi.tr': 'https://bilgisayar.istanbul.edu.tr/tr',
     'Bilgisayar ve Bilişim Teknolojileri Fakültesi.en': 'https://bilgisayar.istanbul.edu.tr/en',
