@@ -22,5 +22,10 @@
  "issuesFixed": [
   "Boş listede A.list NOT_READY atıyordu (test sitesinde haber yok). Kütüphaneye boş tablo için [] dönen sarmalayıcı eklendi."
  ],
- "undo": null
+ "undo": {
+  "command": "__Y.undo('20261026-0200')",
+  "result": ["slider 780037: yayından kaldırıldı, silindi (delNews XHR 200 success, satır listeden düştü, yeniden aramada yok)", "news 720050: yayından kaldırıldı, silindi (delNews XHR 200 success)"],
+  "note": "İki silme toplam 45 saniyelik javascript_tool sınırını aştı, çağrı zaman aşımı verdi ama sayfa içinde tamamlandı. __Y.status() sonradan ikisini de 'silindi' gösterdi. Skill'e not düşüldü: geri almayı kayıt başına ayrı çağırın ya da sonucu sonradan __Y.status() ile okuyun.",
+  "uploadedImages": "Dört görsel test sitesinin Yüklediklerim kütüphanesinde kaldı (CMS görsel silme aracı kullanılmadı, kütüphane kayıt listesini etkilemez)."
+ }
 }

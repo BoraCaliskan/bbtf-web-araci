@@ -94,6 +94,9 @@ Sonuçları kısa tabloyla raporla. Ekran görüntülerini `evidence/` altına k
 Geri alma yalnızca bu koşunun oluşturduğu kayıtları siler, başka hiçbir kaydı silmez.
 
 ## Bilinen sınırlar
+- javascript_tool tek çağrıda 45 saniye bekler. `createNews` (kaydet + liste doğrulaması) sınırın içinde kalır, ama `undo` iki kayıtta sınırı aştı. Geri almayı kayıt başına `__Y.deleteOne(rec)` ile ayrı çağırın ya da `undo` zaman aşımı verirse 20 s sonra `__Y.status()` ile sonucu okuyun (işlem sayfa içinde sürer).
+- Eski şablonlu sitelerde (bbtfevents) haber sayfası kapak görselini basmaz ve metinde tarih yerine oluşturma günü görünür, manşet bağlantısı "Tüm Manşetler" sayfasına gider. Doğrulamayı API ile yapın.
+- Yüklenen görseller geri almada silinmez, sitenin görsel kütüphanesinde kalır.
 - Görsel dosyası seçimi tarayıcı aracının `file_upload` adımıyla yapılır, saf JS ile yapılamaz.
 - Yükle düğmesi bazen ilk tıklamada tepki vermez, `finishUpload` 20 s içinde sonuç gelmezse hata verir, tekrar çağrılabilir.
 - Aynı başlık ve tarihte kayıt varsa `AYNI_KAYIT_VAR` ile durur (yineleme koruması).
