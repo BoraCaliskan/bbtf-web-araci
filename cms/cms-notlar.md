@@ -31,7 +31,7 @@ Fakülte sitelerinin yönetildiği CMS'nin içerik modülleri üzerine, 12 Ekim 
 Spot alanı yoktur. Sitedeki kart özeti içeriğin ilk 125 karakterinden türetilir.
 
 ### Duyuru (`notice`)
-Haberle aynı alanlar, artı **Kategori** (`notice.CategoryId`): 1 Duyuru, 2 Tamim Yazıları, 3 Öğrenci Duyuru. Resim zorunlu değildir. Liste sayfasında kategori süzgeci (`select[ng-model="catID"]`) vardır, süzgeçsiz listede eski Öğrenci duyuruları eksik gelebilir, tam sayım için kategori seçerek bakın. Sitede Duyurular kategori 1'i, Öğrenci Duyuruları kategori 3'ü gösterir.
+Haberle aynı alanlar, artı **Kategori** (`notice.CategoryId`, varsayılan 1): 1 Duyuru, 2 Tamim Yazıları, 3 Öğrenci Duyuru. **Resim alanı yoktur** (yalnızca Galeri). Duyuruya bağlı manşet için afiş, manşet formunun Resim alanından yüklenir. Liste sayfasında kategori süzgeci (`select[ng-model="catID"]`) vardır, süzgeçsiz listede eski Öğrenci duyuruları eksik gelebilir, tam sayım için kategori seçerek bakın. Sitede Duyurular kategori 1'i, Öğrenci Duyuruları kategori 3'ü gösterir.
 
 ### Etkinlik (`event`)
 Haberle aynı alanlar. Resim zorunludur. Tarih etkinliğin yapılacağı gündür. Sitedeki takvim yalnızca yüklenmiş kartları işaretler (bkz. bilinen hatalar). Etkinlik başlıkları sitede olduğu gibi gösterilir.

@@ -122,13 +122,17 @@ def main():
             gallery = sorted([p for p in jpgs if '1920x606' not in p.name and '1170x369' not in p.name and not re.search(r'[-_](tr|en)[-_.]', p.name.lower())], key=lambda p: p.name.lower())
         mt = meta[lang]
         alts = dict(mt['alts'])
+        body = read_text(html[0]) if html else ''
+        # Araç çıktısında HTML varlıkları noktalı virgül yerine virgülle bitiyor (&#8594,), sayfada "→," görünür. Düzelt ve uyar.
+        body2, nfix = re.subn(r'&(#\d+|#x[0-9a-fA-F]+|[a-zA-Z]+),', r'&\1;', body)
+        if nfix: plan['warnings'].append(f'{lang}: gövdede {nfix} HTML varlığı virgülle bitiyordu (&#8594,), noktalı virgüle çevrildi')
         if gallery and not alts and lang == 'en' and meta['tr']['alts']:
             alts = dict(meta['tr']['alts']); plan['warnings'].append('en: galeri alt metinleri [EN] satırında yok, [TR] alt metinleri kullanıldı')
         entry = {
             'title': mt['title'], 'spot': mt['spot'],
             'mansetTitle': mt['mansetTitle'] or mt['title'], 'mansetSub': mt['mansetSub'],
             'poster': str(poster[0]) if poster else '', 'posterAlt': mt['posterAlt'] or mt['mansetTitle'] or mt['title'],
-            'html': read_text(html[0]) if html else '', 'htmlFile': str(html[0]) if html else '',
+            'html': body2, 'htmlFile': str(html[0]) if html else '',
             'gallery': [{'file': str(p), 'alt': alts.get(p.name.lower(), '')} for p in gallery],
         }
         if not entry['title']: plan['warnings'].append(f'{lang}: başlık metinler.txt içinde bulunamadı')

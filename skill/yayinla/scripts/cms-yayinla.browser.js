@@ -61,9 +61,20 @@
     const inp = m.querySelector('input[type=file]'); if (inp) inp.setAttribute('data-yayinla', 'file');
     return {mode, fileInput: !!inp};
   };
+  // Pencerede iki dosya girişi var (Yükle sekmesi ve gizli Toplu Yükle). file_upload aracının ref'i bazen gizli olana düşer:
+  // dosya yanlış girişteyse görünür girişe taşı (DataTransfer) ve change olayı gönder.
+  Y.fixFileInput = (m, expectFile) => {
+    const inputs = Array.from(m.querySelectorAll('input[type=file]')); const vis = inputs.find(i => i.offsetParent) || inputs[0];
+    const src = inputs.find(i => i !== vis && i.files && i.files.length && (!expectFile || i.files[0].name === expectFile));
+    if (src && !(vis.files.length && (!expectFile || vis.files[0].name === expectFile))) {
+      const dt = new DataTransfer(); dt.items.add(src.files[0]); vis.files = dt.files; src.value = ''; vis.dispatchEvent(new Event('change', {bubbles: true})); return 'moved';
+    }
+    return 'ok';
+  };
   // file_upload aracı dosyayı seçtikten sonra: alt metni yaz, Yükle'ye bas, yeni görselin kimliğini döndür ve koşuya kaydet.
   Y.finishUpload = async (alt, expectFile) => {
     guard(); const m = modal(); if (!m) throw new Error('PENCERE_YOK');
+    if (Y.fixFileInput(m, expectFile) === 'moved') await A.S(1500);
     const fn = Array.from(m.querySelectorAll('input')).map(x => x.value).find(v => /\.(jpe?g|png)$/i.test(v));
     if (expectFile && fn !== expectFile) throw new Error('DOSYA_FARKLI ' + fn);
     const i = m.querySelector('input[ng-model="cropImage.alternatifText"]'); const sc = angular.element(i).scope();
