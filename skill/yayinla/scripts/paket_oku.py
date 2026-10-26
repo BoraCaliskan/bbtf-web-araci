@@ -45,8 +45,8 @@ def read_text(p):
 
 def nkey(s):
     """Anahtar adını karşılaştırma için sadeleştirir (Türkçe harfler, büyük I/İ)."""
-    s = s.strip().lower()
-    for a, b in {'ı': 'i', 'İ': 'i', 'ş': 's', 'ğ': 'g', 'ç': 'c', 'ö': 'o', 'ü': 'u', 'â': 'a'}.items(): s = s.replace(a, b)
+    s = s.strip().replace('İ', 'i').replace('I', 'i').lower()  # lower() 'İ'yi 'i̇' (noktalı) yapar, önce elle çevir
+    for a, b in {'ı': 'i', 'ş': 's', 'ğ': 'g', 'ç': 'c', 'ö': 'o', 'ü': 'u', 'â': 'a'}.items(): s = s.replace(a, b)
     return re.sub(r'\s+', ' ', s)
 
 
