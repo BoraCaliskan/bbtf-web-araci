@@ -1,6 +1,11 @@
 # bbtfevents (TÜBİTAK 2237-A) başlangıç okuması, 26 Ekim 2026 sabah (üçüncü aşama, yayın denemelerinden önce)
 ## Kayıtlar (CMS listeleri, modül|EID ilk 12 hex|tarih|durum|başlık)
-(doldurulacak)
+event|78005F005F00|02/02/2026|Y|Akıllı Gelecek: Yapay Zekâ ve Sürdürülebilirlik Eğitimi
+slider|740057006200|27/06/2025|Y|Akıllı Gelecek: Yapay Zekâ ve Sürdürülebilirlik Eğitimi
+notice1|52004B005000|28/01/2026|Y|“Akıllı Gelecek: Yapay Zekâ ve Sürdürülebilirlik Eğitimi” Başlıyor! (TÜBİTAK 2237-A)
+notice1|710057005300|17/01/2026|Y|Katılımcı Listesi Yayınlandı
+notice1|530073003200|05/01/2026|Y|Akıllı Gelecek: Yapay Zekâ ve Sürdürülebilirlik Eğitimi Başvuru Süresi Uzatıldı
+# news 0, notice kat2 ve kat3 0 kayıt (önceki aşamanın bitişiyle aynı)
 ## Görsel kütüphanesi (Fotoğraf Yükle ▸ Yüklediklerim, imageId|alt metin)
 fWcXxO82FEGt0wixzy-AHw|AA Akademi Veri Gazeteciliği için Yapay Zekâ Eğitim Modülü oturumundan bir kare, katılımcılar ve eğitmen   (önceki koşudan kalan test görseli)
 LOhkutB-0UmOSIE-PMx-6Q|Doç. Dr. Fatma Önay Koçoğlu, AA Akademi eğitiminde sunum yaparken   (önceki koşudan kalan test görseli)
