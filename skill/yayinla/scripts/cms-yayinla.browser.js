@@ -1,7 +1,8 @@
-// /yayinla skill'inin CMS sekmesinde çalışan kütüphanesi. Claude in Chrome javascript_tool ile CMS sekmesine
-// bir kez yüklenir: (0,eval)(<bu dosyanın içeriği>). Sonra window.__Y üzerinden çağrılır.
+// /yayinla skill'inin CMS sekmesinde çalışan kütüphanesi (sürüm 2, 26 Ekim 2026).
+// Claude in Chrome javascript_tool ile CMS sekmesine bir kez yüklenir: (0,eval)(<bu dosyanın içeriği>). Sonra window.__Y.
 // Bağımlılık: __relocLib (window.__A: list/read/openForm/save/toggle/go/S/W/q/norm/term/imgOf). Yoksa localStorage'dan yüklenir.
 // Güvenlik: hedef site adı verilmeden hiçbir yazma yapılmaz; her yazmadan önce site seçicisi hedefle karşılaştırılır.
+// Geri alma yalnızca bu koşuda oluşturulan kayıtları ve yüklenen görselleri siler.
 (() => {
   if (!window.__A || !window.__A.list) {
     const src = localStorage.getItem('__relocLib'); if (!src) throw new Error('__relocLib yok: relocate-lib.js önce yüklenmeli');
@@ -9,6 +10,7 @@
   }
   const A = window.__A;
   const Y = window.__Y = window.__Y || {};
+  Y.version = 2;
   // Boş liste (ör. test sitesinde hiç haber yok): A.list satır bekleyip NOT_READY atar; tablo yüklenmiş ve boşsa [] dön.
   if (!A.__listOrig) {
     A.__listOrig = A.list;
@@ -24,34 +26,42 @@
   Y.M = s => String(s).replace(/[0-9A-F]{40,}/g, m => '<HEX:' + m.match(/.{1,6}/g).join('-') + '>').replace(/https?:\/\//g, '{URL}');
   const siteKey = () => Object.keys(SITES).find(k => A.site().endsWith(k)) || null;
 
-  // ---- koşu kaydı (geri alma için) ----
+  // ---- koşu kaydı ----
+  const save = () => localStorage.setItem('__yayinla_' + Y.run.id, JSON.stringify(Y.run));
   Y.start = (runId, target) => {
     if (!target) throw new Error('HEDEF_SITE_YOK: hedef site verilmeden çalışmaz');
     const k = siteKey();
     if (!k || !k.endsWith(target)) throw new Error('SITE_UYUSMUYOR: seçici "' + A.site() + '", hedef "' + target + '"');
-    Y.run = {id: runId, site: k, base: SITES[k], startedAt: new Date().toISOString(), created: []};
-    localStorage.setItem('__yayinla_' + runId, JSON.stringify(Y.run));
-    return {site: k, base: SITES[k]};
+    Y.run = {id: runId, site: k, base: SITES[k], startedAt: new Date().toISOString(), created: [], images: [], log: []};
+    save(); return {site: k, base: SITES[k]};
   };
-  Y.load = runId => { Y.run = JSON.parse(localStorage.getItem('__yayinla_' + runId) || 'null'); if (!Y.run) throw new Error('KOSU_YOK ' + runId); return Y.run; };
+  Y.load = runId => { Y.run = JSON.parse(localStorage.getItem('__yayinla_' + runId) || 'null'); if (!Y.run) throw new Error('KOSU_YOK ' + runId); Y.run.images = Y.run.images || []; Y.run.log = Y.run.log || []; return Y.run; };
   const guard = () => { if (!Y.run) throw new Error('ONCE_Y_START'); if (siteKey() !== Y.run.site) throw new Error('SITE_DEGISTI: ' + A.site()); };
-  const note = rec => { Y.run.created.push(rec); localStorage.setItem('__yayinla_' + Y.run.id, JSON.stringify(Y.run)); };
+  const log = x => { Y.run.log.push({at: new Date().toISOString(), ...x}); save(); };
 
   // ---- görsel yükleme penceresi ----
-  const modal = () => A.q('.modal.in, .modal.show');
-  Y.openUpload = async (model) => { // model: 'news.Img' | 'news.Gallery' | 'slider.Img'
-    guard();
-    const ph = A.q('div[ng-model="' + model + '"] img.gallery-image-placeholder') || A.q('div[ng-model="' + model + '"] img');
-    if (!ph) throw new Error('YER_TUTUCU_YOK ' + model);
-    ph.click(); const m = await A.W(() => modal(), 8000); if (!m) throw new Error('PENCERE_ACILMADI');
-    await A.S(600);
+  const modals = () => Array.from(document.querySelectorAll('.modal.in, .modal.show'));
+  const modal = () => modals()[0] || null;
+  const topModal = () => modals()[modals().length - 1] || null;
+  const uploadTab = async m => {
     Array.from(m.querySelectorAll('a')).find(e => e.innerText.trim() === 'Yükle').click(); await A.S(700);
     const sel = Array.from(m.querySelectorAll('select')).find(s => s.getAttribute('ng-model') === 'uploadStatusSelection.value');
     sel.value = Array.from(sel.options).find(o => o.text === 'Kırpma').value; sel.dispatchEvent(new Event('change', {bubbles: true}));
-    const inp = m.querySelector('input[type=file]'); if (inp) inp.setAttribute('data-yayinla', 'file');
-    return {mode: sel.selectedOptions[0].text, fileInput: !!inp};
+    return sel.selectedOptions[0].text;
   };
-  // file_upload aracı dosyayı seçtikten sonra: alt metni yaz, Yükle'ye bas, yeni görselin kimliğini döndür.
+  Y.openUpload = async (model) => { // model: 'news.Img' | 'news.Gallery' | 'slider.Img' | 'event.Img' | 'notice.Img'
+    guard();
+    let m = modal();
+    if (!m) {
+      const ph = A.q('div[ng-model="' + model + '"] img.gallery-image-placeholder') || A.q('div[ng-model="' + model + '"] img');
+      if (!ph) throw new Error('YER_TUTUCU_YOK ' + model);
+      ph.click(); m = await A.W(() => modal(), 8000); if (!m) throw new Error('PENCERE_ACILMADI'); await A.S(600);
+    }
+    const mode = await uploadTab(m);
+    const inp = m.querySelector('input[type=file]'); if (inp) inp.setAttribute('data-yayinla', 'file');
+    return {mode, fileInput: !!inp};
+  };
+  // file_upload aracı dosyayı seçtikten sonra: alt metni yaz, Yükle'ye bas, yeni görselin kimliğini döndür ve koşuya kaydet.
   Y.finishUpload = async (alt, expectFile) => {
     guard(); const m = modal(); if (!m) throw new Error('PENCERE_YOK');
     const fn = Array.from(m.querySelectorAll('input')).map(x => x.value).find(v => /\.(jpe?g|png)$/i.test(v));
@@ -67,71 +77,107 @@
     await A.S(500);
     const r = angular.element(m.querySelector('img')).scope().resim;
     if (!r || r.alternatifText !== alt) throw new Error('ALT_DOGRULANMADI');
-    return r.imageId;
+    Y.run.images.push({id: r.imageId, alt, file: fn, deleted: false}); log({a: 'upload', id: r.imageId}); return r.imageId;
   };
   Y.closeModal = async () => { const m = modal(); if (m) { Array.from(m.querySelectorAll('a, button')).find(e => e.innerText.trim() === 'Kapat').click(); await A.W(() => !modal(), 8000); } return !modal(); };
-
-  // ---- kayıt oluşturma ----
-  const formReady = m => () => A.q('input[ng-model="' + m + '.Header"]') && A.q('[froala]') && A.q('[froala]')['data-froala.editor'];
-  const setDate = (m, date) => { const d = A.q('input[ng-model="' + m + '.Date"]'); d.value = date; d.dispatchEvent(new Event('input', {bubbles: true})); d.dispatchEvent(new Event('change', {bubbles: true})); return d; };
-  const findRow = async (m, title, date) => (await A.list(m, A.term(title))).filter(r => r.cells[2] === A.norm(title) && r.date === date);
-
-  Y.createNews = async ({title, date, img, gallery = [], html, module = 'news', category}) => {
-    guard();
-    if (!title || !date || !img || !html) throw new Error('EKSIK_ALAN');
-    if ((await findRow(module, title, date)).length) throw new Error('AYNI_KAYIT_VAR');
-    await A.go('#/app/' + module + '/edit/new', formReady(module));
-    const sc = angular.element(A.q('input[ng-model="' + module + '.Header"]')).scope(); const o = sc[module];
-    sc.$apply(() => { o.Header = title; o.Img = img; o.Author = ''; o.Gallery = gallery.slice(); if (category) o.CategoryId = category; });
-    const d = setDate(module, date);
-    const fr = A.fr(); fr.html.set(html); fr.events.trigger('contentChanged'); await A.S(1200);
-    const galNow = Array.from(document.querySelectorAll('div[ng-model="' + module + '.Gallery"] img.img-thumbnail')).map(i => ((i.getAttribute('src') || '').match(/f=([^&]+)/) || [])[1]);
-    const chk = {h: A.q('input[ng-model="' + module + '.Header"]').value === title, d: d.value === date, isDate: o.Date instanceof Date, img: A.imgOf('div[ng-model="' + module + '.Img"]') === img, gal: JSON.stringify(galNow) === JSON.stringify(gallery), c: (o.Content || '').length > 20, route: new RegExp('#/app/' + module + '/edit/new$').test(location.hash)};
-    if (Object.values(chk).some(v => !v)) throw new Error('FORM ' + JSON.stringify(chk));
-    const msg = await A.save(); await A.S(1200);
-    const rows = await findRow(module, title, date); if (rows.length !== 1) throw new Error('KAYIT_BULUNAMADI ' + rows.length);
-    note({m: module, eid: rows[0].eid, full: rows[0].full, title, date, published: false});
-    return {msg, eid: rows[0].eid, full: rows[0].full};
-  };
-  Y.publicUrl = (module, title, full) => {
-    const seg = {news: 'haber', event: 'etkinlik', notice: 'duyuru'}[module] || module;
-    return Y.run.base + '/' + seg + '/' + Y.slug(title) + '-' + full;
-  };
-  Y.publish = async (module, eid, title, want = 'Yayında') => {
-    guard(); const r = await A.toggle(module, eid, title, want);
-    const rec = Y.run.created.find(x => x.eid === eid); if (rec) { rec.published = want === 'Yayında'; note({m: 'log', eid, action: want}); }
-    return r;
-  };
-  Y.createSlider = async ({title, date, img, link}) => {
-    guard();
-    if (!title || !date || !img || !link) throw new Error('EKSIK_ALAN');
-    if ((await findRow('slider', title, date)).length) throw new Error('AYNI_MANSET_VAR');
-    await A.go('#/app/slider/edit/new', formReady('slider'));
-    const sc = angular.element(A.q('input[ng-model="slider.Header"]')).scope(); const s = sc.slider;
-    sc.$apply(() => { s.Header = title; s.Img = img; s.Link = link; s.Title1 = ''; s.Title2 = ''; s.Title3 = ''; });
-    const d = setDate('slider', date); await A.S(900);
-    const chk = {h: A.q('input[ng-model="slider.Header"]').value === title, link: A.q('input[ng-model="slider.Link"]').value === link, d: d.value === date, isDate: s.Date instanceof Date, img: A.imgOf('div[ng-model="slider.Img"]') === img, route: /#\/app\/slider\/edit\/new$/.test(location.hash)};
-    if (Object.values(chk).some(v => !v)) throw new Error('FORM ' + JSON.stringify(chk));
-    const msg = await A.save(); await A.S(1200);
-    const rows = await findRow('slider', title, date); if (rows.length !== 1) throw new Error('MANSET_BULUNAMADI ' + rows.length);
-    note({m: 'slider', eid: rows[0].eid, full: rows[0].full, title, date, published: false});
-    return {msg, eid: rows[0].eid, full: rows[0].full};
+  // Yüklediklerim listesi: [{id, alt}]
+  Y.listImages = async (model = 'news.Img') => {
+    let m = modal();
+    if (!m) { const ph = A.q('div[ng-model="' + model + '"] img'); if (!ph) throw new Error('YER_TUTUCU_YOK'); ph.click(); m = await A.W(() => modal(), 8000); await A.S(1200); }
+    Array.from(m.querySelectorAll('a')).find(e => e.innerText.trim() === 'Yüklediklerim').click(); await A.S(800);
+    return Array.from(m.querySelectorAll('img')).map(i => { const s = angular.element(i).scope(); return s && s.resim ? {id: s.resim.imageId, alt: s.resim.alternatifText || ''} : null; }).filter(Boolean);
   };
 
-  // ---- geri alma: bu koşuda oluşturulan kayıtları yayından kaldırıp siler ----
+  // ---- XHR izleyici: kayıt silme ve görsel silme yanıtları, yalnızca beklenen hedef gönderilir ----
   if (!window.__yDel) {
-    window.__yDel = []; const DEL = /\/api\/(notice\/delNotice|event\/delEvent|news\/delNews)\b/;
+    window.__yDel = []; const DEL = /\/api\/(notice\/delNotice|event\/delEvent|news\/delNews|content\/removeImageFromcdn)\b/;
     const open = XMLHttpRequest.prototype.open, send = XMLHttpRequest.prototype.send;
     XMLHttpRequest.prototype.open = function (m, u) { this.__yUrl = String(u || ''); return open.apply(this, arguments); };
     XMLHttpRequest.prototype.send = function (body) {
       if (DEL.test(this.__yUrl || '')) {
         const exp = Y.expect; const b = String(body || '');
-        if (!exp || !b.includes(exp)) { window.__yDel.push({blocked: true}); const me = this; setTimeout(() => me.dispatchEvent(new ProgressEvent('error')), 0); return; }
-        this.addEventListener('loadend', () => { let t = ''; try { t = JSON.parse(this.responseText).MessageType; } catch (e) {} window.__yDel.push({st: this.status, t, body: b.slice(0, 200)}); });
+        if (!exp || !b.includes(exp)) { window.__yDel.push({blocked: true, u: this.__yUrl.slice(-30)}); const me = this; setTimeout(() => me.dispatchEvent(new ProgressEvent('error')), 0); return; }
+        this.addEventListener('loadend', () => { let t = ''; try { t = JSON.parse(this.responseText).MessageType; } catch (e) {} window.__yDel.push({st: this.status, t, u: this.__yUrl.slice(-30), body: b.slice(0, 200)}); });
       }
       return send.apply(this, arguments);
     };
   }
+  // Fotoğraf Yükle ▸ Yüklediklerim ▸ "Görseli Sil" ▸ onay. Yalnızca bu koşuda yüklenen ya da açıkça verilen kimlikler.
+  Y.deleteImage = async (id, model = 'news.Img') => {
+    guard();
+    let m = modal();
+    if (!m) { const ph = A.q('div[ng-model="' + model + '"] img'); if (!ph) throw new Error('YER_TUTUCU_YOK'); ph.click(); m = await A.W(() => modal(), 8000); await A.S(1200); }
+    Array.from(m.querySelectorAll('a')).find(e => e.innerText.trim() === 'Yüklediklerim').click(); await A.S(800);
+    const img = Array.from(m.querySelectorAll('img')).find(i => { const s = angular.element(i).scope(); return s && s.resim && s.resim.imageId === id; });
+    if (!img) return 'yok';
+    const card = img.closest('.card') || img.parentElement.parentElement;
+    const a = card.querySelector('a[ng-click="remove(resim)"]'); if (!a) throw new Error('SIL_DUGMESI_YOK');
+    const n = window.__yDel.length; a.click();
+    const c = await A.W(() => modals().length >= 2 ? topModal() : null, 6000); if (!c || !/Silinecektir/i.test(c.innerText)) throw new Error('ONAY_PENCERESI_YOK');
+    const btn = Array.from(c.querySelectorAll('button, a.btn')).find(b => /Onayla|Evet|Tamam/i.test(b.innerText)); if (!btn) throw new Error('ONAY_DUGMESI_YOK');
+    Y.expect = id; btn.click();
+    const x = await A.W(() => window.__yDel.slice(n).find(z => z.blocked || z.st !== undefined), 30000); Y.expect = null;
+    if (!x || x.blocked || x.st !== 200 || x.t !== 'success') throw new Error('GORSEL_SILINMEDI ' + JSON.stringify(x));
+    await A.S(1200);
+    const still = Array.from(m.querySelectorAll('img')).some(i => { const s = angular.element(i).scope(); return s && s.resim && s.resim.imageId === id; });
+    if (still) throw new Error('GORSEL_HALA_LISTEDE');
+    const rec = Y.run.images.find(z => z.id === id); if (rec) rec.deleted = true; log({a: 'deleteImage', id}); return 'silindi';
+  };
+
+  // ---- kayıt oluşturma ----
+  const formReady = m => () => A.q('input[ng-model="' + m + '.Header"]') && A.q('[froala]') && A.q('[froala]')['data-froala.editor'];
+  const setDate = (m, date) => { const d = A.q('input[ng-model="' + m + '.Date"]'); d.value = date; d.dispatchEvent(new Event('input', {bubbles: true})); d.dispatchEvent(new Event('change', {bubbles: true})); return d; };
+  const findRow = async (m, title, date, cat) => (await A.list(m, A.term(title), cat ? cat - 1 : 0)).filter(r => A.norm(r.cells[cat ? 3 : 2] || r.cells[2]) === A.norm(title) && r.date === date);
+  const note = rec => { Y.run.created.push(rec); save(); };
+
+  // module: news | event | notice (category 1|3). Haber ve etkinlikte img zorunlu, duyuruda isteğe bağlı.
+  Y.createNews = async ({title, date, img, gallery = [], html, module = 'news', category}) => {
+    guard();
+    if (!title || !date || !html) throw new Error('EKSIK_ALAN');
+    if (module !== 'notice' && !img) throw new Error('GORSEL_ZORUNLU');
+    if ((await findRow(module, title, date, category)).length) throw new Error('AYNI_KAYIT_VAR');
+    await A.go('#/app/' + module + '/edit/new', formReady(module));
+    const sc = angular.element(A.q('input[ng-model="' + module + '.Header"]')).scope(); const o = sc[module];
+    sc.$apply(() => { o.Header = title; if (img) o.Img = img; o.Author = ''; o.Gallery = gallery.slice(); if (category) o.CategoryId = category; });
+    const d = setDate(module, date);
+    const fr = A.fr(); fr.html.set(html); fr.events.trigger('contentChanged'); await A.S(1200);
+    const galNow = Array.from(document.querySelectorAll('div[ng-model="' + module + '.Gallery"] img.img-thumbnail')).map(i => ((i.getAttribute('src') || '').match(/f=([^&]+)/) || [])[1]);
+    const chk = {h: A.q('input[ng-model="' + module + '.Header"]').value === title, d: d.value === date, isDate: o.Date instanceof Date, img: !img || A.imgOf('div[ng-model="' + module + '.Img"]') === img, gal: JSON.stringify(galNow) === JSON.stringify(gallery), c: (o.Content || '').length > 20, cat: !category || o.CategoryId === category, route: new RegExp('#/app/' + module + '/edit/new$').test(location.hash)};
+    if (Object.values(chk).some(v => !v)) throw new Error('FORM ' + JSON.stringify(chk));
+    const msg = await A.save(); await A.S(1200);
+    const rows = await findRow(module, title, date, category); if (rows.length !== 1) throw new Error('KAYIT_BULUNAMADI ' + rows.length);
+    note({m: module, cat: category || null, eid: rows[0].eid, full: rows[0].full, title, date, published: false});
+    return {msg, eid: rows[0].eid, full: rows[0].full};
+  };
+  Y.publicUrl = (module, title, full, category) => {
+    const seg = module === 'notice' ? (category === 3 ? 'ogrenci-duyuru' : 'duyuru') : ({news: 'haber', event: 'etkinlik'}[module] || module);
+    return Y.run.base + '/' + seg + '/' + Y.slug(title) + '-' + full;
+  };
+  Y.publish = async (module, eid, title, want = 'Yayında') => {
+    guard(); const rec = Y.run.created.find(x => x.eid === eid);
+    const r = await A.toggle(module, eid, title, want);
+    if (rec) { rec.published = want === 'Yayında'; log({a: want, eid}); }
+    return r;
+  };
+  // link boş ve standalone true ise bağlantısız kutlama manşeti (Link, Title1-3, Content boş).
+  Y.createSlider = async ({title, date, img, link = '', standalone = false}) => {
+    guard();
+    if (!title || !date || !img) throw new Error('EKSIK_ALAN');
+    if (!link && !standalone) throw new Error('LINK_YOK: bağlantısız manşet için standalone: true verin');
+    if ((await findRow('slider', title, date)).length) throw new Error('AYNI_MANSET_VAR');
+    await A.go('#/app/slider/edit/new', formReady('slider'));
+    const sc = angular.element(A.q('input[ng-model="slider.Header"]')).scope(); const s = sc.slider;
+    sc.$apply(() => { s.Header = title; s.Img = img; s.Link = link; s.Title1 = ''; s.Title2 = ''; s.Title3 = ''; });
+    const d = setDate('slider', date); await A.S(900);
+    const chk = {h: A.q('input[ng-model="slider.Header"]').value === title, link: A.q('input[ng-model="slider.Link"]').value === link, d: d.value === date, isDate: s.Date instanceof Date, img: A.imgOf('div[ng-model="slider.Img"]') === img, content: (A.fr().html.get() || '').replace(/<p><br><\/p>/g, '').length === 0, route: /#\/app\/slider\/edit\/new$/.test(location.hash)};
+    if (Object.values(chk).some(v => !v)) throw new Error('FORM ' + JSON.stringify(chk));
+    const msg = await A.save(); await A.S(1200);
+    const rows = await findRow('slider', title, date); if (rows.length !== 1) throw new Error('MANSET_BULUNAMADI ' + rows.length);
+    note({m: 'slider', eid: rows[0].eid, full: rows[0].full, title, date, published: false, standalone});
+    return {msg, eid: rows[0].eid, full: rows[0].full};
+  };
+
+  // ---- geri alma ----
   Y.deleteOne = async rec => {
     guard();
     if (rec.published) await Y.publish(rec.m, rec.eid, rec.title, 'Yayında Değil');
@@ -145,15 +191,21 @@
     const x = await A.W(() => window.__yDel.slice(n).find(z => z.blocked || z.st !== undefined), 30000); Y.expect = null;
     if (!x || x.blocked || x.st !== 200 || x.t !== 'success' || !x.body.includes(rec.eid)) throw new Error('SILME_ONAYLANMADI ' + JSON.stringify(x));
     await A.S(800); if (await A.findByEid(rec.m, rec.eid, rec.title)) throw new Error('SATIR_HALA_VAR');
-    rec.deleted = true; note({m: 'log', eid: rec.eid, action: 'silindi'});
-    return 'silindi';
+    rec.deleted = true; log({a: 'delete', eid: rec.eid}); save(); return 'silindi';
   };
-  Y.undo = async runId => {
-    Y.load(runId); guard(); const out = [];
-    const recs = Y.run.created.filter(x => x.m !== 'log' && !x.deleted).reverse(); // önce manşet, sonra haber
-    for (const rec of recs) { try { out.push(rec.m + ' ' + rec.eid.slice(0, 8) + ': ' + await Y.deleteOne(rec)); } catch (e) { out.push(rec.m + ' ' + rec.eid.slice(0, 8) + ': HATA ' + e.message); break; } }
+  // Kayıtları (önce manşet) ve bu koşuda yüklenen görselleri siler. 45 s araç sınırı için adım adım: önce kayıtlar, sonra görseller.
+  Y.undoRecords = async runId => {
+    if (runId) Y.load(runId); guard(); const out = [];
+    for (const rec of Y.run.created.filter(x => !x.deleted).reverse()) { try { out.push(rec.m + ' ' + rec.eid.slice(0, 8) + ': ' + await Y.deleteOne(rec)); } catch (e) { out.push(rec.m + ' ' + rec.eid.slice(0, 8) + ': HATA ' + e.message); break; } }
     return out;
   };
-  Y.status = () => Y.run ? Y.run.created.filter(x => x.m !== 'log').map(x => x.m + '|' + x.eid.slice(0, 8) + '|' + (x.deleted ? 'silindi' : x.published ? 'yayında' : 'taslak') + '|' + x.title.slice(0, 40)) : [];
-  return 'Y hazır';
+  Y.undoImages = async runId => {
+    if (runId) Y.load(runId); guard(); const out = [];
+    await A.go('#/app/news/edit/new', formReady('news'));
+    for (const im of Y.run.images.filter(x => !x.deleted)) { try { out.push(im.id + ': ' + await Y.deleteImage(im.id)); } catch (e) { out.push(im.id + ': HATA ' + e.message); break; } }
+    await Y.closeModal(); return out;
+  };
+  Y.undo = async runId => { const a = await Y.undoRecords(runId); const b = await Y.undoImages(); return {records: a, images: b}; };
+  Y.status = () => Y.run ? {records: Y.run.created.map(x => x.m + '|' + x.eid.slice(0, 8) + '|' + (x.deleted ? 'silindi' : x.published ? 'yayında' : 'taslak') + '|' + x.title.slice(0, 40)), images: Y.run.images.map(x => x.id + '|' + (x.deleted ? 'silindi' : 'duruyor'))} : null;
+  return 'Y hazır v2';
 })();
