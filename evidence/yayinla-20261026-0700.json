@@ -1,0 +1,24 @@
+{
+ "runId": "20261026-0700",
+ "site": "Bilgisayar ve Bilişim Fakültesi - TÜBİTAK 2237-A Bilimsel Eğitim Etkinliği.tr (test sitesi, bbtfevents.istanbul.edu.tr)",
+ "packages": [
+  {"no": 1, "zip": "haber-yeni-yayin-prof-dr-ismail-onden.zip", "bolum": "haber", "created": ["news 31003800 (Yayında)", "slider 6C006100 (Yayında, Link = haber adresi)"], "images": ["lB6EzQjXgE2mCQhmxNiq9A (afiş)"],
+   "verify": {"page": "/tr/haber/yeni-yayin-prof-dr-ismail-onden-<EID>: başlık, tebrik cümlesi, düğme var", "button": "düğme metni 'Yayına ulaşmak için tıklayınız →,' (paketteki &#8594, hatası)", "api": "f_getNews 1 kayıt, f_getSlider ilk sırada Img ve Link doğru"}},
+  {"no": 2, "zip": "haber-bumzai-takimi-teknofest-2026-saglikta-yapay-zeka-yarismasind.zip", "bolum": "haber", "created": ["news 46007200 (Yayında, galeri 1)", "slider 65002D00 (Yayında)"], "images": ["DDUQj5_OTUKVz2LlxNxGEA (afiş)", "nIekHZgjt0262yz6iyFcwg (galeri-01)"],
+   "verify": {"page": "başlık, takım listesi, tebrik, ikincil düğme 'Resmî sonuç belgesi ↗' yazı rengi rgb(32,93,78), galeri görseli 1", "api": "f_getGallery = [nIekHZgjt0262yz6iyFcwg]; f_getSlider Link haber adresi"},
+   "issue": "galeri dosyası ilk denemede gizli Toplu Yükle girişine düştü (file_upload ref), kütüphaneye fixFileInput eklendi, ikinci denemede tamam"},
+  {"no": 3, "zip": "etkinlik-bilisim-sohbetleri-iii-3-steve-khaled-hajjaj-ile-aglardan-ya.zip", "bolum": "etkinlik", "created": ["event 6E006500 (Yayında, tarih 25/11/2025)", "slider 44005A00 (Yayında, Link = etkinlik adresi)"], "images": ["KBjqKK_jo0Wz9sulxP87vQ (afiş)"],
+   "verify": {"page": "/tr/etkinlik/bilisim-sohbetleri-iii-3-...: başlık, konuşmacı, tarih, 'Kayıt →' düğmesi", "api": "f_getEvents 2 kayıt (orijinal + test), Date 2025-11-25; f_getSlider Link etkinlik adresi"}},
+  {"no": 4, "zip": "duyuru-20252026-bahar-donemi-final-sinavlari-basliyor.zip", "bolum": "ogrenci-duyuru", "created": ["notice 34005800 (kategori 1 Duyuru, Yayında)", "slider 68005800 (Yayında, Link = duyuru adresi)"], "images": ["Wl8LHH1tn0K2o9kdXIJkAQ (afiş, manşet formundan yüklendi)"],
+   "verify": {"page": "/tr/duyuru/2025-2026-bahar-donemi-final-sinavlari-basliyor-<EID>: metin, uyarı kutusu, 'Final sınav programı (Excel) →' düğmesi, 8-19 Haziran 2026", "api": "f_getNotices Categoryid=1: 4 kayıt, test duyurusu ilk sırada"},
+   "issue": "Test sitesinde Öğrenci Duyuru (kategori 3) çalışmıyor: api/notice/getNotices CategoryId=3 sunucu hatası veriyor, kategori 3 ile kaydedilen 2 deneme kaydı listede görünmüyor (gösterge paneli Duyurular 5). Bu iki kayıt panelden silinemedi. Paket bu yüzden kategori 1 ile denendi. Fakülte sitesinde kategori 3 çalışıyor (envanterde 77 yayında öğrenci duyurusu)."},
+  {"no": 5, "zip": "manset-29-ekim-2026-cumhuriyet-bayrami-kutlu-olsun.zip", "bolum": "manset", "created": ["slider 31003500 (Yayında, Link boş, Title1-3 boş, içerik boş)"], "images": ["PXriRQK25UuOAUS7wwTWOQ (afiş)"],
+   "verify": {"cms": "A.read: link '', Title1-3 boş, html uzunluğu 0, Img afiş", "api": "f_getSliderBox / f_getSlider aşağıda", "homepage": "aşağıda"}}
+ ],
+ "enDryRun": "evidence/en-kuru-calistirma-20261026.txt",
+ "toolBugs": [
+  "Araç çıktısındaki HTML varlıkları noktalı virgülsüz (&#8594, &#8599,), sayfada '→,' görünür. paket_oku.py düzeltiyor ve uyarıyor; araçta düzeltilmeli.",
+  "Araçta boş formla 'Dış kurumda konuşma ve eğitim' kalıbı çizim hatası veriyor (hard/loc, toLocaleLowerCase of undefined), 'Yeni yayın' kalıbında closingTR endsVowel hatası. Dolu formda sorun olmayabilir, boş durum korumaları eksik."
+ ],
+ "undo": null
+}

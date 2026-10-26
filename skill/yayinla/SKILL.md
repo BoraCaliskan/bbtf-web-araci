@@ -1,11 +1,11 @@
 ---
 name: yayinla
-description: BBTF Yayın Afişi aracının ürettiği ZIP paketini (afiş, gövde HTML, metinler.txt, galeri) ISKOP CMS'de seçilen sitede haber (veya duyuru, öğrenci duyurusu, etkinlik) olarak yayımlar, istenirse habere bağlı manşet açar, halka açık sayfayı doğrular ve "geri al" ile oluşturduğu kayıtları siler. Hedef site parametresi zorunludur, verilmezse çalışmaz.
+description: BBTF İçerik Aracı'nın (ve eski Yayın Afişi aracının) ürettiği ZIP paketini ISKOP CMS'de seçilen sitede yayımlar: haber, etkinlik, öğrenci duyurusu ya da bağlantısız kutlama manşeti, istenirse kayda bağlı manşet. Halka açık sayfayı ve veri ucunu doğrular, "geri al" ile oluşturduğu kayıtları ve yüklediği görselleri siler. Hedef site parametresi zorunludur, verilmezse çalışmaz.
 ---
 
 # /yayinla
 
-Bir ZIP yayın paketini CMS'de (cmspanel.istanbul.edu.tr) yayımlar. Tarayıcı olarak **Claude in Chrome** kullanılır (CMS oturumu kullanıcının Chrome'undadır). Akış `cms/yayin-akisi.md` belgesindeki el akışının otomatik hâlidir.
+Bir ZIP yayın paketini CMS'de (cmspanel.istanbul.edu.tr) yayımlar. Tarayıcı olarak **Claude in Chrome** kullanılır (CMS oturumu kullanıcının Chrome'undadır). Halka açık doğrulama için yerleşik tarayıcı ya da Python ile veri uçları kullanılır.
 
 ## Girdi
 
@@ -13,91 +13,98 @@ Bir ZIP yayın paketini CMS'de (cmspanel.istanbul.edu.tr) yayımlar. Tarayıcı 
 |---|---|---|
 | `paket` | evet | ZIP yolu ya da açılmış klasör |
 | `site` | **evet** | `Fakültesi.tr`, `Fakültesi.en` veya `TÜBİTAK 2237-A Bilimsel Eğitim Etkinliği.tr` (site seçicisindeki adın sonu). Verilmezse DURUR. |
-| `dil` | hayır | `tr`, `en` veya `tr,en` (varsayılan: sitenin dili; `.tr` site için tr, `.en` için en) |
-| `tur` | hayır | `haber` (varsayılan), `duyuru`, `ogrenci-duyuru`, `etkinlik` |
-| `manset` | hayır | `evet` / `hayır` (varsayılan haber için evet) |
-| `tarih` | evet | gg/aa/yyyy, haberin ve manşetin tarihi |
-| `geri-al <koşu-id>` | | Daha önce bu skill'in oluşturduğu kayıtları siler |
+| `dil` | hayır | `tr`, `en`. Varsayılan: sitenin dili (`.tr` site için tr, `.en` için en). Paketin DİLLER satırında olmayan dil kullanılamaz |
+| `bolum` | hayır | Paketin BÖLÜM satırından gelir: `haber`, `etkinlik`, `ogrenci-duyuru`, `manset`. Eski biçim paketlerde `haber` |
+| `manset` | hayır | Paketin MANŞET satırından gelir (evet/hayır). `manset` bölümünde yalnızca manşet açılır |
+| `tarih` | hayır | Paketin TARİH satırı yoksa zorunlu, gg/aa/yyyy. Etkinlikte etkinlik günü |
+| `geri-al <koşu-id>` | | Daha önce bu skill'in oluşturduğu kayıtları ve yüklediği görselleri siler |
 
-Kullanım örnekleri:
+Örnekler:
 ```
-/yayinla paket="C:\...\aa-akademi-kocoglu-paketi.zip" site="TÜBİTAK 2237-A Bilimsel Eğitim Etkinliği.tr" tarih=22/10/2026
-/yayinla paket=... site=Fakültesi.tr dil=tr tarih=22/10/2026 manset=evet
-/yayinla geri-al 20261026-0130
+/yayinla paket="ornek-paketler/haber-yeni-yayin-prof-dr-ismail-onden.zip" site=Fakültesi.tr
+/yayinla paket="...etkinlik....zip" site=Fakültesi.en dil=en
+/yayinla geri-al 20261026-0700
 ```
+
+## Bölüm eşlemesi
+
+| BÖLÜM | CMS modülü | Not |
+|---|---|---|
+| haber | `news` | Resim zorunlu (afiş), galeri varsa yüklenir, manşet habere bağlı |
+| etkinlik | `event` | Resim zorunlu, tarih etkinlik günü, manşet etkinliğe bağlı |
+| ogrenci-duyuru | `notice`, CategoryId 3 | Duyuru formunda Resim alanı yok, afiş yalnızca manşet için manşet formundan yüklenir. **Test sitesinde kategori 3 çalışmaz** (sunucu hatası), orada denemek için kategori 1 kullanın |
+| manset | `slider` | Bağlantısız: Link, Title1-3 ve içerik boş, kayıt oluşturulmaz |
 
 ## Kurallar
 
-1. `site` yoksa hiçbir şey yapma, parametreyi iste. Yanlışlıkla ana siteye yazmayı önleyen tek güvence budur.
-2. Her yazmadan önce CMS'deki site seçicisi hedefle karşılaştırılır (`Y.start` ve her çağrıdaki `guard`). Uyuşmazsa durur.
-3. Her haber için önce görseller yüklenir, sonra form tek Kaydet ile kaydedilir, sonra listeden yayımlanır. Manşet, haber yayımlandıktan ve adresi doğrulandıktan sonra açılır.
-4. Oluşturulan her kayıt koşu kaydına yazılır (`localStorage.__yayinla_<koşu-id>` ve `evidence/yayinla-<koşu-id>.json`). Geri alma yalnızca bu kayıtları siler.
-5. Başlık kuralları (`kilavuz/yayin-kilavuzu.md`): büyük harfli kısaltma yok, İngilizce başlıkta i ile başlayan kelimeler büyük I ile. `paket_oku.py` uyarır, kullanıcıya sor.
-6. Panel çıktıları: javascript_tool çıktısı ~1000 karakterde kesilir ve 40+ karakterlik hex içeren çıktılar engellenir. Uzun değerleri `Y.M()` ile dönüştür, EID'leri kısa göster.
+1. `site` yoksa hiçbir şey yapma, parametreyi iste.
+2. Her yazmadan önce CMS'deki site seçicisi hedefle karşılaştırılır (`__Y.start` ve her çağrıda `guard`). Uyuşmazsa durur.
+3. Sıra: görseller yüklenir, kayıt tek Kaydet ile kaydedilir, listeden yayımlanır, adresi doğrulanır, sonra manşet açılır ve yayımlanır.
+4. Oluşturulan her kayıt ve yüklenen her görsel koşu kaydına yazılır (`localStorage.__yayinla_<koşu-id>`, sonra `evidence/yayinla-<koşu-id>.json`). Geri alma yalnızca bunları siler.
+5. Başlık kuralları (`kilavuz/yayin-kilavuzu.md`): büyük harfli kısaltma yok, İngilizce başlıkta i ile başlayan kelimeler büyük I ile. `paket_oku.py` uyarır, kullanıcıya sor, unvanlar değiştirilmez.
+6. Panel çıktıları: javascript_tool çıktısı ~1000 karakterde kesilir, 40+ karakterlik hex içeren çıktılar engellenir, her çağrı 45 saniyede zaman aşımına düşer. EID'leri kısa göster (`eid.slice(0, 8)`), uzun işleri parçalara böl.
 
 ## Adımlar
 
 ### 0. Paketi oku
 ```bash
-python skill/yayinla/scripts/paket_oku.py "<paket>" --cikti "<scratch>/plan.json" --tarih gg/aa/yyyy
+python skill/yayinla/scripts/paket_oku.py "<paket>" --cikti "<scratch>/plan.json" [--tarih gg/aa/yyyy]
 ```
-Çıktıdaki `warnings` boş değilse kullanıcıya göster. Eksik afiş veya gövde varsa dur. Başlık uyarısı varsa düzeltilmiş başlığı öner ve onay al (unvanlar değiştirilmez).
+`plan.json`: `bolum, module, category, manset, mansetStandalone, date, langs, warnings` ve dil başına `title, spot, mansetTitle, mansetSub, posterAlt, poster, html, gallery[{file, alt}]`. Araç çıktısındaki `&#8594,` gibi virgülle biten varlıklar düzeltilir ve uyarı verilir. `warnings` boş değilse kullanıcıya göster, eksik afiş veya gövde varsa dur.
 
 ### 1. CMS sekmesi ve kütüphane
 1. `tabs_context_mcp` ile CMS sekmesini bul (yoksa yeni sekmede `https://cmspanel.istanbul.edu.tr/#/app/default`). Oturum yoksa kullanıcıya söyle, şifre girme.
-2. Site seçicisini kontrol et: `document.querySelector('select[ng-model="auth.SelectedSite.EID"]').selectedOptions[0].innerText`. Hedef değilse `selectedIndex` ile değiştir, `change` olayı gönder, 5 s bekle (sayfa yenilenir).
-3. Kütüphaneyi yükle: `scripts/cms-yayinla.browser.js` dosyasının içeriğini javascript_tool ile çalıştır (`__relocLib` localStorage'da yoksa önce `automation/relocate/relocate-lib.js` içeriğini çalıştır ve `localStorage.setItem('__relocLib', <kaynak>)` ile sakla).
+2. Site seçicisini kontrol et: `document.querySelector('select[ng-model="auth.SelectedSite.EID"]').selectedOptions[0].innerText`. Hedef değilse `selectedIndex` ile değiştir, `change` olayı gönder, 6 s bekle (sayfa yenilenir, yardımcılar silinir).
+3. Kütüphaneyi yükle: `scripts/cms-yayinla.browser.js` içeriğini javascript_tool ile çalıştır (`__relocLib` localStorage'da yoksa önce `automation/relocate/relocate-lib.js` çalıştırılıp `localStorage.setItem('__relocLib', <kaynak>)` ile saklanır). Dönüş "Y hazır v2".
 4. Koşuyu başlat: `__Y.start('<koşu-id>', '<site>')`. Koşu id: `yyyymmdd-hhmm`.
 
-### 2. Her dil için görselleri yükle
-Önce `#/app/news/edit/new` formunu aç (`__A.go` ile ya da adres çubuğundan). Sonra her görsel için:
-1. `await __Y.openUpload('news.Img')` (galeri için `'news.Gallery'`). Dönen `fileInput: true` olmalı.
-2. `find` aracıyla "file input in the upload dialog" ref'ini al, `file_upload` ile dosyayı ver (yol plan.json'daki `poster` ya da `gallery[i].file`).
-3. `await __Y.finishUpload('<alt metin>', '<dosya adı>')` → görsel kimliği (22 karakter) döner. Afiş için alt metin plan.json `posterAlt`, galeri için `gallery[i].alt`.
+### 2. Görselleri yükle
+Önce ilgili formu aç: haber `#/app/news/edit/new`, etkinlik `#/app/event/edit/new`, manşet `#/app/slider/edit/new` (öğrenci duyurusunda afiş manşet formundan yüklenir). Her görsel için:
+1. `await __Y.openUpload('news.Img')` (etkinlik `'event.Img'`, manşet `'slider.Img'`). `fileInput: true` dönmeli.
+2. `find` ile "file input in the upload dialog" ref'lerini al, **ilkini** kullan ve `file_upload` ile dosyayı ver. Pencerede iki dosya girişi vardır (Yükle sekmesi ve gizli Toplu Yükle); dosya gizli olana düşerse `finishUpload` görünür girişe taşır.
+3. `await __Y.finishUpload('<alt metin>', '<dosya adı>')` → görsel kimliği döner ve koşuya yazılır. Afiş için `posterAlt`, galeri için `gallery[i].alt`.
 4. Hepsi bitince `await __Y.closeModal()`.
-Kimlikleri sakla: `img`, `gallery: [id1, id2, id3]` (paket sırası).
 
-### 3. Haberi oluştur ve yayımla
+### 3. Kaydı oluştur ve yayımla
+Gövde HTML'i çağrıya satır içi verilir (template literal, HTML'de ters tırnak yoktur). Yerel bir sunucudan `fetch` https sayfadan engellenir.
 ```js
-await __Y.createNews({title, date: 'gg/aa/yyyy', img, gallery, html: <plan.json html>, module: 'news'})
-// -> {msg: 'Kaydedildi', eid, full}
-await __Y.publish('news', eid, title)   // -> 'Kaydedildi -> Yayında'
+await __Y.createNews({title, date, img, gallery: [...], html, module: 'news'})        // haber
+await __Y.createNews({title, date, img, html, module: 'event'})                      // etkinlik
+await __Y.createNews({title, date, html, module: 'notice', category: 3})             // öğrenci duyurusu (img yok)
+await __Y.publish('<module>', eid, title)                                             // 'Kaydedildi -> Yayında'
+__Y.publicUrl('<module>', title, full, category)                                      // adres
 ```
-`tur` duyuru ise `module: 'notice', category: 1` (öğrenci duyurusu 3, Img zorunlu değil), etkinlik ise `module: 'event'`.
-Kayıt adresi: `__Y.publicUrl('news', title, full)`. Haber yayımlandıktan sonra bu adresi ikinci bir sekmede açıp doğrula (adım 5). Sitenin ürettiği slug ile uyuşmazsa haber listesindeki gerçek adresi kullan.
+Her çağrı ayrı javascript_tool çağrısı olsun (45 s sınırı). Aynı başlık ve tarihte kayıt varsa `AYNI_KAYIT_VAR` ile durur.
 
-### 4. Manşet (manset=evet)
+### 4. Manşet
 ```js
-await __Y.createSlider({title, date, img, link: <doğrulanmış haber adresi>})
-await __Y.publish('slider', eid, title)
+await __Y.createSlider({title: mansetTitle, date, img, link: <doğrulanmış adres>})     // bağlı manşet
+await __Y.createSlider({title: mansetTitle, date, img, standalone: true})            // kutlama, bağlantısız
+await __Y.publish('slider', eid, mansetTitle)
 ```
-Title1-3 ve içerik boş bırakılır (kütüphane böyle yapar).
+Title1-3 ve içerik boş bırakılır. Manşet başlığı paketin MANŞET BAŞLIĞI satırından gelir.
 
 ### 5. Halka açık doğrulama
-Ayrı bir sekmede (javascript_tool) haber adresini aç ve kontrol et:
-- `.news-title` metni başlıkla aynı mı (site başlığı yeniden büyütür, kelime kelime karşılaştır)
-- afiş `img[src*="<img id>"]` var mı, galeri görselleri (`src` içinde her galeri kimliği) var mı
-- gövdedeki `a.btn` düğmeleri (varsa) ve yazı rengi (`getComputedStyle(a).color` beyaz olmamalı)
-- ana sayfada manşet var mı ve haber adresine gidiyor mu. Fakülte sitesinde (yeni şablon) `a.hero-slide` listesi, test sitesinde (eski şablon, bbtfevents) `div.slider1 img.sliderImage` ve `div.slider-link-container a`.
-- Şablondan bağımsız kontrol: `api/webclient/f_getSlider?siteKey=<site>&Page=1&PageSize=10` yanıtında manşetin `Img` ve `Link` değerleri (siteKey: fakülte TR `86B65F1611324658A5E6CDFB94B1F955`, EN `B9495DCDB814449190BAAB2B7B8AC5C0`, test `C4E5471A0E2B4040BFCC8C388F01FBC9`).
-Sonuçları kısa tabloyla raporla. Ekran görüntülerini `evidence/` altına kaydet.
+- Fakülte sitesi (yeni şablon): kayıt sayfasında `.news-title`, kapak `img[src*="<img id>"]`, galeri görselleri, `a.btn` düğmeleri ve yazı rengi, ana sayfada `a.hero-slide`.
+- Test sitesi (eski şablon): kayıt sayfası kapak görselini basmaz, ana sayfa şeridi `div.slider1 img.sliderImage`, bağlantı `/tr/mansetler/` sayfasına gider.
+- Şablondan bağımsız: `api/webclient/f_getNews|f_getEvents|f_getNotices?Categoryid=…|f_getSlider|f_getSliderBox?siteKey=<site>&Page=1&PageSize=10` ve `f_getGallery?EID=…&Value=haber`. siteKey: fakülte TR `86B65F1611324658A5E6CDFB94B1F955`, EN `B9495DCDB814449190BAAB2B7B8AC5C0`, test `C4E5471A0E2B4040BFCC8C388F01FBC9`.
+Sonuçları kısa tabloyla raporla.
 
 ### 6. Koşu kaydı
-`__Y.status()` çıktısını ve `localStorage.getItem('__yayinla_<koşu-id>')` değerini (EID'ler `__Y.M` ile dönüştürülmüş) `evidence/yayinla-<koşu-id>.json` dosyasına yaz. Kullanıcıya: oluşturulan kayıtlar, adresler, koşu id ve "geri al" komutu.
+`__Y.status()` çıktısını `evidence/yayinla-<koşu-id>.json` dosyasına yaz. Kullanıcıya: oluşturulan kayıtlar, adresler, koşu id ve "geri al" komutu.
 
 ## Geri alma
 
 `/yayinla geri-al <koşu-id>`:
-1. CMS sekmesinde site seçicisi koşunun sitesiyle aynı olmalı (`__Y.load(id)` sonrası `guard` kontrol eder).
-2. `await __Y.undo('<koşu-id>')`: önce manşetler, sonra haberler. Yayındaysa yayından kaldırır, sonra İşlemler ▸ Sil ▸ Onayla ve Devam Et. Silme isteği yalnızca beklenen EID'yi içeriyorsa gönderilir, sunucu yanıtı (`MessageType: success`) ve satırın listeden düşmesi doğrulanır.
-3. Çıktıyı raporla, `evidence/yayinla-<koşu-id>.json` dosyasına `undo` alanı ekle.
-Geri alma yalnızca bu koşunun oluşturduğu kayıtları siler, başka hiçbir kaydı silmez.
+1. CMS sekmesinde site seçicisi koşunun sitesiyle aynı olmalı (`__Y.load(id)`, `guard`).
+2. Kayıtlar: `__Y.undoRecords('<koşu-id>')` önce manşetleri, sonra kayıtları yayından kaldırıp siler (İşlemler ▸ Sil ▸ Onayla ve Devam Et, silme isteği yalnızca beklenen EID'yi içeriyorsa gönderilir, sunucu yanıtı ve satırın düşmesi doğrulanır). Çok kayıtta 45 s'yi aşar: sayfa içinde arka planda başlatın (`(async () => { window.__undo = await __Y.undoRecords('<id>'); })()`), 20-30 s arayla `__Y.status()` okuyun.
+3. Görseller: `__Y.undoImages()` koşuda yüklenen her görseli Fotoğraf Yükle ▸ Yüklediklerim ▸ "Görseli Sil" ▸ onay ile siler (`api/content/removeImageFromcdn`, yanıt ve listeden düşme doğrulanır). Tek bir görsel için `__Y.deleteImage(id)`.
+4. Çıktıyı raporla, evidence dosyasına `undo` alanı ekle.
+Geri alma yalnızca bu koşunun oluşturduğu kayıtları ve yüklediği görselleri siler.
 
 ## Bilinen sınırlar
-- javascript_tool tek çağrıda 45 saniye bekler. `createNews` (kaydet + liste doğrulaması) sınırın içinde kalır, ama `undo` iki kayıtta sınırı aştı. Geri almayı kayıt başına `__Y.deleteOne(rec)` ile ayrı çağırın ya da `undo` zaman aşımı verirse 20 s sonra `__Y.status()` ile sonucu okuyun (işlem sayfa içinde sürer).
-- Eski şablonlu sitelerde (bbtfevents) haber sayfası kapak görselini basmaz ve metinde tarih yerine oluşturma günü görünür, manşet bağlantısı "Tüm Manşetler" sayfasına gider. Doğrulamayı API ile yapın.
-- Yüklenen görseller geri almada silinmez, sitenin görsel kütüphanesinde kalır.
 - Görsel dosyası seçimi tarayıcı aracının `file_upload` adımıyla yapılır, saf JS ile yapılamaz.
 - Yükle düğmesi bazen ilk tıklamada tepki vermez, `finishUpload` 20 s içinde sonuç gelmezse hata verir, tekrar çağrılabilir.
-- Aynı başlık ve tarihte kayıt varsa `AYNI_KAYIT_VAR` ile durur (yineleme koruması).
-- Etkinlik formunun hazır olma koşulu haberle aynı kabul edilir, farklıysa `createNews` zaman aşımına düşer.
+- Öğrenci Duyuru kategorisi (3) yalnızca kategorinin tanımlı olduğu sitelerde çalışır. Tanımsız sitede kayıt kaydedilir ama listelenemez ve silinemez; `createNews` öncesi `api/notice/getNotices` ile `CategoryId: 3` denenip hata alınırsa durun.
+- EN tarafı gerçek yayınla denenmedi (test sitesi tek dilli), plan çıktısıyla kuru çalıştırıldı.
+- Araç çıktısındaki `&#8594,` varlık hatası paket okuyucuda düzeltilir, aracın kendisinde düzeltilmesi gerekir.

@@ -1,18 +1,17 @@
-# PLAN, gece görevi (26 Ekim 2026)
+# PLAN
 
-Tek ajan. Ana site (bilgisayar.istanbul.edu.tr) için CMS'e yalnızca okuma. Yazma yalnızca test sitesinde (bbtfevents, TÜBİTAK), kendi test kayıtlarıyla. Depo önce özel, sabah Bora karar verir.
+## Üçüncü aşama (26 Ekim 2026 sabah): yeni araç, skill uyarlaması, uçtan uca deneme
+
+Tek ajan. Ana site CMS'inde yalnızca okuma. Yazma yalnızca test sitesinde (bbtfevents), bu kez görsel silme dahil. Her adımda commit, commit mesajlarında imza satırı yok.
 
 | Adım | İş | Çıktı | Durum |
 |---|---|---|---|
-| 0 | Depo ve klasör yapısı, arac/ ve kilavuz/ kopyaları | README, PLAN, RAPOR, arac/, kilavuz/ | başladı |
-| 1 | Kadro kütüphanesi: TR ve EN akademik, idari, yönetim sayfaları. Fotoğraflar kare 600x600 | kadro/kadro.json, kadro/kadro.js, kadro/foto/ | bekliyor |
-| 2 | CMS notları ve yayın akışı, mevcut bilgiden ve okuyarak | cms/cms-notlar.md, cms/yayin-akisi.md | bekliyor |
-| 3 | İçerik envanteri, TR ve EN, 5 modül, panel okumaları | envanter/*.json, envanter/ozet.csv | bekliyor |
-| 4 | Kapak ve manşet görselleri 1200 px | envanter/gorseller/ | bekliyor |
-| 5 | /yayinla skill'i, hedef site zorunlu parametre | skill/yayinla/ | bekliyor |
-| 6 | Test sitesinde uçtan uca deneme ve geri alma | evidence/ | bekliyor |
-| Bitiş | RAPOR.md, commit, push (özel depo) | RAPOR.md | bekliyor |
+| 0 | Eski araç `arac/eski/`, yeni BBTF İçerik Aracı `arac/`, `docs/ornekler/`, `ornek-paketler/`, kılavuza "İçerik türleri ve kalıpları" | depo | tamam |
+| 1 | `paket_oku.py` yeni metinler.txt biçimi (BÖLÜM, MANŞET, TARİH, DİLLER, DOSYA ÖNEKİ, manşet başlığı ve alt metni, galeri-NN), eski biçim korunur. Kütüphane v2: etkinlik, öğrenci duyurusu (kategori 3), bağlantısız manşet, görsel silme, geri almada görseller | `skill/yayinla/` | tamam |
+| 2 | Beş örnek paket test sitesinde TR olarak yayımlanır, sayfa ve veri ucu doğrulanır, EN kuru çalıştırma, sonra hepsi geri alınır, görseller (önceki 4 dahil) silinir, listeler karşılaştırılır | `evidence/` | sürüyor |
+| 3 | Araç başsız kontrol: "Hazır, kadro 29 kişi", dokuz kalıp, konsol | RAPOR-2 | tamam (iki boş form hatası bulundu) |
+| Bitiş | RAPOR-2.md, commit, push | | bekliyor |
 
-Yöntem: Halka açık sayfalar için tarayıcıda Angular scope okuması, CMS listeleri için sayfa içi okuma yardımcıları (`__relocLib`), görseller için Python (urllib + Pillow). Her adım sonunda commit.
+Yöntem notları: halka açık okumalar yerleşik tarayıcıda (çıktı kesilmez), CMS işleri Claude in Chrome'da (45 s çağrı sınırı, uzun işler sayfa içinde arka planda sürer ve sonradan okunur). Paket gövdeleri CMS sekmesine satır içi verilir, yerel sunucudan `fetch` https sayfadan engelleniyor.
 
-Kişisel veri kuralı: e-posta, telefon, öğrenci numarası, toplantı şifresi depoya girmez, metinlerde "[kaldırıldı]" ile değiştirilir. Kadro kaydında e-posta ve telefon alanları alınmaz.
+## İkinci aşama (26 Ekim 2026 gece): bkz. RAPOR.md
