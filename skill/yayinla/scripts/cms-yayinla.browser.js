@@ -108,7 +108,8 @@
       if (DEL.test(this.__yUrl || '')) {
         const exp = Y.expect; const b = String(body || '');
         if (!exp || !b.includes(exp)) { window.__yDel.push({blocked: true, u: this.__yUrl.slice(-30)}); const me = this; setTimeout(() => me.dispatchEvent(new ProgressEvent('error')), 0); return; }
-        this.addEventListener('loadend', () => { let t = ''; try { t = JSON.parse(this.responseText).MessageType; } catch (e) {} window.__yDel.push({st: this.status, t, u: this.__yUrl.slice(-30), body: b.slice(0, 200)}); });
+        // İstek gövdesi saklanmaz (görsel silme isteği uygulama kimlik bilgisi taşır); yalnızca beklenen kimliği içerdiği kaydedilir.
+        this.addEventListener('loadend', () => { let t = ''; try { t = JSON.parse(this.responseText).MessageType; } catch (e) {} window.__yDel.push({st: this.status, t, u: this.__yUrl.slice(-30), ok: b.includes(exp)}); });
       }
       return send.apply(this, arguments);
     };
@@ -128,7 +129,7 @@
     const btn = Array.from(c.querySelectorAll('button, a.btn')).find(b => /Onayla|Evet|Tamam/i.test(b.innerText)); if (!btn) throw new Error('ONAY_DUGMESI_YOK');
     Y.expect = id; btn.click();
     const x = await A.W(() => window.__yDel.slice(n).find(z => z.blocked || z.st !== undefined), 30000); Y.expect = null;
-    if (!x || x.blocked || x.st !== 200 || x.t !== 'success') throw new Error('GORSEL_SILINMEDI ' + JSON.stringify(x));
+    if (!x || x.blocked || x.st !== 200 || x.t !== 'success' || !x.ok) throw new Error('GORSEL_SILINMEDI ' + JSON.stringify(x));
     await A.S(1200);
     const still = Array.from(m.querySelectorAll('img')).some(i => { const s = angular.element(i).scope(); return s && s.resim && s.resim.imageId === id; });
     if (still) throw new Error('GORSEL_HALA_LISTEDE');
@@ -200,7 +201,7 @@
     const n = window.__yDel.length; Y.expect = rec.eid;
     Array.from(m.querySelectorAll('button, a.btn')).find(b => A.norm(b.innerText) === 'Onayla ve Devam Et').click();
     const x = await A.W(() => window.__yDel.slice(n).find(z => z.blocked || z.st !== undefined), 30000); Y.expect = null;
-    if (!x || x.blocked || x.st !== 200 || x.t !== 'success' || !x.body.includes(rec.eid)) throw new Error('SILME_ONAYLANMADI ' + JSON.stringify(x));
+    if (!x || x.blocked || x.st !== 200 || x.t !== 'success' || !x.ok) throw new Error('SILME_ONAYLANMADI ' + JSON.stringify(x));
     await A.S(800); if (await A.findByEid(rec.m, rec.eid, rec.title)) throw new Error('SATIR_HALA_VAR');
     rec.deleted = true; log({a: 'delete', eid: rec.eid}); save(); return 'silindi';
   };

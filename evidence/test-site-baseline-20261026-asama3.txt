@@ -17,3 +17,19 @@ rdcqusxg6E-qQN4H7oTImw|   (sitenin kendi görseli)
 Ek86SrfVrUG0JlmpvR9epQ|   (sitenin kendi görseli)
 8oMb6qEEVEWZuzbmsrDYtg|   (sitenin kendi görseli)
 # Hedef bitiş durumu: 5 site görseli kalır, 4 eski test görseli ve bu aşamada yüklenenler silinir.
+
+## Bitiş okuması (geri alma ve görsel silme sonrası, aynı betik)
+event|78005F005F00|02/02/2026|Y|Akıllı Gelecek: Yapay Zekâ ve Sürdürülebilirlik Eğitimi
+slider|740057006200|27/06/2025|Y|Akıllı Gelecek: Yapay Zekâ ve Sürdürülebilirlik Eğitimi
+notice1|52004B005000|28/01/2026|Y|“Akıllı Gelecek: Yapay Zekâ ve Sürdürülebilirlik Eğitimi” Başlıyor! (TÜBİTAK 2237-A)
+notice1|710057005300|17/01/2026|Y|Katılımcı Listesi Yayınlandı
+notice1|530073003200|05/01/2026|Y|Akıllı Gelecek: Yapay Zekâ ve Sürdürülebilirlik Eğitimi Başvuru Süresi Uzatıldı
+# news 0, notice kat2 0. Kat3 süzgeci bu sitede sunucu hatası veriyor, liste önceki (kat1) satırları gösteriyor, ayrı kayıt yok.
+# Kayıtlar başlangıçla aynı (5 kayıt). Gösterge paneli: 1 Haberler (sitenin manşeti), 1 Etkinlikler, 5 Duyurular (3 görünen + kategori 3 ile kaydedilmiş, listelenemeyen 2 deneme kaydı).
+## Görsel kütüphanesi bitiş (Yüklediklerim)
+QGN64xNknUiMDJ-5YTQOzg
+XhPAND5o7EuiyWMsfObLfA
+rdcqusxg6E-qQN4H7oTImw
+Ek86SrfVrUG0JlmpvR9epQ
+8oMb6qEEVEWZuzbmsrDYtg
+# Başlangıçtaki 4 eski test görseli ve bu koşunun 6 görseli silindi, sitenin 5 görseli yerinde.

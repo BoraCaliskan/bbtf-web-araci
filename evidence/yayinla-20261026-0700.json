@@ -20,5 +20,12 @@
   "Araç çıktısındaki HTML varlıkları noktalı virgülsüz (&#8594, &#8599,), sayfada '→,' görünür. paket_oku.py düzeltiyor ve uyarıyor; araçta düzeltilmeli.",
   "Araçta boş formla 'Dış kurumda konuşma ve eğitim' kalıbı çizim hatası veriyor (hard/loc, toLocaleLowerCase of undefined), 'Yeni yayın' kalıbında closingTR endsVowel hatası. Dolu formda sorun olmayabilir, boş durum korumaları eksik."
  ],
- "undo": null
+ "undo": {
+  "records": ["slider 31003500: silindi", "slider 68005800: silindi", "notice 34005800: silindi", "slider 44005A00: silindi", "event 6E006500: silindi", "slider 65002D00: silindi", "news 46007200: silindi", "slider 6C006100: silindi", "news 31003800: silindi"],
+  "images": ["lB6EzQjXgE2mCQhmxNiq9A: silindi", "DDUQj5_OTUKVz2LlxNxGEA: silindi", "nIekHZgjt0262yz6iyFcwg: silindi", "KBjqKK_jo0Wz9sulxP87vQ: silindi", "Wl8LHH1tn0K2o9kdXIJkAQ: silindi", "PXriRQK25UuOAUS7wwTWOQ: silindi"],
+  "previousRunImages": ["fWcXxO82FEGt0wixzy-AHw: silindi", "LOhkutB-0UmOSIE-PMx-6Q: silindi", "Xc9d6pwadk-Satz3Oz8Jhg: silindi", "nf8TfZUx-Eqh6N1TJgcAqg: silindi"],
+  "remainingLibrary": ["QGN64xNknUiMDJ-5YTQOzg", "XhPAND5o7EuiyWMsfObLfA", "rdcqusxg6E-qQN4H7oTImw", "Ek86SrfVrUG0JlmpvR9epQ", "8oMb6qEEVEWZuzbmsrDYtg"],
+  "method": "undoRecords ve undoImages sayfa içinde arka planda çalıştırıldı (45 s araç sınırı), her silmede sunucu yanıtı success ve liste/galeri kontrolü. Görsel silme isteği başına yaklaşık 15 s.",
+  "leftover": "Kategori 3 ile kaydedilen 2 görünmez duyuru (bkz. packages[3].issue), panelden silinemedi."
+ }
 }
