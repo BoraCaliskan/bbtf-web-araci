@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>BBTF İçerik Aracı</title>
+<style>
+@font-face { font-family: "Barlow"; font-weight: 400; src: url("{{FONT_B400}}") format("truetype"); }
+@font-face { font-family: "Barlow"; font-weight: 500; src: url("{{FONT_B500}}") format("truetype"); }
+@font-face { font-family: "Barlow"; font-weight: 600; src: url("{{FONT_B600}}") format("truetype"); }
+@font-face { font-family: "Barlow"; font-weight: 700; src: url("{{FONT_B700}}") format("truetype"); }
+@font-face { font-family: "Barlow Condensed"; font-weight: 700; src: url("{{FONT_BC700}}") format("truetype"); }
+:root { --g1:#439c86; --g2:#2e7d67; --panel:#f1f7f4; --border:#d6e6df; --text:#283d38; --muted:#586b65; }
+* { box-sizing:border-box; } body { margin:0; font-family:"Segoe UI",Inter,Arial,sans-serif; font-size:14px; color:var(--text); background:#eef2f0; }
+header { background:linear-gradient(90deg,#2c7a64,#439c86); color:#fff; padding:12px 20px; display:flex; align-items:center; justify-content:space-between; }
+header h1 { margin:0; font-size:18px; } header .sub { font-size:12px; opacity:.9; }
+.wrap { display:grid; grid-template-columns:500px 1fr; gap:16px; padding:16px; align-items:start; } @media (max-width:1100px){ .wrap { grid-template-columns:1fr; } }
+.card { background:#fff; border:1px solid var(--border); border-radius:10px; padding:14px 16px; margin-bottom:14px; } .card h2 { margin:0 0 10px; font-size:14px; color:var(--g2); text-transform:uppercase; letter-spacing:.4px; }
+label { display:block; font-size:12px; font-weight:600; color:var(--muted); margin:10px 0 4px; } label.chk { display:flex; align-items:center; gap:8px; font-weight:500; }
+input[type=text], input[type=date], textarea, select { width:100%; padding:7px 9px; border:1px solid var(--border); border-radius:6px; font:inherit; color:var(--text); background:#fff; } textarea { min-height:64px; resize:vertical; }
+.field.short input { width:160px; } .bi { display:grid; grid-template-columns:1fr 1fr; gap:6px; } .row { display:flex; gap:6px; align-items:center; } .row > * { flex:1; } .row > .fit, button.fit { flex:0 0 auto; }
+button { font:inherit; font-weight:600; border:1px solid var(--g2); background:var(--g2); color:#fff; padding:7px 12px; border-radius:6px; cursor:pointer; } button.secondary { background:var(--panel); color:#1f5c4b; border-color:#bfdacf; } button.small { padding:4px 9px; font-size:12px; margin-top:6px; } button.x { background:none; border:none; color:#b23b3b; font-size:16px; padding:0 6px; }
+.hint { font-size:12px; color:var(--muted); } .status { font-size:12px; margin-top:6px; min-height:16px; } .status.ok { color:#1f6b52; } .status.err { color:#b23b3b; }
+.people { display:flex; flex-direction:column; gap:6px; } .person-row { display:grid; grid-template-columns:1fr 64px 24px; gap:6px; align-items:start; background:var(--panel); border-radius:6px; padding:6px; }
+.person-row .manual { grid-column:1 / span 3; display:grid; grid-template-columns:1.4fr 1fr 1fr 1fr; gap:4px; } .person-row input, .person-row select { padding:5px 6px; font-size:12px; }
+.person-row .ph { width:56px; height:56px; border-radius:50%; background:#e4ede8 center/cover; border:2px solid #cfe2d9; display:flex; align-items:center; justify-content:center; font-size:11px; color:#8aa39a; cursor:pointer; }
+.drop { border:2px dashed #cfe2d9; border-radius:8px; padding:10px; text-align:center; color:var(--muted); font-size:12px; cursor:pointer; min-height:60px; display:flex; align-items:center; gap:10px; justify-content:center; } .drop.on { border-color:var(--g1); } .drop img { height:70px; border-radius:4px; }
+.kadro { display:grid; grid-template-columns:repeat(auto-fill, minmax(120px, 1fr)); gap:8px; max-height:260px; overflow:auto; } .person { border:1px solid var(--border); border-radius:8px; padding:6px; text-align:center; font-size:11px; position:relative; cursor:pointer; } .person.drag { outline:2px dashed var(--g1); }
+.person .ph { width:52px; height:52px; border-radius:50%; margin:0 auto 4px; background:#e4ede8 center/cover; border:2px solid #cfe2d9; display:flex; align-items:center; justify-content:center; color:#8aa39a; } .person .nm { font-weight:700; line-height:1.2; } .person .tt { color:var(--muted); } .person .del { position:absolute; top:2px; right:4px; background:none; border:none; color:#b23b3b; cursor:pointer; padding:0; }
+.gal { display:grid; grid-template-columns:70px 1fr 1fr 24px; gap:6px; align-items:center; margin-bottom:6px; } .gal img { width:70px; height:44px; object-fit:cover; border-radius:4px; }
+.tabs { display:flex; gap:6px; margin-bottom:8px; } .tabs button { background:#fff; color:var(--g2); border-color:var(--border); } .tabs button.on { background:var(--g2); color:#fff; }
+canvas#preview { width:100%; height:auto; border-radius:10px; display:block; box-shadow:0 8px 24px rgba(0,0,0,.12); }
+.outs textarea { font-family:Consolas,"Courier New",monospace; font-size:12px; min-height:130px; } .chk2 { display:flex; gap:16px; font-size:12px; color:var(--muted); margin-top:8px; align-items:center; }
+</style>
+</head>
+<body>
+<header><div><h1>BBTF İçerik Aracı</h1><div class="sub">Dokuz kalıp: afiş, iki dilde gövde, CMS metinleri, galeri, tek ZIP. Kurulum yok.</div></div><div class="sub" id="fontStatus">Yükleniyor…</div></header>
+<div class="wrap">
+<div>
+  <div class="card"><h2>1. Kalıp</h2><select id="tpl"></select><div class="hint" id="sectionNote" style="margin-top:6px"></div>
+    <div class="chk2"><label class="chk" style="margin:0"><input type="checkbox" id="langTR" checked> Türkçe</label><label class="chk" style="margin:0"><input type="checkbox" id="langEN" checked> English</label><span class="hint">Pakete girecek diller</span></div></div>
+  <div class="card"><h2>2. Bilgiler</h2><div id="form"></div></div>
+  <div class="card"><h2>3. Galeri (isteğe bağlı)</h2><div class="hint">Haberin galerisine girecek fotoğraflar. Afiş fotoğrafı kendiliğinden eklenir.</div><div id="gallery" style="margin-top:8px"></div><button class="secondary small" id="btnGallery">+ Fotoğraf ekle</button></div>
+  <div class="card"><h2>4. Kadro kütüphanesi</h2><div class="hint">Tarayıcıda saklanır, gömülü listeyle gelir. Fotoğraf değiştirmek için karta tıkla ya da bırak.</div>
+    <div class="row" style="margin:8px 0; flex-wrap:wrap"><button class="secondary small fit" id="btnExport">JSON dışa aktar</button><button class="secondary small fit" id="btnImport">JSON içe aktar</button><button class="secondary small fit" id="btnReset">Gömülü listeye dön</button></div><div class="status" id="kadroStatus"></div>
+    <div class="kadro" id="kadro"></div>
+    <div class="row" style="margin-top:10px; flex-wrap:wrap"><div><label>Yeni kişi</label><input type="text" id="npName" placeholder="Ad Soyad"></div><div><label>Unvan</label><select id="npTitle"><option>Prof. Dr.</option><option>Doç. Dr.</option><option>Dr. Öğr. Üyesi</option><option>Arş. Gör.</option><option>Öğr. Gör.</option><option value="">Yok</option></select></div><div><label>Bölüm</label><select id="npDept"></select></div><button class="secondary small fit" id="btnAddPerson">Ekle</button></div></div>
+</div>
+<div>
+  <div class="card"><h2>Afiş önizleme</h2><div class="tabs"><button class="on" data-lang="tr">Türkçe</button><button data-lang="en">English</button></div><canvas id="preview" width="1920" height="606"></canvas>
+    <div class="chk2"><label class="chk" style="margin:0"><input type="checkbox" id="safe"> Güvenli alanları göster</label><span id="fitStatus" class="status" style="margin:0"></span></div></div>
+  <div class="card outs"><h2>Çıktılar</h2><div class="row"><button id="btnZip">ZIP indir</button><button class="secondary fit" id="btnRegen">Metinleri yeniden üret</button></div>
+    <div class="hint">Kutular düzenlenebilir, ZIP son hâli alır. Yeniden üret formdan baştan yazar.</div>
+    <label>Gövde TR</label><textarea id="htmlTR"></textarea><label>Gövde EN</label><textarea id="htmlEN"></textarea><label>CMS metinleri (metinler.txt)</label><textarea id="texts"></textarea></div>
+</div>
+</div>
+<script>{{KADRO_JS}}</script>
+<script>{{CORE_JS}}</script>
+<script>{{TEMPLATES_JS}}</script>
+<script>{{UI_JS}}</script>
+</body>
+</html>
