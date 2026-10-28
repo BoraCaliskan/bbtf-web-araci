@@ -161,8 +161,9 @@
     note({m: module, cat: category || null, eid: rows[0].eid, full: rows[0].full, title, date, published: false});
     return {msg, eid: rows[0].eid, full: rows[0].full};
   };
-  Y.publicUrl = (module, title, full, category) => {
-    const seg = module === 'notice' ? (category === 3 ? 'ogrenci-duyuru' : 'duyuru') : ({news: 'haber', event: 'etkinlik'}[module] || module);
+  // Öğrenci duyuruları da (kategori 3) sitede /duyuru/ altında açılır (ör. geçmiş vize manşetlerinin bağlantıları).
+  Y.publicUrl = (module, title, full) => {
+    const seg = {news: 'haber', event: 'etkinlik', notice: 'duyuru'}[module] || module;
     return Y.run.base + '/' + seg + '/' + Y.slug(title) + '-' + full;
   };
   Y.publish = async (module, eid, title, want = 'Yayında') => {

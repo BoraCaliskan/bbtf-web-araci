@@ -149,7 +149,8 @@ def build(lang, want_images):
                 pass
             body, npii = clean(it.get('Content') or '')
             title = it.get('Header') or ''
-            url = f"{PUBLIC}/{lang}/{path if typ != 'ogrenci-duyuru' else 'ogrenci-duyuru'}/{slug(title)}-{eid}" if typ != 'slider' else (it.get('Link') or '')
+            # öğrenci duyuruları da sitede /duyuru/ altında açılır
+            url = f"{PUBLIC}/{lang}/{'duyuru' if typ == 'ogrenci-duyuru' else path}/{slug(title)}-{eid}" if typ != 'slider' else (it.get('Link') or '')
             recs.append({
                 'lang': lang, 'type': typ, 'cmsId': eid, 'title': title, 'url': url,
                 'date': (it.get('Date') or '')[:10], 'status': 'published',

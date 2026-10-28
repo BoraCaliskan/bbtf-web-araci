@@ -72,7 +72,7 @@ await __Y.createNews({title, date, img, gallery: [...], html, module: 'news'})  
 await __Y.createNews({title, date, img, html, module: 'event'})                      // etkinlik
 await __Y.createNews({title, date, html, module: 'notice', category: 3})             // öğrenci duyurusu (img yok)
 await __Y.publish('<module>', eid, title)                                             // 'Kaydedildi -> Yayında'
-__Y.publicUrl('<module>', title, full, category)                                      // adres
+__Y.publicUrl('<module>', title, full)                                                // adres (öğrenci duyurusu da /duyuru/ altında)
 ```
 Her çağrı ayrı javascript_tool çağrısı olsun (45 s sınırı). Aynı başlık ve tarihte kayıt varsa `AYNI_KAYIT_VAR` ile durur.
 
