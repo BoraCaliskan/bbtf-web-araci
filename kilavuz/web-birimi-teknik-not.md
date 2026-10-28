@@ -25,6 +25,8 @@ Gözlem: CMS'te her görsel yüklenirken "Alt Metin (Zorunlu)" alanı dolduruluy
 
 Öneri: Galeri şablonunda alt özniteliğinin görselin CMS'teki alt metniyle doldurulması. Bu bilgi API yanıtında yoksa yanıta da eklenmesi gerekir.
 
+Not: Fakültenin TR, EN ve TÜBİTAK 2237-A kütüphanelerindeki 632 görselin tamamına 28 Ekim 2026'da açıklayıcı alt metin girildi. Şablon düzeltildiğinde galeri görselleri bu metinlerle okunacak. Etkinlik sayfalarındaki galeri de aynı durumda. Kapak görselinde alt olarak kayıt başlığı kullanılıyor, kütüphanedeki alt metin burada da kullanılabilir.
+
 **3. Etkinlik takviminde gün işaretleri eksik görünüyor**
 
 Gözlem: Etkinlikler sayfasındaki takvimde (https://bilgisayar.istanbul.edu.tr/tr/etkinlikler) bir günün etkinlik içerdiğini gösteren sayı, yalnızca sayfaya o an yüklenmiş etkinlikler için görünüyor. O ayda etkinlik olsa bile, etkinlik henüz yüklenmemişse gün işaretlenmiyor.

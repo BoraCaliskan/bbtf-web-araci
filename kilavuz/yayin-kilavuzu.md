@@ -49,6 +49,18 @@ Diğer başlık kuralları:
 - Afişin güvenli alanları: metin 461 pikselin üstünde biter, yüzde 24-77 bandında kalır, kenarlara logo veya yüz konmaz. Araç bunu kendisi sağlar.
 - Hazır HTML ile açık zeminli düğme eklenirse düğmenin style özelliğine `color:#205d4e !important` eklenmelidir. Sitenin stili düğme yazısını beyaz yapar. Beyaz yazı açık zeminde okunmaz.
 
+## Görsel alt metni
+
+- Fotoğraf Yükle penceresinde her görselin alt metni doldurulur. Alt metin, görseli göremeyen kullanıcıya görselde ne olduğunu anlatır.
+- Dil sitenin dilidir: Türkçe sitede Türkçe, İngilizce sitede İngilizce. İngilizce metinde üniversite ve fakülte adları İngilizce yazılır (Istanbul University, Faculty of Computer and Information Technologies, Blue Hall).
+- Afiş ve duyuru görselleri: önce tür, sonra ana metin. Örnek: "Etkinlik afişi: 2026-2027 Akademik Yılı Ardışık Uyum Günleri başlıyor, 24 Eylül 2026 Perşembe, 09.00-14.00, Mavi Salon". Afişte varsa tarih, saat, yer ve konuşmacı yazılır. Logo, QR kod ve uzun bağlantılar yazılmaz.
+- Fotoğraflar: ne oluyor, kimler (rolüyle: konuşmacı, öğrenciler, katılımcılar), nerede. Etkinliğin adı kayıttan biliniyorsa yazılır.
+- Kişi adı yalnızca görselde yazıyorsa ya da kayıttan kesin anlaşılıyorsa (tek konuşmacılı söyleşide kürsüdeki kişi gibi) yazılır. Toplu fotoğrafta kişilere ad verilmez. Milli gün görsellerinde Atatürk portresi adıyla anılabilir.
+- Ünvan görselde ya da kayıtta nasıl yazıyorsa öyle kalır. Eski afişteki ünvan bugünküyle değiştirilmez.
+- 60-200 karakter hedeflenir, en çok 250. Noktalı virgül, uzun tire, çift tırnak, emoji, dosya adı (ör. "medicon-2026-afis"), "Görsel:" gibi başlangıçlar ve "hoca" gibi gündelik sözcükler kullanılmaz. Sonda nokta olmaz.
+- Gövdeye görsel eklenirse `<img>` etiketine de alt metin yazılır.
+- Bilinen kısıt: sitenin şablonu galeri görsellerini boş alt metinle basıyor, kapak görselinde kayıt başlığını kullanıyor. Kütüphanedeki alt metinlerin sitede görünmesi için şablonun düzeltilmesi gerekir (web birimi).
+
 ## Yeni içerik eklerken
 
 1. İçeriği doğru bölümde oluşturun. Haber ve etkinliklerde görsel zorunludur.

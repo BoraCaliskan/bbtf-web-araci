@@ -58,6 +58,9 @@ Diğer alanlar: `KisaLink`, `IsBlank`, `Gallery`, `Tag`, `Author`, `PriorityOrde
 6. Görseli seçip **Seçilenlerle Devam Et**. Galeri için birden çok görsel seçilir.
 7. Tuzaklar: Yükle düğmesi ilk tıklamada bazen tepki vermez, yükleme olmaz, tekrar tıklayın. Pencere açıkken panel saniyede çokça istek atar, işi bitince hemen kapatın. Alt metin alanında Ctrl+A bazen "a" harfi yazar, alanı seçip silerek temizleyin.
 8. Galeri alt metinleri CMS'te saklanır ama sitenin galeri bileşeni basmaz (bilinen hata).
+9. Kütüphane siteye özeldir ve o siteye yüklenen tüm görselleri listeler. Liste 20'şer görsel yüklenir (`getData`, `api/content/getUploadedImages`, imleç `lastEID`). 5 görselli kütüphanede son imleç aynı sayfayı yeniden döndürür, okurken görsel kimliğine göre tekrarları ayıklayın.
+10. Alt metin sonradan Yüklediklerim'de görselin altındaki alandan değiştirilir (`updateAltText(resim)`, `api/content/updateImageAltText {EID, AltText}`, başarıda "Alt metin güncellendi."). Toplu iş için `scripts/alt-metin.browser.js`, kurallar `kilavuz/yayin-kilavuzu.md`.
+11. "Görseli Sil" isteğinin gövdesinde CMS uygulama kimlik bilgileri bulunur, istek gövdelerini kaydetmeyin.
 
 ## 4. Tarih alanı
 
@@ -88,7 +91,7 @@ TR ve EN ayrı sitelerdir, ortak kayıt yoktur. Aynı içerik iki sitede ayrı o
 ## 8. Bilinen hatalar (site tarafı, CMS'den düzeltilemez)
 
 1. **Haber ve duyuru başlıkları kelime kelime büyütülüyor.** Sitenin `camelCaseTr` filtresi başlığı tr-TR ile küçültüp her kelimenin ilk harfini büyütüyor. AA "Aa", KZÖ "Kzö", MEDICON "Medıcon", III "Iıı" olur. İngilizce sayfada "in" "İn" olur. Etkinlik başlıkları etkilenmez. Geçici kural: başlıkta büyük harfli kısaltma ve Roma rakamı kullanmayın, İngilizce i ile başlayan kelimeleri büyük I ile yazın.
-2. **Galeri alt metinleri basılmıyor.** Haber sayfasındaki galeri görselleri `alt=""` ile geliyor.
+2. **Galeri alt metinleri basılmıyor.** Haber ve etkinlik sayfalarındaki galeri görselleri `alt=""` ile geliyor, kapak görselinin alt'ı kayıt başlığı. Kütüphanedeki alt metin sitede yalnızca gövdeye eklenen `<img>` etiketlerinde görünür (28 Ekim 2026'da gövdedeki 20 alt'sız görsele alt eklendi).
 3. **Etkinlik takvimi** yalnızca sayfaya yüklenmiş 4 etkinliği işaretliyor.
 4. **Manşet Title alanları** doluysa afiş kararıyor.
 5. Teknik ayrıntı ve web birimine iletilecek not: `kilavuz/web-birimi-teknik-not.md`.
